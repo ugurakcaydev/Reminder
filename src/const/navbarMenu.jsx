@@ -1,4 +1,5 @@
-export const mainMenu=[
+
+export  const mainMenu=[
     {
         path:"/",
         name:"Ana Sayfa",
@@ -12,6 +13,21 @@ export const mainMenu=[
     {
         path:"/profile",
         name:"Profil",
+        icon:"",
+    },
+    {
+        path:"/tour",
+        name:"✨Take a tour",
+        icon:"",
+    },
+    {
+        path:"/features",
+        name:"Product",
+        icon:"",
+    },
+    {
+        path:"/login",
+        name:"Login",
         icon:"",
     },
 ]
