@@ -61,17 +61,20 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl ${scrollY > 10 ? "translate-y-6 " : ""
-          }`}
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl ${
+          scrollY > 10 ? "translate-y-6 " : ""
+        }`}
       >
         <div
-          className={classNames(' flex justify-center items-center py-6 mobile:px-0  bg-transparent transition-translate duration-200 laptop2:w-10/12 desktop1:w-9/12 desktop2:w-7/12 2kmonitor:w-7/12',
+          className={classNames(
+            " flex justify-center items-center  py-4 mobile:px-0  bg-transparent transition-translate duration-200 ",
             {
-              "text-golden !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full": scrollY > 10
-
-            })}
+              "text-golden !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full":
+                scrollY > 10,
+            }
+          )}
         >
-          <div className="w-full flex justify-between mobile:gap-x-3 laptop1:gap-x-4 laptop2:gap-x-14 desktop1:gap-x-16 desktop2:gap-x-20 px-4">
+          <div className="w-full flex justify-between gap-x-28 px-5">
             <div className="flex  items-center gap-x-2 ">
               <img
                 className="mobile:hidden laptop2:block  h-10"
@@ -84,20 +87,54 @@ export default function Navbar() {
             </div>
             <div className="flex tablet:gap-x-1 laptop2:gap-x-3 desktop1:gap-x-4 desktop2:gap-x-5">
               {mainMenu &&
-                mainMenu.map((e, index) => (
+                mainMenu.map((menuItem, index) => (
                   <>
                     <button
                       key={index}
-                      className=" relative font-semibold gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  mobile:text-sm tablet:text-base laptop1:text-lg  2kmonitor:text-xl "
+                      className=" relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group"
                     >
-                      {e?.icon}
-                      <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-golden hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out">
-                        {e.name}
+                      <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-golden group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out">
+                        {menuItem.name}
                       </span>
+                      {menuItem?.subtitle && (
+                        <>
+                          <svg
+                            height="6"
+                            viewBox="0 0 12 6"
+                            width="12"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="m9.21966991 5.78033009c.29289322.29289321.76776696.29289321 1.06066019 0 .2928932-.29289322.2928932-.76776696 0-1.06066018l-4.50000001-4.5c-.29289322-.29289321-.76776696-.29289321-1.06066018 0l-4.5 4.5c-.29289321.29289322-.29289321.76776696 0 1.06066018.29289322.29289321.76776696.29289321 1.06066018 0l3.96966991-3.96966992z"
+                              transform="matrix(-1 0 0 -1 11.25 6)"
+                            ></path>
+                          </svg>
+                          <div className="w-[644px] justify-between rounded-xl grid-col-3 gap-x-4 items-center px-[1.25rem]  py-[1.5rem] bg-[#fff] absolute hidden top-20 left-1/2 -translate-x-1/2 transition-all duration-700 opacity-0 group-hover:flex  group-hover:opacity-100 group-hover:pointer-events-auto  ">
+                            <div className="w-[321px] flex flex-col items-start justify-start text-left flex-wrap p-3 hover:bg-[#e6ebee] rounded-xl">
+                              <h2 className="text-bold text-lg font-poppins text-[#232e35] ">
+                                {menuItem.subtitle.content_1.title}
+                              </h2>
+                              <p className="text-[#656d72] text-[0.875rem]">
+                                {menuItem.subtitle.content_1.comment}
+                              </p>
+                            </div>
+                             <div className="w-[2px] h-16 bg-black" /> 
+                            <div className="w-[321px] flex flex-col items-start justify-start text-left  flex-wrap p-3 hover:bg-[#e6ebee] rounded-xl">
+                              <h2 className="text-bold text-lg font-poppins text-[#232e35] ">
+                                {menuItem.subtitle.content_2.title}
+                              </h2>
+                              <p className="text-[#656d72] text-[0.875rem]">
+                                {menuItem.subtitle.content_2.comment}
+                              </p>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </button>
                   </>
                 ))}
-              <button className="whitespace-nowrap font-bold bg-golden rounded-full text-white mobile:text-base mobile:py-1 mobile:px-2  desktop1:py-2 desktop1:px-5 ">
+              <button className="whitespace-nowrap font-bold bg-golden  rounded-full text-white mobile:text-base mobile:py-0 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
                 Sign up Free
               </button>
               <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
@@ -139,7 +176,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }
