@@ -7,19 +7,21 @@ export const mainMenu = [
   {
     path: "/use-cases",
     name: "Kullanım Durumları",
-    icon: "",
-    subtitle: {
-      content_1: {
-        title: "For Teams",
-        comment:
-          "Check how you can schedule your whole team, across different departments and locations, all under one account.",
-      },
-      content_2: {
-        title: "For educations",
-        comment:
-          "Automate bookings so you can focus on delivering an outstanding student experience. ",
-      },
-    },
+    icon: true,
+    // subtitle: {
+
+    //   content_1: {
+    //     title: "Takımlar için",
+    //     comment:
+    //       "Farklı departman ve konumlardaki tüm ekibinizi tek bir hesap altında nasıl planlayabileceğinizi kontrol edin.",
+    //   },
+    //   content_2: {
+    //     title: "Eğitim için",
+    //     comment:
+    //       "Olağanüstü bir öğrenci deneyimi sunmaya odaklanabilmeniz için rezervasyonları otomatikleştirin.",
+    //   },
+
+    // },
   },
   // {
   //     path:"/profile",
@@ -34,34 +36,44 @@ export const mainMenu = [
   {
     path: "/product",
     name: "Ürünler",
-    icon: "",
-    subtitle: {
-      content_1: {
-        title: "For Teams",
-        comment:
-          "Check how you can schedule your whole team, across different departments and locations, all under one account.",
-      },
-      content_2: {
-        title: "For educations",
-        comment:
-          "Automate bookings so you can focus on delivering an outstanding student experience. ",
-      },
-    },
+    icon: true,
+    // subtitle: {
+    //   content_1: {
+    //     title: "Uygunluk Durumunuzu Yönetin",
+    //     comment:
+    //       "Programınızı ve toplantılarınızı yaşam tarzınıza uyacak ve işinizi kolaylaştıracak şekilde uyarlayın. Müsaitlik durumunuzu anında güncellemek için takvimlerinizi bağlayın.",
+    //   },
+    //   content_2: {
+    //     title: "For educations",
+    //     comment:
+    //       "Automate bookings so you can focus on delivering an outstanding student experience. ",
+    //   },
+    // },
   },
   {
     path: "/company",
     name: "Şirketimiz",
-    icon: "",
+    icon: true,
     subtitle: {
       content_1: {
-        title: "For Teams",
+        title: "Hakkımızda",
         comment:
-          "Check how you can schedule your whole team, across different departments and locations, all under one account.",
+          "2011 yılında kurulan ve kendini buluşmak için zaman bulma sorununu çözmeye adamış, tamamen uzaktan çalışan bir ekibiz.",
       },
       content_2: {
-        title: "For educations",
+        title: "Yenilikler",
         comment:
-          "Automate bookings so you can focus on delivering an outstanding student experience. ",
+          "En son özellikler ve ürün güncellemeleri hakkında daha fazla bilgi edinin. ",
+      },
+      content_3: {
+        title: "Yardım Merkezi",
+        comment:
+          "Yardıma mı ihtiyacın var? Sitemizde bulunan dökümantasyona, videolara veya foruma göz atabilirsin. ",
+      },
+      content_4: {
+        title: "Güvenlik",
+        comment:
+          "Hesabınızı, verilerinizi koruyor ve her gün güveninizi kazanıyoruz. ",
       },
     },
   },
