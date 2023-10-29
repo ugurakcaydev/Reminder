@@ -3,6 +3,7 @@ import { mainMenu } from "../../const/navbarMenu";
 import { useEffect } from "react";
 import { setColor, setBackgroundColor } from "../../store/appearance/actions";
 import { useAppearance } from "../../store/appearance/hooks";
+import classNames from "classnames";
 
 export default function Navbar() {
   const appearance = useAppearance();
@@ -60,47 +61,46 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-lg ${
-          scrollY > 10 ? "translate-y-6 " : ""
-        }`}
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl ${scrollY > 10 ? "translate-y-6 " : ""
+          }`}
       >
         <div
-          className={`  flex justify-center items-center py-5 px-2  bg-transparent transition-translate duration-200  ${
-            scrollY > 10
-              ? "text-golden !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full"
-              : ""
-          }`}
+          className={classNames(' flex justify-center items-center py-6 mobile:px-0  bg-transparent transition-translate duration-200 laptop2:w-10/12 desktop1:w-9/12 desktop2:w-7/12 2kmonitor:w-7/12',
+            {
+              "text-golden !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full": scrollY > 10
+
+            })}
         >
-          <div className="w-full flex justify-between gap-x-20 px-4">
+          <div className="w-full flex justify-between mobile:gap-x-3 laptop1:gap-x-4 laptop2:gap-x-14 desktop1:gap-x-16 desktop2:gap-x-20 px-4">
             <div className="flex  items-center gap-x-2 ">
               <img
-                className=" h-10"
+                className="mobile:hidden laptop2:block  h-10"
                 src="../../../src/assets/images/booking.png"
                 alt="logo"
               />
-              <span className="text-3xl font-bold tracking-tight text-golden  transition-all duration-800 ease-in-out">
+              <span className=" font-bold tracking-tight text-golden laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
                 YouCanBookMe
               </span>
             </div>
-            <div className="flex gap-x-5 ">
+            <div className="flex tablet:gap-x-1 laptop2:gap-x-3 desktop1:gap-x-4 desktop2:gap-x-5">
               {mainMenu &&
                 mainMenu.map((e, index) => (
                   <>
                     <button
                       key={index}
-                      className=" relative font-semibold gap-x-2 p-2 "
+                      className=" relative font-semibold gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  mobile:text-sm tablet:text-base laptop1:text-lg  2kmonitor:text-xl "
                     >
                       {e?.icon}
-                      <span className="before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-golden hover:before:w-full before:transition-all before:duration-700 before:ease-in-out">
+                      <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-golden hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out">
                         {e.name}
                       </span>
                     </button>
                   </>
                 ))}
-              <button className="font-bold bg-golden rounded-full text-white py-2 px-3">
+              <button className="whitespace-nowrap font-bold bg-golden rounded-full text-white mobile:text-base mobile:py-1 mobile:px-2  desktop1:py-2 desktop1:px-5 ">
                 Sign up Free
               </button>
-              <label className="swap swap-rotate">
+              <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
                 <input type="checkbox" />
                 <svg
                   onClick={() => {
@@ -139,7 +139,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }
