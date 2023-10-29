@@ -8,20 +8,18 @@ export const mainMenu = [
     path: "/use-cases",
     name: "Kullanım Durumları",
     icon: true,
-    // subtitle: {
-
-    //   content_1: {
-    //     title: "Takımlar için",
-    //     comment:
-    //       "Farklı departman ve konumlardaki tüm ekibinizi tek bir hesap altında nasıl planlayabileceğinizi kontrol edin.",
-    //   },
-    //   content_2: {
-    //     title: "Eğitim için",
-    //     comment:
-    //       "Olağanüstü bir öğrenci deneyimi sunmaya odaklanabilmeniz için rezervasyonları otomatikleştirin.",
-    //   },
-
-    // },
+    subtitle: {
+      content_1: {
+        title: "Takımlar için",
+        comment:
+          "Farklı departman ve konumlardaki tüm ekibinizi tek bir hesap altında nasıl planlayabileceğinizi kontrol edin.",
+      },
+      content_2: {
+        title: "Eğitim için",
+        comment:
+          "Olağanüstü bir öğrenci deneyimi sunmaya odaklanabilmeniz için rezervasyonları otomatikleştirin.",
+      },
+    },
   },
   // {
   //     path:"/profile",
@@ -37,18 +35,18 @@ export const mainMenu = [
     path: "/product",
     name: "Ürünler",
     icon: true,
-    // subtitle: {
-    //   content_1: {
-    //     title: "Uygunluk Durumunuzu Yönetin",
-    //     comment:
-    //       "Programınızı ve toplantılarınızı yaşam tarzınıza uyacak ve işinizi kolaylaştıracak şekilde uyarlayın. Müsaitlik durumunuzu anında güncellemek için takvimlerinizi bağlayın.",
-    //   },
-    //   content_2: {
-    //     title: "For educations",
-    //     comment:
-    //       "Automate bookings so you can focus on delivering an outstanding student experience. ",
-    //   },
-    // },
+    subtitle: {
+      content_1: {
+        title: "Uygunluk Durumunuzu Yönetin",
+        comment:
+          "Programınızı ve toplantılarınızı yaşam tarzınıza uyacak ve işinizi kolaylaştıracak şekilde uyarlayın. Müsaitlik durumunuzu anında güncellemek için takvimlerinizi bağlayın.",
+      },
+      content_2: {
+        title: "For educations",
+        comment:
+          "Automate bookings so you can focus on delivering an outstanding student experience. ",
+      },
+    },
   },
   {
     path: "/company",
