@@ -1,15 +1,10 @@
-import React from 'react'
-import MyTabs from './mytabs'
 
+import MyTabs from "./mytabs";
 
 export default function Pricing() {
-
-    return (
-        <>
-            <MyTabs />
-
-        </>
-
-
-    )
+  return (
+    <>
+      <MyTabs />
+    </>
+  );
 }

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
     //DEFAULT
     backgroundColor: {
@@ -8,10 +7,7 @@ const initialState = {
     color: {
         primary: "#000",
     },
-
-
 };
-
 const appearance = createSlice({
     name: "appearance",
     initialState,

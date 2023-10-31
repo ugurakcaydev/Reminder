@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mainMenu } from "../../const/navbarMenu";
+import { mainMenu } from "../../const/const";
 import { useEffect } from "react";
 import { setColor, setBackgroundColor } from "../../store/appearance/actions";
 import { useAppearance } from "../../store/appearance/hooks";
@@ -7,7 +7,6 @@ import classNames from "classnames";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const appearance = useAppearance();
   const { /*backgroundColor*/ color } = useAppearance(); //backgroundcolor koşul kullanılıcaksa açılıcak
 
   const [scrollY, setScrollY] = useState(0);
@@ -24,46 +23,12 @@ export default function Navbar() {
     };
   }, []);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--color-primary",
-      appearance.color.primary
-    ); //Gold
-    document.documentElement.style.setProperty(
-      "--color-secondary",
-      appearance.color.base
-    );
-    document.documentElement.style.setProperty(
-      "--color-third",
-      appearance.color.third
-    );
-
-    document.documentElement.style.setProperty(
-      "--bg-primary",
-      appearance.backgroundColor.primary
-    ); //Beyaz
-    document.documentElement.style.setProperty(
-      "--bg-secondary",
-      appearance.color.secondary
-    ); //Siyah
-    document.documentElement.style.setProperty(
-      "--bg-secondary-base",
-      appearance.color.secondary
-    ); //açık siyah
-    document.documentElement.style.setProperty(
-      "--bg-third",
-      appearance.color.third
-    );
-    
-    
-    //renkleri tanımla
-  }, [appearance]);
-
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl z-20 ${scrollY > 10 ? "translate-y-6 " : ""
-          }`}
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl z-20 ${
+          scrollY > 10 ? "translate-y-6 " : ""
+        }`}
       >
         <div
           className={classNames(
@@ -139,7 +104,8 @@ export default function Navbar() {
 
                   //   </div>
                   // </>
-                  <Link to={menuItem.path}
+                  <Link
+                    to={menuItem.path}
                     key={index}
                     className=" relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group "
                   >
@@ -214,7 +180,7 @@ export default function Navbar() {
                       primary: "#000",
                     });
                     setBackgroundColor({
-                      primary: "#fff",
+                      primary: "#ccc",
                     });
                   }}
                   className="swap-off fill-current w-10 h-10"

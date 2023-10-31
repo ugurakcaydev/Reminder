@@ -1,3 +1,5 @@
+
+
 export const mainMenu = [
   {
     path: "/",
@@ -21,16 +23,6 @@ export const mainMenu = [
       },
     },
   },
-  // {
-  //     path:"/profile",
-  //     name:"Profil",
-  //     icon:"",
-  // },
-  // {
-  //     path:"/tour",
-  //     name:"Take a tour",
-  //     icon:"",
-  // },
   {
     path: "/product",
     name: "Ürünler",
@@ -84,5 +76,62 @@ export const mainMenu = [
     path: "/login",
     name: "Giriş Yap",
     icon: "",
+  },
+];
+
+export let [pricePolicy] = [
+  {
+    Aylık: [
+      {
+        id: 0,
+        title: "Başlangıç aylık",
+        price: "Ücretsiz",
+        features: ["Özellik1", "Özellik2", "Özellik3"],
+      },
+      {
+        id: 1,
+        title: "Profesyonel aylık",
+        price: "50",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4"],
+      },
+      {
+        id: 2,
+        title: "İşletme aylık",
+        price: "200",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4", "Özellik5"],
+      },
+      {
+        id: 3,
+        title: "Özel aylık",
+        price: "500",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4", "Özellik5"],
+      },
+    ],
+    Yıllık: [
+      {
+        id: 0,
+        title: "Başlangıç yıllık",
+        price: "Ücretsiz",
+        features: ["Özellik1", "Özellik2", "Özellik3"],
+      },
+      {
+        id: 1,
+        title: "Profesyonel yıllık",
+        price: "50",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4"],
+      },
+      {
+        id: 2,
+        title: "İşletme yıllık",
+        price: "200",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4", "Özellik5"],
+      },
+      {
+        id: 3,
+        title: "Özel yıllık",
+        price: "500",
+        features: ["Özellik1", "Özellik2", "Özellik3", "Özellik4", "Özellik5"],
+      },
+    ],
   },
 ];
