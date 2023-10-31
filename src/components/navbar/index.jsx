@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { setColor, setBackgroundColor } from "../../store/appearance/actions";
 import { useAppearance } from "../../store/appearance/hooks";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const appearance = useAppearance();
@@ -53,23 +54,22 @@ export default function Navbar() {
       "--bg-third",
       appearance.color.third
     );
-    console.log(appearance.backgroundColor);
-    console.log(appearance.color);
+    
+    
     //renkleri tanımla
   }, [appearance]);
 
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl ${
-          scrollY > 10 ? "translate-y-6 " : ""
-        }`}
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl z-20 ${scrollY > 10 ? "translate-y-6 " : ""
+          }`}
       >
         <div
           className={classNames(
             " flex justify-center items-center  py-4 mobile:px-0  bg-transparent transition-translate duration-200 ",
             {
-              "text-golden !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full":
+              "text-tgold !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full":
                 scrollY > 10,
             }
           )}
@@ -81,7 +81,7 @@ export default function Navbar() {
                 src="../../../src/assets/images/booking.png"
                 alt="logo"
               />
-              <span className=" font-bold tracking-tight text-golden laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
+              <span className=" font-bold tracking-tight text-tgold laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
                 YouCanBookMe
               </span>
             </div>
@@ -139,11 +139,11 @@ export default function Navbar() {
 
                   //   </div>
                   // </>
-                  <button
+                  <Link to={menuItem.path}
                     key={index}
-                    className=" relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group"
+                    className=" relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group "
                   >
-                    <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-golden group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out">
+                    <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-tgold group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out font-roboto">
                       {menuItem.name}
                     </span>
                     {menuItem?.subtitle && (
@@ -161,19 +161,19 @@ export default function Navbar() {
                           ></path>
                         </svg>
 
-                        <div className="w-[700px] top-24 group-hover:top-16 rounded-xl gap-x-4 px-[1.25rem] py-[1.25rem] bg-[#fff] absolute invisible group-hover:visible left-1/2 -translate-x-1/2 transition-all duration-500 opacity-0   group-hover:opacity-100  border border-black">
+                        <div className="w-[700px] top-24 group-hover:top-16 rounded-xl gap-x-4 px-[1.25rem] py-[1.25rem] bg-[#fff] absolute invisible group-hover:visible left-1/2 -translate-x-1/2 transition-all duration-500 opacity-0   group-hover:opacity-100  border border-black ">
                           <div className="grid grid-cols-2  ">
                             {Object.keys(menuItem.subtitle).map(
                               (contentKey, index) => (
                                 // Her bir "contentKey" için bu döngü çalışacak
                                 <div
                                   key={index}
-                                  className="w-[321px] flex flex-col items-start justify-start text-justify  flex-wrap p-3 hover:bg-[#e6ebee] rounded-xl px-7"
+                                  className="w-[321px] flex flex-col items-start justify-start text-justify  flex-wrap p-3 hover:bg-[#e6ebee] rounded-xl px-7 "
                                 >
-                                  <h2 className="text-bold text-lg font-poppins text-[#232e35] ">
+                                  <h2 className="text-bold text-lg font-poppins text-[#232e35]  ">
                                     {menuItem.subtitle[contentKey].title}
                                   </h2>
-                                  <p className="text-[#656d72] text-[0.875rem]">
+                                  <p className="text-[#656d72] text-[0.875rem] font-ubuntu ">
                                     {menuItem.subtitle[contentKey].comment}
                                   </p>
                                 </div>
@@ -183,10 +183,10 @@ export default function Navbar() {
                         </div>
                       </>
                     )}
-                  </button>
+                  </Link>
                 ))}
-              <button className="whitespace-nowrap font-bold bg-golden  rounded-full text-white mobile:text-base mobile:py-0 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
-                Sign up Free
+              <button className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-0 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
+                Kayıt Ol
               </button>
               <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
                 <input type="checkbox" />
