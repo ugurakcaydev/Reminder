@@ -39,7 +39,7 @@ export default function MyTabs() {
               {priceOptions.map((priceDetail) => (
                 <button
                   onClick={() => setSelectPriceProp(priceDetail.id)}
-                  className={classNames("bg-red-500  p-5  overflow-hidden  flex-1 rounded-xl", {
+                  className={classNames("bg-gray-100  p-5  overflow-hidden  flex-1 rounded-xl border border-gray-400", {
                     "": priceDetail.id == selectPriceProp, //seçilene özel css verilecek
                   })}
                   key={priceDetail.id}
@@ -48,7 +48,7 @@ export default function MyTabs() {
                     <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                       {priceDetail.title}
                     </h2>
-                    <h1 className="text-4xl text-start w-full text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
+                    <h1 className="text-4xl text-start w-full text-gray-900 pb-4 mb-4 border-b border-gray-300 leading-none">
                       {priceDetail.price}{" "}
                       {priceDetail.price != "Ücretsiz" ? "TL" : ""}
                     </h1>
