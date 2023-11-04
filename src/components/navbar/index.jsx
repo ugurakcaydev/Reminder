@@ -151,7 +151,7 @@ export default function Navbar() {
                     )}
                   </Link>
                 ))}
-              <button className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-0 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
+              <button className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
                 Kayıt Ol
               </button>
               <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
