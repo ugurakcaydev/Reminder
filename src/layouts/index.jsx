@@ -13,7 +13,7 @@ export default function MainLayout() {
     ); //Gold
     document.documentElement.style.setProperty(
       "--color-secondary",
-      appearance.color.base
+      appearance.color.secondary
     );
     document.documentElement.style.setProperty(
       "--color-third",
@@ -43,10 +43,10 @@ export default function MainLayout() {
   return (
     <div className="w-full  bg-[color:var(--bg-primary)]  ">
       <Navbar />
-      <main className="flex-col h-[300vh]   mx-auto pt-[80px]  w-[90%]">
+      <main className="flex-col h-[600vh]   mx-auto pt-[80px]  w-[90%]">
         <Outlet />
       </main>
-      {/* <Footer classNamee={' absolute bottom-0 w-full bg-[color:var(--bg-primary)] '} /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

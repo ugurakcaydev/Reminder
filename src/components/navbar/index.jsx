@@ -3,8 +3,9 @@ import { mainMenu } from "../../const/const";
 import { useEffect } from "react";
 import { setColor, setBackgroundColor } from "../../store/appearance/actions";
 import { useAppearance } from "../../store/appearance/hooks";
-import classNames from "classnames";
+
 import { Link } from "react-router-dom";
+import classNames from "classnames";
 
 export default function Navbar() {
   const { /*backgroundColor*/ color } = useAppearance(); //backgroundcolor koşul kullanılıcaksa açılıcak
@@ -161,6 +162,7 @@ export default function Navbar() {
                     setColor({
                       ...color,
                       primary: "#fff",
+                      secondary: "#ffc107",
                     });
                     setBackgroundColor({
                       primary: "rgb(25,29,32)",
@@ -177,7 +179,8 @@ export default function Navbar() {
                   onClick={() => {
                     setColor({
                       ...color,
-                      primary: "#000",
+                      primary: "#252525",
+                      secondary: "#000",
                     });
                     setBackgroundColor({
                       primary: "#ccc",

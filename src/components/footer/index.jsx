@@ -1,10 +1,10 @@
-import React from "react";
 
-export default function Footer({ classNamee }) {
+
+export default function Footer() {
   const currentTime = new Date();
 
   return (
-    <div className={classNamee}>
+    <div className=" absolute bottom-0 w-full bg-[color:var(--bg-primary)]">
       <footer className="text-gray-600 body-font w-full ">
         <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
@@ -13,9 +13,6 @@ export default function Footer({ classNamee }) {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
                 className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
                 viewBox="0 0 24 24"
               >
@@ -147,9 +144,6 @@ export default function Footer({ classNamee }) {
               <a className="text-gray-300 p-2 rounded-full transition-all hover:bg-gray-700 cursor-pointer">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -159,9 +153,6 @@ export default function Footer({ classNamee }) {
               <a className="ml-3 text-gray-300 p-2 rounded-full transition-all hover:bg-gray-700 cursor-pointer">
                 <svg
                   fill="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -172,9 +163,6 @@ export default function Footer({ classNamee }) {
                 <svg
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -186,9 +174,6 @@ export default function Footer({ classNamee }) {
                 <svg
                   fill="currentColor"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="0"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >

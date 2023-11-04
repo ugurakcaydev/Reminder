@@ -1,8 +1,8 @@
 import { Tab } from "@headlessui/react";
-import classNames from "classnames";
 import { useState } from "react";
 //import { Fragment } from "react";
 import { pricePolicy } from "../../const/const";
+import classNames from "classnames";
 
 export default function MyTabs() {
   const [selectPriceProp, setSelectPriceProp] = useState(0);
@@ -38,10 +38,13 @@ export default function MyTabs() {
             >
               {priceOptions.map((priceDetail) => (
                 <button
-                  onClick={() => setSelectPriceProp(priceDetail.id)}
-                  className={classNames("bg-red-500  p-5  overflow-hidden  flex-1 rounded-xl", {
-                    "": priceDetail.id == selectPriceProp, //seçilene özel css verilecek
-                  })}
+                 onClick={() => setSelectPriceProp(priceDetail.id)}
+                  className={classNames(
+                    "bg-red-500  p-5  overflow-hidden  flex-1 rounded-xl",
+                    {
+                      "": priceDetail.id == selectPriceProp, //seçilene özel css verilecek
+                    }
+                  )}
                   key={priceDetail.id}
                 >
                   <div className="h-full items-start  rounded-lg  flex flex-col gap-y-2 relative overflow-hidden">
