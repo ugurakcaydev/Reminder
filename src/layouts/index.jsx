@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import { Outlet } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
+import classNames from "classnames";
 
 export default function MainLayout() {
   const appearance = useAppearance();
@@ -42,8 +43,10 @@ export default function MainLayout() {
 
   return (
     <div className="w-full  bg-[color:var(--bg-primary)]  ">
-      <Navbar />
-      <main className="flex-col h-[600vh]   mx-auto pt-[80px]  w-[90%]">
+      {location.pathname !== '/login' && <Navbar />}
+      <main className={classNames("flex-col h-[300vh]   mx-auto pt-[80px]  w-[90%]", {
+        "!m-0 !pt-0  !w-full": location.pathname === '/login',
+      })}>
         <Outlet />
       </main>
       {/* <Footer /> */}
