@@ -1,4 +1,5 @@
-import { OdometerNumbers } from "../../components/Odometer/Odometer";
+import DaySlots from "../../components/dayslots";
+import { OdometerNumbers } from "../../components/odometer";
 
 export default function Home() {
   // const bannerLogosSrc = [
@@ -58,9 +59,9 @@ export default function Home() {
         </div> */}
       </div>
       {/* TAKVİM OLUŞTURMA  */}
-      <div className="w-[1040px] p-14 bg-transparent  -mt-24 mx-auto z-10 relative">
+      <div className="w-[990px] p-14 bg-transparent  -mt-24 mx-auto z-10 relative">
         <div className="w-full h-full border-2 bg-white  border-[#e6ebee]  rounded-xl overflow-hidden">
-          <div className="w-full h-10  flex justify-center gap-x-2 items-center border-b-4 border-[#2a9d8f]">
+          <div className="w-full h-10  flex justify-center gap-x-2 items-center border-b-8 border-[#2a9d8f]">
             <svg viewBox="0 0 24 24" className="h-[1rem] w-auto">
               <path
                 fill="currentColor"
@@ -73,13 +74,13 @@ export default function Home() {
             {/* leftside */}
             <div className="w-[420px]  border-r border-[#e6ebee]  ">
               <div className="max-h-[577px] pt-4 px-8 flex flex-col gap-y-2 justify-start items-start">
-                <div className="h-[8rem] w-[8rem] object-cover rounded-full overflow-hidden bg-orange-500">
+                <div className="h-[8rem] w-[8rem]  rounded-full overflow-hidden border border-[#d44de6] ">
                   <img
-                    className="w-full h-full"
-                    src="https://s3.us-west-2.amazonaws.com/ycbm.production.upload.files/ycbm/0cf46768-20ad-412c-984b-b16fba1ac137/images/ivana-cajina-dnl6zipht2s-unsplash_1.png"
+                    className="w-full h-full object-contain"
+                    src="https://cdn.discordapp.com/attachments/1083706733593116692/1168294627347017909/pexels-nikolina-11531517.jpg?ex=65513e29&is=653ec929&hm=5a44c2d2a9a4af532d4b21910cbee98a931a74ae6d629e8c847a27308f9da2d1&"
                   />
                 </div>
-                <span className="font-semibold text-[1.5rem] leading-8 text-[color:var(--color-primary)]">
+                <span className="font-semibold text-[1.5rem] leading-8 text-[black]">
                   Interactive Demo
                 </span>
                 <div className="w-[7.25rem] h-[2rem] rounded-full flex items-center justify-between px-2  border-[#e6ebee] border">
@@ -89,7 +90,7 @@ export default function Home() {
                       d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 2a6 6 0 100 12A6 6 0 008 2zm0 2c.5 0 1 .4 1 .9V7h1c.5 0 1 .4 1 .9V8c0 .6-.4 1-1 1H8a1 1 0 01-1-.9V5c0-.6.4-1 1-1z"
                     ></path>
                   </svg>
-                  <span className="text-[color:var(--color-primary)] font-semibold text-sm">
+                  <span className="text-black font-semibold text-sm">
                     30 minutes
                   </span>
                 </div>
@@ -101,84 +102,51 @@ export default function Home() {
             {/* rightside */}
             <div className="flex-1 flex flex-col items-center pt-[6px] px-6  ">
               <div className="w-full h-[4.5rem]  flex justify-between items-center border-b border-[#e6ebee]">
-                <div>Today</div>
-                <span>November 2023</span>
-                <div>icon</div>
+                <button className="px-4 py-0.5 border text-[14px] font-semibold border-[#e6ebee] rounded-full text-[black] hover:bg-[#e6ebee]">
+                  Today
+                </button>
+                <span className="text-black font-semibold">November 2023</span>
+                <div className="w-[71.19px] text-right">
+                  <button>
+                    <svg className="h-[1rem]" viewBox="0 0 16 16">
+                      <path
+                        d="M11 0a1 1 0 011 1h2a2 2 0 012 2v11a2 2 0 01-2 2H2a2 2 0 01-2-2V3c0-1.1.9-2 2-2h2a1 1 0 112 0h4a1 1 0 011-1zM4 3H2v11h12V3h-2a1 1 0 01-2 0H6a1 1 0 11-2 0zm1 8a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3-3a1 1 0 110 2 1 1 0 010-2zM8 8a1 1 0 110 2 1 1 0 010-2zM5 8a1 1 0 110 2 1 1 0 010-2zm0-3a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <div className="w-full pt-[1rem] flex flex-col items-center justify-center">
-                <div className="flex w-full items-center gap-x-2 ">
+                <div className="flex w-full items-center gap-x-3 ">
                   <span className="flex-1 block h-[.5px] bg-[#e6ebee]" />
-                  <span>This Week</span>
+                  <span className="text-sm">This Week</span>
                   <span className="flex-1 block h-[.5px] bg-[#e6ebee]"></span>
                 </div>
-                <div className="w-full py-4 flex flex-col items-start">
-                  <div className="flex items-center mb-2 text-left">
-                    Sunday November 5th
-                  </div>
-                  <div className="flex w-full items-center gap-x-2">
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">7:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">9:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">11:20 PM</span>
-                    </button>
-                  </div>
-                </div>
-                {/* 77777777777777777777777777777777777 */}
-                <div className="w-full py-4 flex flex-col items-start">
-                  <div className="flex items-center mb-2 text-left">
-                    Monday November 6th
-                  </div>
-                  <div className="flex w-full items-center gap-x-2">
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">7:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">9:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">11:20 PM</span>
-                    </button>
-                  </div>
-                </div>
-                {/* 77777777777777777777777777777777777 */}
-                <div className="w-full py-4 flex flex-col items-start">
-                  <div className="flex items-center mb-2 text-left">
-                    Tuesday November 7th
-                  </div>
-                  <div className="flex w-full items-center gap-x-2">
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">7:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">9:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">11:20 PM</span>
-                    </button>
-                  </div>
-                </div>
-                {/* 77777777777777777777777777777777777 */}
-                <div className="w-full py-4 flex flex-col items-start">
-                  <div className="flex items-center mb-2 text-left">
-                    Wednesday November 8th
-                  </div>
-                  <div className="flex w-full items-center gap-x-2">
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">7:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">9:20 PM</span>
-                    </button>
-                    <button className="flex-1 h-[3rem] text-black transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white">
-                      <span className="text-center font-bold">11:20 PM</span>
-                    </button>
-                  </div>
-                </div>
+                <DaySlots
+                // day={"Sunday"}
+                // month={"November 5"}
+                // hours={["7:20", "9:20", "11:20"]}
+                />
+
+                {/* <DaySlots
+                  day={"Monday"}
+                  month={"November 6"}
+                  hours={["7:20", "9:20", "11:20"]}
+                />
+               
+                <DaySlots
+                  day={"Tuesday"}
+                  month={"November 7"}
+                  hours={["7:20", "9:20", "11:20"]}
+                />
+                
+                <DaySlots
+                  day={"Wednesday"}
+                  month={"November 8"}
+                  hours={["7:20", "9:20", "11:20"]}
+                /> */}
               </div>
               <span className="w-full text-center py-6 border-b border-[#e6ebee]">
                 No availability after 9 November
@@ -188,23 +156,19 @@ export default function Home() {
                   <svg className="h-4 " viewBox="0 0 16 16">
                     <path
                       fill="currentColor"
-                     
                       d="M8.6 0l.02.02a8 8 0 010 15.96L8.6 16l-.03-.02a8.12 8.12 0 01-1.14 0L7.4 16l-.02-.02a8 8 0 010-15.96L7.4 0l.03.02a8.12 8.12 0 011.14 0L8.6 0zm4.6 11h-1.67c-.26.83-.63 1.65-1.11 2.47l-.02.03a6.02 6.02 0 002.8-2.5zm-8.73 0H2.8a6.02 6.02 0 002.8 2.5c-.49-.83-.86-1.66-1.13-2.5zm4.83 0H6.7c.31.78.74 1.57 1.3 2.36.56-.8.99-1.58 1.3-2.36zM4.05 7H2.08a6.04 6.04 0 000 2h1.97a9.6 9.6 0 010-2zm9.87 0h-1.97a9.6 9.6 0 010 2h1.97a6.04 6.04 0 000-2zM9.83 7H6.17a7.52 7.52 0 000 2h3.66a7.52 7.52 0 000-2zM5.6 2.5l-.08.03A6.03 6.03 0 002.8 5h1.67c.27-.84.64-1.67 1.13-2.5zm4.8 0l.02.03c.48.82.85 1.64 1.1 2.47h1.68a6.02 6.02 0 00-2.8-2.5zM8 2.64l-.13.19c-.5.73-.88 1.45-1.17 2.17h2.6A11.6 11.6 0 008 2.64z"
                     ></path>
                   </svg>
                   <span>Tİme zone</span>
                 </div>
-                <div className="font-semibold">
-                  Europe/İstanbul (3:41 PM)
-                </div>
+                <div className="font-semibold">Europe/İstanbul (3:41 PM)</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-
-         {/* sayaç alanı */}
+      {/* sayaç alanı */}
       <div className="w-full  relative flex flex-col items-center bg-[#cbd4d4] justify-center py-12 gap-y-5 rounded-tl-full rounded-br-full">
         {/* <svg
           className="absolute top-0 left-20 "
@@ -264,108 +228,107 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col pt-[4.4875rem]">
-      <div className="w-full  flex items-center justify-center text-center">
-        <div className="max-w-[75%] px-28 overflow-hidden">
-          <h2 className=" text-[2rem] mb-[1.25rem] font-bold text-[color:var(--color-secondary)] ">
-            Bookings are your business
-          </h2>
-          <p className="text-[1.25rem] font-normal text-[color:var(--color-primary)] font-inter text-center">
-            YouCanBookMe lets you create the best booking experience for your
-            customers — and your business.
-          </p>
+        <div className="w-full  flex items-center justify-center text-center">
+          <div className="max-w-[75%] px-28 overflow-hidden">
+            <h2 className=" text-[2rem] mb-[1.25rem] font-bold text-[color:var(--color-secondary)] ">
+              Bookings are your business
+            </h2>
+            <p className="text-[1.25rem] font-normal text-[color:var(--color-primary)] font-inter text-center">
+              YouCanBookMe lets you create the best booking experience for your
+              customers — and your business.
+            </p>
+          </div>
+        </div>
+        <div className="py-[3rem] flex items-center justify-between  max-w-[73.75em] px-[30px] mx-auto">
+          <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
+            <div className="flex relative items-center justify-center w-[48px] h-[48px] ">
+              <svg
+                width={48}
+                height={48}
+                viewBox="0 0 104 104"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#2a9d8f"
+                  d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
+                  transform="translate(-670 7)"
+                ></path>
+              </svg>
+              <img
+                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
+                src="https://youcanbook.me/hubfs/Icons/tick.svg"
+              />
+            </div>
+
+            <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
+              So many clients, so little time
+            </h3>
+            <div className="text-center text-[16px] text-[color:var(--color-primary)]  ">
+              You need to meet with clients to serve them, but you don’t have
+              time to create meeting links, remind clients or follow up with
+              no-shows.
+            </div>
+          </div>
+          {/**----------------------------------------*/}
+          <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] border-r border-r-[color:var(--color-primary)] border-l border-l-[color:var(--color-primary)]  flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
+            <div className="flex relative items-center justify-center w-[48px] h-[48px] ">
+              <svg
+                width={48}
+                height={48}
+                viewBox="0 0 104 104"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#2a9d8f"
+                  d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
+                  transform="translate(-670 7)"
+                ></path>
+              </svg>
+              <img
+                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
+                src="https://youcanbook.me/hubfs/Icons/tick.svg"
+              />
+            </div>
+
+            <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
+              CEO, COO, CFO .. and you make the coffee!
+            </h3>
+            <div className="text-center text-[16px]  text-[color:var(--color-primary)] ">
+              You’re providing a service and growing your business. Back and
+              forth meeting scheduling takes your focus away from both.
+            </div>
+          </div>
+          {/**----------------------------------------*/}
+          <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
+            <div className="flex relative items-center justify-center w-[48px] h-[48px]">
+              <svg
+                width={48}
+                height={48}
+                viewBox="0 0 104 104"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill="#2a9d8f"
+                  d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
+                  transform="translate(-670 7)"
+                ></path>
+              </svg>
+              <img
+                className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
+                src="https://youcanbook.me/hubfs/Icons/tick.svg"
+              />
+            </div>
+
+            <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
+              Stand out from the crowd
+            </h3>
+            <div className="text-center text-[16px] text-[color:var(--color-primary)]  ">
+              You work hard to give clients an amazing experience, but generic
+              scheduling tools don’t showcase your unique business brand.
+            </div>
+          </div>
         </div>
       </div>
-      <div className="py-[3rem] flex items-center justify-between  max-w-[73.75em] px-[30px] mx-auto">
-        <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
-          <div className="flex relative items-center justify-center w-[48px] h-[48px] ">
-            <svg
-              width={48}
-              height={48}
-              viewBox="0 0 104 104"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="#2a9d8f"
-                d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
-                transform="translate(-670 7)"
-              ></path>
-            </svg>
-            <img
-              className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
-              src="https://youcanbook.me/hubfs/Icons/tick.svg"
-            />
-          </div>
-
-          <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
-            So many clients, so little time
-          </h3>
-          <div className="text-center text-[16px] text-[color:var(--color-primary)]  ">
-            You need to meet with clients to serve them, but you don’t have time
-            to create meeting links, remind clients or follow up with no-shows.
-          </div>
-        </div>
-        {/**----------------------------------------*/}
-        <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] border-r border-r-[color:var(--color-primary)] border-l border-l-[color:var(--color-primary)]  flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
-          <div className="flex relative items-center justify-center w-[48px] h-[48px] ">
-            <svg
-              width={48}
-              height={48}
-              viewBox="0 0 104 104"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="#2a9d8f"
-                d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
-                transform="translate(-670 7)"
-              ></path>
-            </svg>
-            <img
-              className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
-              src="https://youcanbook.me/hubfs/Icons/tick.svg"
-            />
-          </div>
-
-          <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
-            CEO, COO, CFO .. and you make the coffee!
-          </h3>
-          <div className="text-center text-[16px]  text-[color:var(--color-primary)] ">
-            You’re providing a service and growing your business. Back and forth
-            meeting scheduling takes your focus away from both.
-          </div>
-        </div>
-        {/**----------------------------------------*/}
-        <div className="flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem] flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px] ">
-          <div className="flex relative items-center justify-center w-[48px] h-[48px]">
-            <svg
-              width={48}
-              height={48}
-              viewBox="0 0 104 104"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill="#2a9d8f"
-                d="m722-7c43.68 0 52 8.32 52 52s-8.32 52-52 52-52-8.32-52-52c0-43.68 8.32-52 52-52z"
-                transform="translate(-670 7)"
-              ></path>
-            </svg>
-            <img
-              className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 h-[24px] w-auto"
-              src="https://youcanbook.me/hubfs/Icons/tick.svg"
-            />
-          </div>
-
-          <h3 className="text-[#232e35] text-[1.25rem] font-bold text-center text-[color:var(--color-secondary)] ">
-            Stand out from the crowd
-          </h3>
-          <div className="text-center text-[16px] text-[color:var(--color-primary)]  ">
-            You work hard to give clients an amazing experience, but generic
-            scheduling tools don’t showcase your unique business brand.
-          </div>
-        </div>
-      </div>
-      </div>
-      
-     
     </div>
   );
 }
