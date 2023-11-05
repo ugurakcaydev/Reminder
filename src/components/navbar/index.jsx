@@ -183,7 +183,7 @@ export default function Navbar() {
                       secondary: "#000",
                     });
                     setBackgroundColor({
-                      primary: "#ccc",
+                      primary: "#eee",
                     });
                   }}
                   className="swap-off fill-current w-10 h-10"

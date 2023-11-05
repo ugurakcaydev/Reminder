@@ -1,9 +1,9 @@
 import Navbar from "../components/navbar";
-//import Footer from "../components/footer";
+import Footer from "../components/footer";
 import { Outlet } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
-import classNames from "classnames";
+
 
 export default function MainLayout() {
   const appearance = useAppearance();
@@ -43,13 +43,11 @@ export default function MainLayout() {
 
   return (
     <div className="w-full  bg-[color:var(--bg-primary)]  ">
-      {location.pathname !== '/login' && <Navbar />}
-      <main className={classNames("flex-col h-[300vh]   mx-auto pt-[80px]  w-[90%]", {
-        "!m-0 !pt-0  !w-full": location.pathname === '/login',
-      })}>
+      <Navbar />
+      <main className="flex-col mx-auto pt-[80px]  w-[90%]">
         <Outlet />
       </main>
-      {/* <Footer /> */}
+       <Footer /> 
     </div>
   );
 }

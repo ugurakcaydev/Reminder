@@ -6,7 +6,6 @@ import Pricing from "../pages/Pricing";
 import MainLayout from "../layouts";
 import LoginPage from "../pages/LoginPage";
 
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -28,15 +27,11 @@ const routes = createBrowserRouter([
         path: "/profile",
         element: <Profile />,
       },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      }
-
-    ]
-
+    ],
   },
-
-
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
 ]);
 export default routes;
