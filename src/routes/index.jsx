@@ -5,6 +5,7 @@ import Profile from "../pages/Profile";
 import Pricing from "../pages/Pricing";
 import MainLayout from "../layouts";
 import LoginPage from "../pages/LoginPage";
+import Register from "../pages/Register";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 export default routes;
