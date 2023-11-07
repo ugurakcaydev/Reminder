@@ -35,9 +35,9 @@ export default function DaySlots() {
 
     daysArray.push(
       <div key={i} className="w-full py-4 flex flex-col items-start">
-        <div className="flex text-[#808080] items-center mb-2 text-left gap-x-1">
+        <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
           {dayName == todayName && (
-            <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[gold] text-black px-0.5 text-[10px]">
+            <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
               TODAY
             </span>
           )}
@@ -50,7 +50,7 @@ export default function DaySlots() {
           {hoursArray.map((hour, index) => (
             <button
               key={index}
-              className="flex-1 h-[3rem] text-[#808080] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[#2A9D8F] rounded-3xl  hover:bg-[#2A9D8F]  hover:text-white"
+              className="flex-1 h-[3rem] text-[#808080] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
             >
               <span className="text-center font-bold">{hour}</span>
             </button>

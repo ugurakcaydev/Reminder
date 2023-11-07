@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import LoginRegisterButtons from "../components/loginRegisterButtons";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { CreateUser, LoginUser } from "../api/server";
 function LoginRegisterLayout({ title }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //const [passwordAgain, setPasswordAgain] = useState("");
+
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
@@ -22,7 +28,7 @@ function LoginRegisterLayout({ title }) {
           </div>
           <div className="w-[1px] h-auto bg-[#a0a0a0]" />
           <div className="w-1/2 ">
-            <div className="flex flex-col  px-8 py-7 text-center break-words">
+            <div className="flex flex-col  px-8 py-5 text-center break-words">
               <div>
                 {title === "register" ? (
                   <>
@@ -85,11 +91,11 @@ function LoginRegisterLayout({ title }) {
                 </div> */}
               </div>
               <div className="flex justify-normal items-center">
-                <span className="w-full h-[1px] bg-[#616161]"></span>
-                <div className=" p-2 rounded-full bg-[#6161617e] text-xs font-semibold whitespace-nowrap">
+                <span className="w-full h-[1px] bg-[#a0a0a0]" />
+                <div className=" p-2 rounded-full bg-[#6161617e] border border-[#a0a0a0] text-xs font-semibold whitespace-nowrap">
                   OR
                 </div>
-                <span className="w-full h-[1px] bg-[#616161]"></span>
+                <span className="w-full h-[1px] bg-[#a0a0a0]" />
               </div>
               <div className="flex flex-col gap-y-2 p-8">
                 <div className="flex flex-col gap-y-1 mb-1">
@@ -97,29 +103,71 @@ function LoginRegisterLayout({ title }) {
                     E-posta Adresi
                   </span>
                   <input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                     className="bg-[#616161] rounded-lg py-2 pl-2 placeholder:text-[#c1c1c1]"
                     type="text"
                     placeholder="email@example.com"
                   />
                 </div>
-                {title === "login" && (
+
+                <div className="flex flex-col gap-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-base font-bold text-left">Şifre</span>
+                    <button>Göster</button>
+                  </div>
+                  <input
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    className="bg-[#616161] rounded-lg py-2 pl-2"
+                    type="text"
+                  />
+                </div>
+
+                {/* {title === "register" && (
                   <div className="flex flex-col gap-y-1">
                     <div className="flex justify-between">
                       <span className="text-base font-bold text-left">
-                        Şifre
+                        Şifre Tekrar
                       </span>
                       <button>Göster</button>
                     </div>
                     <input
+                      onChange={(e) => {
+                        setPasswordAgain(e.target.value);
+                      }}
                       className="bg-[#616161] rounded-lg py-2 pl-2"
                       type="text"
                     />
                   </div>
-                )}
+                )} */}
 
-                <button className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full">
-                  Giriş Yap
-                </button>
+                {title === "register" ? (
+                  <Link
+                    className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
+                    onClick={() => {
+                      CreateUser({
+                        _email: email,
+                        _password: password,
+                        // _passwordAgain: passwordAgain,
+                      });
+                    }}
+                  >
+                    Kayıt Ol
+                  </Link>
+                ) : (
+                  <Link
+                    // to={"/"}
+                    className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
+                    onClick={() => {
+                      LoginUser({ _email: email, _password: password });
+                    }}
+                  >
+                    Giriş Yap
+                  </Link>
+                )}
 
                 {title === "login" ? (
                   <div className="text-left mt-1">

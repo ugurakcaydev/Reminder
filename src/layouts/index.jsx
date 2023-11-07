@@ -4,50 +4,49 @@ import { Outlet } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 
-
 export default function MainLayout() {
   const appearance = useAppearance();
   useEffect(() => {
     document.documentElement.style.setProperty(
-      "--color-primary",
-      appearance.color.primary
-    ); //Gold
+      "--color-base",
+      appearance.color.base
+    );
+    document.documentElement.style.setProperty(
+      "--color-base-secondary",
+      appearance.color.baseSecondary
+    );
     document.documentElement.style.setProperty(
       "--color-secondary",
       appearance.color.secondary
     );
     document.documentElement.style.setProperty(
-      "--color-third",
-      appearance.color.third
+      "--color-primary",
+      appearance.color.primary
     );
 
     document.documentElement.style.setProperty(
-      "--bg-primary",
-      appearance.backgroundColor.primary
-    ); //Beyaz
+      "--bg-base",
+      appearance.backgroundColor.base
+    );
+    document.documentElement.style.setProperty(
+      "--bg-base-secondary",
+      appearance.backgroundColor.baseSecondary
+    );
     document.documentElement.style.setProperty(
       "--bg-secondary",
-      appearance.color.secondary
-    ); //Siyah
-    document.documentElement.style.setProperty(
-      "--bg-secondary-base",
-      appearance.color.secondary
-    ); //açık siyah
-    document.documentElement.style.setProperty(
-      "--bg-third",
-      appearance.color.third
+      appearance.backgroundColor.secondary
     );
 
     //renkleri tanımla
   }, [appearance]);
 
   return (
-    <div className="w-full  bg-[color:var(--bg-primary)]  ">
+    <div className="w-full  bg-[color:var(--bg-base)]  ">
       <Navbar />
       <main className="flex-col mx-auto pt-[80px]  w-[90%]">
         <Outlet />
       </main>
-       <Footer /> 
+      <Footer />
     </div>
   );
 }

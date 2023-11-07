@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-primary)] bg-transparent  transition-translate duration-200 text-xl z-20 ${
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-base)] bg-transparent  transition-translate duration-200 text-xl z-20 ${
           scrollY > 10 ? "translate-y-6 " : ""
         }`}
       >
@@ -47,64 +47,13 @@ export default function Navbar() {
                 src="../../../src/assets/images/booking.png"
                 alt="logo"
               />
-              <span className=" font-bold tracking-tight text-tgold laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
+              <span className=" font-bold tracking-tight text-[color:var(--color-primary)] laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
                 YouCanBookMe
               </span>
             </div>
             <div className="flex items-center gap-x-2">
               {mainMenu &&
                 mainMenu.map((menuItem, index) => (
-                  // <>
-                  //   <div key={index} className="flex-col relative justify-center items-center p-2 bg-red-100 group">
-                  //     <div className="flex items-center gap-x-2">
-                  //       <div>
-                  //         {menuItem.name}
-
-                  //       </div>
-                  //       <div>
-                  //         {menuItem?.icon && (
-                  //           <>
-                  //             <svg
-                  //               height="6"
-                  //               viewBox="0 0 12 6"
-                  //               width="12"
-                  //               xmlns="http://www.w3.org/2000/svg"
-                  //             >
-                  //               <path
-                  //                 fill="currentColor"
-                  //                 d="m9.21966991 5.78033009c.29289322.29289321.76776696.29289321 1.06066019 0 .2928932-.29289322.2928932-.76776696 0-1.06066018l-4.50000001-4.5c-.29289322-.29289321-.76776696-.29289321-1.06066018 0l-4.5 4.5c-.29289321.29289322-.29289321.76776696 0 1.06066018.29289322.29289321.76776696.29289321 1.06066018 0l3.96966991-3.96966992z"
-                  //                 transform="matrix(-1 0 0 -1 11.25 6)"
-                  //               ></path>
-                  //             </svg></>
-                  //         )}
-                  //       </div>
-                  //     </div>
-                  //     {menuItem?.subtitle && (
-                  //       <>
-                  //         <div className=" pt-10 absolute max-h-[40em] left-1/2 top-11 -translate-x-1/2  border border-yellow-500 invisible group-hover:visible">
-                  //           <div className="w-[700px] flex flex-start items-center flex-wrap py-[1.25rem] px-[1.5rem]  opacity-0 transition-opacity  border border-black rounded-xl group-hover:flex  group-hover:opacity-100 ">
-                  //             <div className="w-[calc(50%-1.25rem)] m-[0.625rem] border border-black hover:bg-[#e6ebee] rounded-xl px-0">
-                  //               <a href="" className="rounded-2xl block h-full py-[0.8rem] px-[1.25rem] relative text-left  ">
-                  //                 <div className="mb-[0.3rem] text-bold text-lg font-poppins text-[#232e35]">deneme</div>
-                  //                 <p className="text-[#232e35] text-[0.875rem] ">pppp11111</p>
-                  //               </a>
-
-                  //             </div>
-                  //             <div className="w-[calc(50%-1.25rem)] m-[0.625rem] border border-black">
-                  //               <a href="" className="rounded-2xl block h-full py-[0.8rem] px-[1.25rem] relative text-left  ">
-                  //                 <div className="mb-[0.3rem] text-[#656d72] ">divvv222</div>
-                  //                 <p className="text-[#232e35] text-[0.875rem] ">pppp222</p>
-                  //               </a>
-                  //             </div>
-
-                  //           </div>
-
-                  //         </div>
-                  //       </>
-                  //     )}
-
-                  //   </div>
-                  // </>
                   <Link
                     to={menuItem.path}
                     key={index}
@@ -152,20 +101,28 @@ export default function Navbar() {
                     )}
                   </Link>
                 ))}
-              <button className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 ">
+              <Link
+                to={"/register"}
+                className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
+              >
                 Kayıt Ol
-              </button>
+              </Link>
               <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
                 <input type="checkbox" />
+                {/* Karanlık Mod */}
                 <svg
                   onClick={() => {
                     setColor({
                       ...color,
-                      primary: "#fff",
-                      secondary: "#ffc107",
+                      base: "#ffffff", // Saf beyaz
+                      baseSecondary: "#cccccc", // Gri tonu
+                      secondary: "#999999",
+                      primary: "#F7B22C",
                     });
                     setBackgroundColor({
-                      primary: "rgb(25,29,32)",
+                      base: "#252525", //sayfa arka planı
+                      baseSecondary: "#1a1a1a", //contentlerin arka planı
+                      secondary: "#3f3f3f", //hover olduğunda karanlık mod
                     });
                   }}
                   className="swap-on fill-current w-10 h-10"
@@ -179,11 +136,15 @@ export default function Navbar() {
                   onClick={() => {
                     setColor({
                       ...color,
-                      primary: "#252525",
-                      secondary: "#000",
+                      base: "#333333", // Koyu gri-siyah tonu
+                      baseSecondary: "#666666", // Orta gri tonu
+                      secondary: "#999999",
+                      primary: "#F7B22C",
                     });
                     setBackgroundColor({
-                      primary: "#eee",
+                      base: "#e7e9ea",
+                      baseSecondary: "#cccccc",
+                      secondary: "#e6ebee",
                     });
                   }}
                   className="swap-off fill-current w-10 h-10"
