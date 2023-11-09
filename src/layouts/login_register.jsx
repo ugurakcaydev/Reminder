@@ -115,7 +115,7 @@ function LoginRegisterLayout({ title }) {
                 <div className="flex flex-col gap-y-1">
                   <div className="flex justify-between">
                     <span className="text-base font-bold text-left">Şifre</span>
-                    <button>Göster</button>
+                    <button className="bg-[#252525] transition-all hover:bg-[#424242] p-1 rounded-lg">Göster</button>
                   </div>
                   <input
                     onChange={(e) => {
@@ -160,7 +160,7 @@ function LoginRegisterLayout({ title }) {
                 ) : (
                   <Link
                     // to={"/"}
-                    className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
+                    className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
                     onClick={() => {
                       LoginUser({ _email: email, _password: password });
                     }}

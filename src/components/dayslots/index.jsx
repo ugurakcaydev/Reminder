@@ -50,7 +50,7 @@ export default function DaySlots() {
           {hoursArray.map((hour, index) => (
             <button
               key={index}
-              className="flex-1 h-[3rem] text-[#808080] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
+              className="flex-1 h-[3rem] text-[color:var(--color-secondary)] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
             >
               <span className="text-center font-bold">{hour}</span>
             </button>
