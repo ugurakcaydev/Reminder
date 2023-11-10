@@ -8,6 +8,9 @@ function LoginRegisterLayout({ title }) {
   const [password, setPassword] = useState("");
   //const [passwordAgain, setPasswordAgain] = useState("");
 
+  const [show, setShow] = useState(true);
+
+
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
@@ -115,14 +118,15 @@ function LoginRegisterLayout({ title }) {
                 <div className="flex flex-col gap-y-1">
                   <div className="flex justify-between">
                     <span className="text-base font-bold text-left">Şifre</span>
-                    <button className="bg-[#252525] transition-all hover:bg-[#424242] p-1 rounded-lg">Göster</button>
+                    <button className="bg-[#252525] transition-all hover:bg-[#424242] p-1 rounded-lg"
+                      onClick={() => { setShow(show => !show) }} >{show ? 'Gizle' : 'Göster'}</button>
                   </div>
                   <input
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
                     className="bg-[#616161] rounded-lg py-2 pl-2"
-                    type="text"
+                    type={show ? "text" : "password"}
                   />
                 </div>
 
@@ -216,7 +220,7 @@ function LoginRegisterLayout({ title }) {
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 

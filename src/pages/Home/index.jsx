@@ -1,3 +1,4 @@
+import CommentSlider from "../../components/Slider";
 import DaySlots from "../../components/dayslots";
 import { OdometerNumbers } from "../../components/odometer";
 
@@ -267,6 +268,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <CommentSlider />
       </div>
     </div>
   );
