@@ -79,7 +79,7 @@ export default function Home() {
                 <div className="h-[8rem] w-[8rem]  rounded-full overflow-hidden border border-[color:var(--bg-secondary)]">
                   <img
                     className=""
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src="https://s3.us-west-2.amazonaws.com/ycbm.production.upload.files/ycbm/0cf46768-20ad-412c-984b-b16fba1ac137/images/ivana-cajina-dnl6zipht2s-unsplash_1.png"
                   />
                 </div>
                 <span className="font-semibold text-[1.5rem] leading-8 text-[color:var(--color-base)]">
