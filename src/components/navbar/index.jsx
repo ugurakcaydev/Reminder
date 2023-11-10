@@ -146,7 +146,7 @@ export default function Navbar() {
                     setBackgroundColor({
                       base: "#e2e2e2",//e7e9ea
                       baseSecondary: "#e7e9ea",//e2e2e2
-                      secondary: "#e6ebee",
+                      secondary: "#D1D1D1",
                     });
                   }}
                   className="swap-off fill-current w-10 h-10"
