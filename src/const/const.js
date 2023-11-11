@@ -1,5 +1,3 @@
-
-
 export const mainMenu = [
   {
     path: "/",
@@ -86,13 +84,22 @@ export let [pricePolicy] = [
         id: 0,
         title: "BAŞLANGIÇ",
         price: "Ücretsiz",
-        features: ["Güçlü, güvenilir rezervasyon sayfası.", "En iyi uygulama bildirimleri ve rezervasyon formu soruları.", "Google veya Microsoft hesabınızdan 1 bağlantılı takvim"],
+        features: [
+          "Güçlü, güvenilir rezervasyon sayfası.",
+          "En iyi uygulama bildirimleri ve rezervasyon formu soruları.",
+          "Google veya Microsoft hesabınızdan 1 bağlantılı takvim",
+        ],
       },
       {
         id: 1,
         title: "PROFESYONEL",
         price: "50",
-        features: ["SMS hatırlatıcıları", "Google veya Microsoft hesabınızdan 2 bağlantılı takvim ", "Görünüm Özelleştirme", "Rezervasyonları Kabul Et/Reddet"],
+        features: [
+          "SMS hatırlatıcıları",
+          "Google veya Microsoft hesabınızdan 2 bağlantılı takvim ",
+          "Görünüm Özelleştirme",
+          "Rezervasyonları Kabul Et/Reddet",
+        ],
       },
       {
         id: 2,
@@ -136,80 +143,88 @@ export let [pricePolicy] = [
   },
 ];
 
-export const bookingTimes = [
-
+export const daysAndHours = [
   {
     name: "Monday",
-    times: ["11:00", "02:00", "05:00"]
+    times: ["11:00", "02:00", "05:00"],
   },
   {
     name: "Tuesday",
-    times: ["09:00", "12:00", "03:00"]
+    times: ["09:00", "12:00", "03:00"],
   },
   {
     name: "Wednesday",
-    times: ["04:00", "07:00", "10:00"]
+    times: ["04:00", "07:00", "10:00"],
   },
   {
     name: "Thursday",
-    times: ["01:00", "04:00", "07:00"]
+    times: ["01:00", "04:00", "07:00"],
   },
   {
     name: "Friday",
-    times: ["06:00", "09:00", "12:00"]
-  }
-
-]
-export const futureDays = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
+    times: ["06:00", "09:00", "12:00"],
+  },
+];
 
 export const userComments = [
   {
     _id: 1,
-    image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
     name: "User 1",
     title: "Photographer",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 4
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 4,
   },
   {
     _id: 2,
-    image: "https://image.lexica.art/full_jpg/7515495b-982d-44d2-9931-5a8bbbf27532",
+    image:
+      "https://image.lexica.art/full_jpg/7515495b-982d-44d2-9931-5a8bbbf27532",
     name: "User 2",
     title: "Graphic Designer",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 3
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 3,
   },
   {
     _id: 3,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "User 3",
     title: "Personal Assistant",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 4.5
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 4.5,
   },
   {
     _id: 4,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "User 4",
     title: "Musician",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 4
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 4,
   },
   {
     _id: 5,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "User 5",
     title: "Executive Assistant",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 5
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 5,
   },
   {
     _id: 6,
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "User 6",
     title: "Banker",
-    comment: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-    stars: 2
+    comment:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    stars: 2,
   },
-
-]
+];

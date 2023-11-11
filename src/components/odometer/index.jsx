@@ -12,7 +12,16 @@ export const OdometerNumbers = ({ value, duration }) => {
     };
   }, [value, duration]);
 
-  return <Odometer value={odometerValue} format="(.ddd),dd" />;
+  return (
+    <div className=" flex flex-col items-center  ">
+      <span className="text-[48px] text-[color:var(--color-base-secondary)]">
+        <Odometer value={odometerValue} format="(.ddd),dd" />
+      </span>
+      <span className="text-[1rem] text-[color:var(--color-secondary)]">
+        Books Year
+      </span>
+    </div>
+  );
 };
 
 OdometerNumbers.propTypes = {
