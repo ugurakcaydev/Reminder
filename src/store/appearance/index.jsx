@@ -11,7 +11,7 @@ const initialState = {
   backgroundColor: {
     base: "#ffffff", // Saf beyaz
     baseSecondary: "#f0f0f0", // Hafif gri tonu
-    secondary: "#dcdcdc", 
+    secondary: "#dcdcdc",
   },
 };
 const appearance = createSlice({

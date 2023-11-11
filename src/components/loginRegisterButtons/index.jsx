@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 function LoginRegisterButtons({ title, other }) {
   return (
     <div className="relative">
-      <button className="w-full flex items-center gap-x-10 p-2 bg-tgold/75 font-semibold rounded-full ">
+      <button className="w-full flex items-center gap-x-10 p-2 bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold font-semibold rounded-full ">
         <span className="w-8 p-2 bg-[#383838] rounded-full">
           {other === "Microsoft" ? (
             <svg viewBox="0 0 24 24">

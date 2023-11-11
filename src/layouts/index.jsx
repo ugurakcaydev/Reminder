@@ -7,6 +7,7 @@ import { useEffect } from "react";
 export default function MainLayout() {
   const appearance = useAppearance();
   useEffect(() => {
+    //Custom colors for text
     document.documentElement.style.setProperty(
       "--color-base",
       appearance.color.base
@@ -24,16 +25,17 @@ export default function MainLayout() {
       appearance.color.primary
     );
 
+    //Custom colors for background
     document.documentElement.style.setProperty(
-      "--bg-base",
+      "--bg-base",// Sayfanın Arkaplanı
       appearance.backgroundColor.base
     );
     document.documentElement.style.setProperty(
-      "--bg-base-secondary",
+      "--bg-base-secondary",//Sayfada bulunan kutuların rengi
       appearance.backgroundColor.baseSecondary
     );
     document.documentElement.style.setProperty(
-      "--bg-secondary",
+      "--bg-secondary", //border ve hover için
       appearance.backgroundColor.secondary
     );
 
@@ -43,7 +45,7 @@ export default function MainLayout() {
   return (
     <div className="w-full  bg-[color:var(--bg-base)]  ">
       <Navbar />
-      <main className="flex-col mx-auto pt-[80px]  w-[90%]">
+      <main className="flex-col mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
         <Outlet />
       </main>
       <Footer />
