@@ -32,7 +32,7 @@ export default function Navbar() {
       >
         <div
           className={classNames(
-            " flex justify-center items-center  py-4 mobile:px-0  bg-transparent transition-translate duration-200 ",
+            " flex justify-center items-center  py-4 mobile:px-0  bg-transparent  transition-translate duration-200 ",
             {
               "text-tgold !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full":
                 scrollY > 10,
@@ -46,7 +46,7 @@ export default function Navbar() {
                 src="../../../src/assets/images/booking.png"
                 alt="logo"
               />
-              <span className=" font-bold tracking-tight text-[color:var(--color-primary)] laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
+              <span className="font-poppins font-bold tracking-tight text-[color:var(--color-primary)] laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
                 YouCanBookMe
               </span>
             </div>
@@ -58,7 +58,7 @@ export default function Navbar() {
                     key={index}
                     className=" relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group "
                   >
-                    <span className="whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-tgold group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out font-roboto">
+                    <span className="font-roboto whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-tgold group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out ">
                       {menuItem.name}
                     </span>
                     {menuItem?.subtitle && (
