@@ -3,11 +3,11 @@ import LoginRegisterButtons from "../components/loginRegisterButtons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { CreateUser, LoginUser } from "../api/server";
+
 function LoginRegisterLayout({ title }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [passwordAgain, setPasswordAgain] = useState("");
-
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
@@ -147,7 +147,7 @@ function LoginRegisterLayout({ title }) {
                 {title === "register" ? (
                   <Link
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
-                    onClick={() => {
+                    onClick={async () => {
                       CreateUser({
                         _email: email,
                         _password: password,
@@ -161,8 +161,11 @@ function LoginRegisterLayout({ title }) {
                   <Link
                     // to={"/"}
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
-                    onClick={() => {
-                      LoginUser({ _email: email, _password: password });
+                    onClick={async () => {
+                      LoginUser({
+                        _email: email,
+                        _password: password,
+                      });
                     }}
                   >
                     Giriş Yap

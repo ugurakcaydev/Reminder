@@ -10,15 +10,14 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
           // Diğer isteğe özel başlıkları burada ekleyebilirsiniz
         },
         body: JSON.stringify({
-          
           email: "aassaa@gmail.com",
           password: "123aassa",
         }),
       }
     );
-    
+
     if (!response.ok) {
-        //kullanıcı zaten var da olabilir
+      //kullanıcı zaten var da olabilir
       console.log("Register failed");
       return null;
     }
@@ -49,13 +48,13 @@ export const LoginUser = async ({ _email, _password }) => {
 
     if (!response.ok) {
       console.log("Login failed");
-      return null;
+      return response;
     }
 
     const responseJson = await response.json();
-    console.log(responseJson);
+
     console.log("Login successful");
-    return responseJson;
+    return { response, responseJson };
   } catch (error) {
     console.error("Giriş yaparken hata oluştu: ", error);
     return null;
