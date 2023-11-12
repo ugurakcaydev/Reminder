@@ -6,6 +6,7 @@ import Pricing from "../pages/Pricing";
 import MainLayout from "../layouts";
 import LoginPage from "../pages/LoginPage";
 import Register from "../pages/Register";
+import Comments from "../pages/CommentsPage";
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/comments",
+        element: <Comments />,
       },
     ],
   },

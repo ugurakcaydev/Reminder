@@ -39,7 +39,8 @@ export const mainMenu = [
     },
   },
   {
-    path: "/company",
+    //path: "/company",
+    path: "/comments",
     name: "Şirketimiz",
     icon: true,
     subtitle: {
@@ -49,9 +50,10 @@ export const mainMenu = [
           "2011 yılında kurulan ve kendini buluşmak için zaman bulma sorununu çözmeye adamış, tamamen uzaktan çalışan bir ekibiz.",
       },
       content_2: {
-        title: "Yenilikler",
+
+        title: "Yorumlar",
         comment:
-          "En son özellikler ve ürün güncellemeleri hakkında daha fazla bilgi edinin. ",
+          "Sitemize dair kullanıcı yorumları, platformumuzun deneyimini paylaşan değerli kullanıcıların görüşlerini içerir.",
       },
       content_3: {
         title: "Yardım Merkezi",
