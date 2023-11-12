@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 
+
 export default function MainLayout() {
   const appearance = useAppearance();
   useEffect(() => {
@@ -48,6 +49,7 @@ export default function MainLayout() {
       <main className="flex-col mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
         <Outlet />
       </main>
+      
       <Footer />
     </div>
   );
