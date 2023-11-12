@@ -11,15 +11,14 @@ export default function CommentSlider() {
         className="w-5/6 p-10"
         modules={[Autoplay]}
         spaceBetween={40}
-        //slidesPerView SwiperSlide sayısına göre çalışıyor fakat map ile dönmemize rağmen 1 tane olarak algılıyor sanırsam. Bu yüzden ekranda görünecek resim sayısı ayarlanmıyor.
         slidesPerView={3}
         slidesPerGroup={1}
         loop={true}
-        // autoplay={{
-        //     delay: 4000,
-        //     disableOnInteraction: false,
+      // autoplay={{
+      //     delay: 4000,
+      //     disableOnInteraction: false,
 
-        // }}
+      // }}
       >
         {userComments &&
           userComments.map((card) => (
@@ -50,7 +49,7 @@ export default function CommentSlider() {
             </SwiperSlide>
           ))}
       </Swiper>
-      
+
     </div>
   );
 }
