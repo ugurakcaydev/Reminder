@@ -7,6 +7,12 @@ import BenefitPanel from "../../components/benefitPanel";
 
 export default function Home() {
   const [showDateTimePicker, setDateTimePicker] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(new Date());
+
+  const setDateTimeHome = (day) => {
+    setSelectedDay(day);
+    setDateTimePicker(false);
+  };
   return (
     <div>
       <div className="flex flex-col relative  bg-[color:var(--bg-base-secondary)] rounded-tl-[10rem] rounded-br-[10rem] items-center gap-y-3 pt-10 pb-10 h-auto">
@@ -96,7 +102,10 @@ export default function Home() {
             {/* rightside */}
             <div className="flex-1 flex flex-col items-center pt-[6px] px-6  ">
               <div className="w-full h-[4.5rem]  flex justify-between items-center border-b border-[color:var(--color-base)]">
-                <button className="px-4 py-0.5 border text-[14px] font-semibold border-[color:var(--bg-secondary)] rounded-full text-[color:var(--color-base)] hover:bg-[color:var(--bg-secondary)]">
+                <button
+                  onClick={() => setSelectedDay(new Date())}
+                  className="px-4 py-0.5 border text-[14px] font-semibold border-[color:var(--bg-secondary)] rounded-full text-[color:var(--color-base)] hover:bg-[color:var(--bg-secondary)]"
+                >
                   Today
                 </button>
                 <span className="text-[color:var(--color-base)] font-semibold">
@@ -118,9 +127,9 @@ export default function Home() {
               </div>
               <div className="w-full pt-[1rem] min-h-[370px] flex flex-col gap-y-4 items-center justify-start">
                 {showDateTimePicker ? (
-                  <DateTimePickerComponent/>
+                  <DateTimePickerComponent setDateTime={setDateTimeHome} />
                 ) : (
-                  <DaySlots />
+                  <DaySlots selectedDay={selectedDay} />
                 )}
               </div>
               <div className="flex w-full justify-center text-xs items-center gap-x-8 h-12">
@@ -136,7 +145,6 @@ export default function Home() {
                 <div className="font-semibold">Europe/İstanbul (3:41 PM)</div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>

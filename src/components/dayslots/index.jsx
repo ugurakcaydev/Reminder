@@ -1,45 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { calendarRange } from "../../const/calenderRange";
 
-export default function DaySlots() {
-  // const daysArray = [];
-  // const today = new Date();
-  //
-  // const todayName = today.toLocaleDateString("en-US", { weekday: "long" });
-  // for (let i = 0; i <= 4; i++) {
-  //   const day = new Date();
-  //   day.setDate(day.getDate() + i); // Tarihi güncelliyoruz
-
-  //   // Saati 3 saat ileri alıyoruz
-  //   const localTime = new Date(day);
-  //   localTime.setHours(localTime.getHours() + 1);
-
-  //   const options = {
-  //     weekday: "long",
-  //     year: "numeric",
-  //     month: "long",
-  //     day: "numeric",
-  //   };
-  //   const formatter = new Intl.DateTimeFormat("en-US", options);
-  //   const [{ value: dayName }, , { value: monthName }, , { value: dayNumber }] =
-  //     formatter.formatToParts(day);
-  //   const numberDay = parseInt(dayNumber);
-
-  //   // Saatleri oluşturuyoruz (3 saat ekleyerek)
-  //   const hoursArray = [];
-  //   for (let j = 0; j < 3; j++) {
-  //     const formattedHour = (localTime.getHours() + j * 3) % 12 || 12;
-  //     const period = localTime.getHours() >= 12 ? "PM" : "AM";
-  //     const formattedMinutes =
-  //       (localTime.getMinutes() < 10 ? "0" : "") + localTime.getMinutes();
-  //     hoursArray.push(`${formattedHour}:${formattedMinutes} ${period}`);
-  //   }
-  //   }
-
-  // return <>{daysArray}</>;
-  const today = new Date();
-  const todayName = today.toLocaleDateString("en-US", { weekday: "long" });
-  const daysAndHours = calendarRange(new Date());
+export default function DaySlots({ selectedDay }) {
+  const selectedDayName = selectedDay.toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+  const daysAndHours = calendarRange(selectedDay);
   return (
     <>
       <div className="flex w-full items-center gap-x-3  ">
@@ -50,13 +17,14 @@ export default function DaySlots() {
       {daysAndHours.map((item, index) => (
         <div className="w-full font-semibold " key={index}>
           <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
-            {item.weekday == todayName && (
+            {item.weekday == selectedDayName && (
               <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
                 TODAY
               </span>
             )}
-            <span>{item.day}</span>
             <span className="font-bold">{item.weekday}</span>
+            <span>{item.day}</span>
+
             <span>{item.month}</span>
           </div>
 
