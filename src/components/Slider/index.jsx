@@ -3,6 +3,7 @@ import { userComments } from "../../const/const";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+
 export default function CommentSlider() {
   return (
     <div className="w-full mb-10">
@@ -49,6 +50,7 @@ export default function CommentSlider() {
             </SwiperSlide>
           ))}
       </Swiper>
+      
     </div>
   );
 }

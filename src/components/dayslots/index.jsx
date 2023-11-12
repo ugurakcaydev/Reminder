@@ -1,9 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { DateTimePicker } from "@mui/x-date-pickers";
-import PropTypes from "prop-types";
-import { useState } from "react";
-import DateTimePickerComponent from "../dateTimePicker";
-import { daysAndHours } from "../../const/const";
+import { calendarRange } from "../../const/calenderRange";
 
 export default function DaySlots() {
   // const daysArray = [];
@@ -68,29 +64,29 @@ export default function DaySlots() {
 
   // return <>{daysArray}</>;
   const today = new Date();
-
   const todayName = today.toLocaleDateString("en-US", { weekday: "long" });
-
+  const daysAndHours = calendarRange();
   return (
     <>
-      <div className="flex w-full items-center gap-x-3 ">
+      <div className="flex w-full items-center gap-x-3  ">
         <span className="flex-1 block h-[.5px]  bg-[color:var(--color-base-secondary)]" />
         <span className="text-sm">This Week</span>
         <span className="flex-1 block h-[.5px] bg-[color:var(--color-base-secondary)]"></span>
       </div>
-      {daysAndHours.map((day, index) => (
-        <div className="w-full font-semibold mb-4" key={index}>
+      {daysAndHours.map((item, index) => (
+        <div className="w-full font-semibold " key={index}>
           <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
-            {day.name == todayName && (
+            {item.weekday == todayName && (
               <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
                 TODAY
               </span>
             )}
-            <span>{day.name}</span>
+            <span className="font-bold">{item.weekday}</span>
+            <span>{item.month}</span>
           </div>
 
           <div className="flex w-full items-center  gap-x-2">
-            {day.times.map((time, index) => (
+            {item.randomTimes.map((time, index) => (
               <button
                 key={index}
                 className="flex-1 h-[3rem] text-[color:var(--color-secondary)] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
@@ -101,7 +97,7 @@ export default function DaySlots() {
           </div>
         </div>
       ))}
-      <span className="w-full text-center py-6 border-b border-[color:var(--color-base)]">
+      <span className="w-full text-center py-4 border-b border-[color:var(--color-base)]">
         No availability after 9 November
       </span>
     </>

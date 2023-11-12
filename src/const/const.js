@@ -143,28 +143,6 @@ export let [pricePolicy] = [
   },
 ];
 
-export const daysAndHours = [
-  {
-    name: "Monday",
-    times: ["11:00", "02:00", "05:00"],
-  },
-  {
-    name: "Tuesday",
-    times: ["09:00", "12:00", "03:00"],
-  },
-  {
-    name: "Wednesday",
-    times: ["04:00", "07:00", "10:00"],
-  },
-  {
-    name: "Thursday",
-    times: ["01:00", "04:00", "07:00"],
-  },
-  {
-    name: "Friday",
-    times: ["06:00", "09:00", "12:00"],
-  },
-];
 
 export const userComments = [
   {

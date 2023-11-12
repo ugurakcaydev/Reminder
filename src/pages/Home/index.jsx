@@ -51,7 +51,7 @@ export default function Home() {
       </div>
       {/* TAKVİM OLUŞTURMA  */}
       <div className="w-[990px] p-14 bg-transparent -mt-24 mx-auto z-10 relative">
-        <div className="w-full h-full  bg-[color:var(--bg-base-secondary)] shadow-lg rounded-2xl overflow-hidden">
+        <div className="w-full h-full border border-dashed border-[#ccc]  bg-[color:var(--bg-base-secondary)] shadow-lg rounded-2xl overflow-hidden">
           <div className="w-full h-10  flex justify-center gap-x-2 items-center border-b-4  border-[color:var(--color-primary)]">
             {/* [#2a9d8f] */}
             <svg viewBox="0 0 24 24" className="h-[1rem] w-auto">
@@ -116,7 +116,7 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-              <div className="w-full pt-[1rem] min-h-[370px] flex flex-col items-center justify-start">
+              <div className="w-full pt-[1rem] min-h-[370px] flex flex-col gap-y-4 items-center justify-start">
                 {showDateTimePicker ? (
                   <DateTimePickerComponent />
                 ) : (
