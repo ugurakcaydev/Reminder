@@ -164,7 +164,7 @@ function LoginRegisterLayout({ title }) {
                   </Link>
                 ) : (
                   <Link
-                    // to={"/"}
+                    to={"/"}
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
                     onClick={() => {
                       LoginUser({ _email: email, _password: password });
