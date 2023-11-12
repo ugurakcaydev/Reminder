@@ -1,10 +1,10 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import Stack from "@mui/material/Stack";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import { calendarRange } from "../../const/calenderRange";
 
 const theme = createTheme({
   typography: {
@@ -78,7 +78,10 @@ export default function DateTimePickerComponent() {
               //value.$D günü seçer sayı olarak
               //value.$y yılı seçer sayı olarak
               //value.$d Thu Nov olarak yazıyor
-              console.log(value);
+              if (value && value.$d) {
+                const selectedDate = new Date(value.$d);
+                calendarRange({ selectedDate });
+              }
             }}
             // onFocusedViewChange={(view, hasFocus) => {
             //   console.log(view, hasFocus); //true false dönüyor hasfocus
