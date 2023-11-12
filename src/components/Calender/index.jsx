@@ -53,9 +53,9 @@ export default function Calender() {
               {/* Düzenlenecek yerler var  */}
               {showForm ? (
                 <>
-                  <div className="w-[90%] flex flex-col items-start justify-center gap-y-1 h-auto border border-[#ccc]  rounded-lg">
-                    <div className="p-2 w-full">
-                      <button className="flex w-full rounded-lg flex-col items-start px-2 py-2 justify-center gap-y-1 hover:bg-[#d3d6d8]">
+                  <div className="w-[90%] flex flex-col items-start justify-center  h-auto border border-[#ccc]  rounded-lg">
+                    <div className="px-2 py-3 w-full">
+                      <button className="flex w-full rounded-lg flex-col items-start px-2 py-2 justify-center gap-y-1 hover:bg-[color:var(--bg-base)]">
                         <span className="text-sm text-[#656d72] font-normal">
                           {selectedItem?.weekday}
                           {selectedItem?.month} {selectedItem?.day}th, 2023
