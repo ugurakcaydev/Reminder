@@ -118,7 +118,7 @@ export default function Home() {
               </div>
               <div className="w-full pt-[1rem] min-h-[370px] flex flex-col gap-y-4 items-center justify-start">
                 {showDateTimePicker ? (
-                  <DateTimePickerComponent />
+                  <DateTimePickerComponent/>
                 ) : (
                   <DaySlots />
                 )}

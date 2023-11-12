@@ -34,38 +34,12 @@ export default function DaySlots() {
   //       (localTime.getMinutes() < 10 ? "0" : "") + localTime.getMinutes();
   //     hoursArray.push(`${formattedHour}:${formattedMinutes} ${period}`);
   //   }
-
-  //     daysArray.push(
-  //       <div key={i} className="w-full py-4 flex flex-col items-start">
-  //         <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
-  //           {dayName == todayName && (
-  //             <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
-  //               TODAY
-  //             </span>
-  //           )}
-  //           <span className="font-semibold">{dayName}</span>
-  //           <span>
-  //             {monthName} {numberDay}th
-  //           </span>
-  //         </div>
-  //         <div className="flex w-full items-center gap-x-2">
-  //           {hoursArray.map((hour, index) => (
-  //             <button
-  //               key={index}
-  //               className="flex-1 h-[3rem] text-[color:var(--color-secondary)] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
-  //             >
-  //               <span className="text-center font-bold">{hour}</span>
-  //             </button>
-  //           ))}
-  //         </div>
-  //       </div>
-  //     );
   //   }
 
   // return <>{daysArray}</>;
   const today = new Date();
   const todayName = today.toLocaleDateString("en-US", { weekday: "long" });
-  const daysAndHours = calendarRange();
+  const daysAndHours = calendarRange(new Date());
   return (
     <>
       <div className="flex w-full items-center gap-x-3  ">
@@ -81,6 +55,7 @@ export default function DaySlots() {
                 TODAY
               </span>
             )}
+            <span>{item.day}</span>
             <span className="font-bold">{item.weekday}</span>
             <span>{item.month}</span>
           </div>
