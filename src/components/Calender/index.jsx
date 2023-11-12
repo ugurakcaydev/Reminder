@@ -21,7 +21,6 @@ export default function Calender() {
     setShowForm(true);
     setSelectedItem(item);
     setSelectedTime(time);
-    console.log(parseFloat(selectedItem.randomTimes[selectedTime]));
   };
   return (
     <div className="w-[990px] p-14 bg-transparent -mt-24 mx-auto z-10 relative">
@@ -51,7 +50,7 @@ export default function Calender() {
               <span className="font-semibold text-[1.5rem] leading-8 text-[color:var(--color-base)]">
                 Interactive Demo
               </span>
-
+              {/* Düzenlenecek yerler var  */}
               {showForm ? (
                 <>
                   <div className="w-[90%] flex flex-col items-start justify-center gap-y-1 h-auto border border-[#ccc]  rounded-lg">
@@ -66,7 +65,8 @@ export default function Calender() {
                           {(
                             parseFloat(selectedItem.randomTimes[selectedTime]) +
                             0.3
-                          ).toFixed(2)} AM
+                          ).toFixed(2)}{" "}
+                          AM
                         </span>
                         <div className="flex gap-x-2 items-center justify-start">
                           <svg
