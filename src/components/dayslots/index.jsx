@@ -2,10 +2,11 @@
 /* eslint-disable no-unused-vars */
 import { calendarRange } from "../../const/calenderRange";
 
-export default function DaySlots({ selectedDay }) {
-  const selectedDayName = selectedDay.toLocaleDateString("en-US", {
+export default function DaySlots({ selectedDay, handleButtonClick }) {
+  const today = new Date().toLocaleDateString("en-US", {
     weekday: "long",
   });
+
   const daysAndHours = calendarRange(selectedDay);
   return (
     <>
@@ -17,7 +18,7 @@ export default function DaySlots({ selectedDay }) {
       {daysAndHours.map((item, index) => (
         <div className="w-full font-semibold " key={index}>
           <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
-            {item.weekday == selectedDayName && (
+            {item.weekday == `${today},` && (
               <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
                 TODAY
               </span>
@@ -33,6 +34,7 @@ export default function DaySlots({ selectedDay }) {
               <button
                 key={index}
                 className="flex-1 h-[3rem] text-[color:var(--color-secondary)] font-semibold transition-all ease-out duration-200 bg-white border-2 border-[color:var(--color-primary)] rounded-3xl  hover:bg-[color:var(--color-primary)]  hover:text-white"
+                onClick={() => handleButtonClick(item, index)}
               >
                 <span className="text-center font-bold">{time}</span>
               </button>
@@ -40,7 +42,7 @@ export default function DaySlots({ selectedDay }) {
           </div>
         </div>
       ))}
-      <span className="w-full text-center py-4 border-b border-[color:var(--color-base)]">
+      <span className="w-full  text-center py-4 ">
         No availability after 9 November
       </span>
     </>

@@ -16,7 +16,7 @@ export const calendarRange = (selectedDate) => {
       .split(" ") // Virgül ve ardından gelen boşluğu kullanarak ayır
       .map((part) => part.trim());
 
-    const randomTimes = Array.from({ length: 3 }, () => ["11.30 AM"]);
+    const randomTimes = Array.from({ length: 3 }, () => ["9.10 AM"]);
     if (parseInt(day) >= selectedDay) {
       calendarDays.push({ day, month, weekday, randomTimes });
     }
