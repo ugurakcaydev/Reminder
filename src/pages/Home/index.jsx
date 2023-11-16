@@ -1,13 +1,9 @@
-
 import CommentSlider from "../../components/Slider";
-
 import { OdometerNumbers } from "../../components/odometer";
-
 import BenefitPanel from "../../components/benefitPanel";
 import Calender from "../../components/Calender";
 
 export default function Home() {
-  
   return (
     <div>
       <div className="flex flex-col relative  bg-[color:var(--bg-base-secondary)] rounded-tl-[10rem] rounded-br-[10rem] items-center gap-y-3 pt-10 pb-10 h-auto">
@@ -51,7 +47,7 @@ export default function Home() {
         </h2>
       </div>
       {/* TAKVİM OLUŞTURMA  */}
-      <Calender/>
+      <Calender />
 
       {/* sayaç alanı */}
       <div className="w-full  relative flex flex-col items-center bg-[color:var(--bg-base-secondary)] justify-center py-6 gap-y-5 rounded-[56px] shadow-xl">

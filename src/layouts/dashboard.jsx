@@ -1,11 +1,10 @@
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/dashboard/footer";
+import DashboardNav from "../components/dashboard/dashboardNav";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 
-
-export default function MainLayout() {
+function DashboradLayout() {
   const appearance = useAppearance();
   useEffect(() => {
     //Custom colors for text
@@ -28,11 +27,11 @@ export default function MainLayout() {
 
     //Custom colors for background
     document.documentElement.style.setProperty(
-      "--bg-base",// Sayfanın Arkaplanı
+      "--bg-base", // Sayfanın Arkaplanı
       appearance.backgroundColor.base
     );
     document.documentElement.style.setProperty(
-      "--bg-base-secondary",//Sayfada bulunan kutuların rengi
+      "--bg-base-secondary", //Sayfada bulunan kutuların rengi
       appearance.backgroundColor.baseSecondary
     );
     document.documentElement.style.setProperty(
@@ -42,14 +41,15 @@ export default function MainLayout() {
 
     //renkleri tanımla
   }, [appearance]);
-
   return (
     <div className="w-full  bg-[color:var(--bg-base)]  ">
-      <Navbar />
+      <DashboardNav />
       <main className="flex-col mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
         <Outlet />
-      </main>   
+      </main>
       <Footer />
     </div>
   );
 }
+
+export default DashboradLayout;

@@ -77,6 +77,17 @@ export const mainMenu = [
   },
 ];
 
+export const dashMenu = [
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+  },
+  {
+    path: "/bookings",
+    name: "Bookings",
+  },
+]
+
 export let [pricePolicy] = [
   {
     Aylık: [

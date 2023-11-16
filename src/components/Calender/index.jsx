@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import DateTimePickerComponent from "../dateTimePicker";
-import CalenderFormComponent from "../CalenderForm";
-import DaySlots from "../dayslots";
+import DateTimePickerComponent from "./dateTimePicker";
+import CalenderFormComponent from "./CalenderForm";
+import DaySlots from "./dayslots";
 
 export default function Calender() {
   const [showDateTimePicker, setDateTimePicker] = useState(false);

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { calendarRange } from "../../const/calenderRange";
+import { calendarRange } from "../../../const/calenderRange";
 
 export default function DaySlots({ selectedDay, handleButtonClick }) {
   const today = new Date().toLocaleDateString("en-US", {

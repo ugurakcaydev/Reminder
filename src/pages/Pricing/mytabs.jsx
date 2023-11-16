@@ -39,9 +39,12 @@ export default function MyTabs() {
               {priceOptions.map((priceDetail) => (
                 <button
                   onClick={() => setSelectPriceProp(priceDetail.id)}
-                  className={classNames("bg-gray-100  p-5  overflow-hidden  flex-1 rounded-xl border border-gray-400", {
-                    "": priceDetail.id == selectPriceProp, //seçilene özel css verilecek
-                  })}
+                  className={classNames(
+                    "bg-gray-100  p-5  overflow-hidden  flex-1 rounded-xl border border-gray-400",
+                    {
+                      "": priceDetail.id == selectPriceProp, //seçilene özel css verilecek
+                    }
+                  )}
                   key={priceDetail.id}
                 >
                   <div className="h-full items-start  rounded-lg  flex flex-col gap-y-2 relative overflow-hidden">

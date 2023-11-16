@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
+import MainLayout from "../layouts";
+import Register from "../pages/Register";
+import DashboradLayout from "../layouts/dashboard";
+import Dashboard from "../pages/Dashboard";
 import Settings from "../pages/Settings";
 import Profile from "../pages/Profile";
+import Home from "../pages/Home";
 import Pricing from "../pages/Pricing";
-import MainLayout from "../layouts";
 import LoginPage from "../pages/LoginPage";
-import Register from "../pages/Register";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +33,17 @@ const routes = createBrowserRouter([
     ],
   },
   {
+    path: "/dashboard",
+    element: <DashboradLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+    ],
+  },
+
+  {
     path: "/login",
     element: <LoginPage />,
   },
@@ -38,5 +51,6 @@ const routes = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  {},
 ]);
 export default routes;
