@@ -8,6 +8,7 @@ import Profile from "../pages/Profile";
 import Home from "../pages/Home";
 import Pricing from "../pages/Pricing";
 import LoginPage from "../pages/LoginPage";
+import Comments from "../pages/CommentsPage";
 
 const routes = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/comments",
+        element: <Comments />,
       },
     ],
   },
