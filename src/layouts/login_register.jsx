@@ -3,6 +3,7 @@ import LoginRegisterButtons from "../components/loginRegisterButtons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { CreateUser, LoginUser } from "../api/server";
+import { ToastContainer } from "react-toastify";
 
 function LoginRegisterLayout({ title }) {
   const [email, setEmail] = useState("");
@@ -13,6 +14,7 @@ function LoginRegisterLayout({ title }) {
 
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
+      <ToastContainer />
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
         <div className=" flex justify-between p-2  rounded-3xl  bg-[#232E35]">
           <div className="w-1/2 flex items-center">
@@ -157,7 +159,7 @@ function LoginRegisterLayout({ title }) {
                 {title === "register" ? (
                   <Link
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
-                    onClick={async () => {
+                    onClick={() => {
                       CreateUser({
                         _email: email,
                         _password: password,
@@ -169,7 +171,7 @@ function LoginRegisterLayout({ title }) {
                   </Link>
                 ) : (
                   <Link
-                    to={"/dashboard"}
+                    // to={"/dashboard"}
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
                     onClick={() => {
                       LoginUser({ _email: email, _password: password });

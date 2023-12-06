@@ -6,6 +6,7 @@ import { useAppearance } from "../../store/appearance/hooks";
 
 import { Link } from "react-router-dom";
 import classNames from "classnames";
+import { getAuthToken } from "../../api/server";
 
 export default function Navbar() {
   const { /*backgroundColor*/ color } = useAppearance(); //backgroundcolor koşul kullanılıcaksa açılıcak
@@ -111,12 +112,35 @@ export default function Navbar() {
                     )}
                   </Link>
                 ))}
-              <Link
-                to={"/register"}
-                className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
-              >
-                Kayıt Ol
-              </Link>
+              {getAuthToken() == undefined ? (
+                <div className="flex gap-x-2">
+                  <Link
+                    to={"/login"}
+                    className="relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group  "
+                  >
+                    <span
+                      className={classNames(
+                        "font-roboto whitespace-nowrap before:absolute before:bottom-0 before:content-[''] before:w-0 before:-translate-x-1/2 before:-translate-y-1/2 before:left-1/2 before:h-1 before:bg-tgold group-hover:before:w-full before:rounded-3xl before:transition-all before:duration-300 before:ease-in-out "
+                      )}
+                    >
+                      Giriş Yap
+                    </span>
+                  </Link>
+                  <Link
+                    to={"/register"}
+                    className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
+                  >
+                    Kayıt Ol
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                    to={"/dashboard"}
+                    className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
+                  >
+                    Dashboard
+                  </Link>
+              )}
               <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
                 <input type="checkbox" />
                 {/* Karanlık Mod */}

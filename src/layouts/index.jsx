@@ -4,7 +4,6 @@ import { Outlet } from "react-router-dom";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
 
-
 export default function MainLayout() {
   const appearance = useAppearance();
   useEffect(() => {
@@ -28,11 +27,11 @@ export default function MainLayout() {
 
     //Custom colors for background
     document.documentElement.style.setProperty(
-      "--bg-base",// Sayfanın Arkaplanı
+      "--bg-base", // Sayfanın Arkaplanı
       appearance.backgroundColor.base
     );
     document.documentElement.style.setProperty(
-      "--bg-base-secondary",//Sayfada bulunan kutuların rengi
+      "--bg-base-secondary", //Sayfada bulunan kutuların rengi
       appearance.backgroundColor.baseSecondary
     );
     document.documentElement.style.setProperty(
@@ -46,9 +45,9 @@ export default function MainLayout() {
   return (
     <div className="w-full  bg-[color:var(--bg-base)]  ">
       <Navbar />
-      <main className="flex-col mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
+      <main className="mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
         <Outlet />
-      </main>   
+      </main>
       <Footer />
     </div>
   );

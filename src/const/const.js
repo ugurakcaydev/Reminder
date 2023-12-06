@@ -50,7 +50,7 @@ export const mainMenu = [
           "2011 yılında kurulan ve kendini buluşmak için zaman bulma sorununu çözmeye adamış, tamamen uzaktan çalışan bir ekibiz.",
       },
       content_2: {
-
+        path: "/comments",
         title: "Yorumlar",
         comment:
           "Sitemize dair kullanıcı yorumları, platformumuzun deneyimini paylaşan değerli kullanıcıların görüşlerini içerir.",
@@ -72,11 +72,11 @@ export const mainMenu = [
     name: "Fiyatlandırma",
     icon: "",
   },
-  {
-    path: "/login",
-    name: "Giriş Yap",
-    icon: "",
-  },
+  // {
+  //   path: "/login",
+  //   name: "Giriş Yap",
+  //   icon: "",
+  // },
 ];
 
 export const dashMenu = [

@@ -42,12 +42,12 @@ function DashboradLayout() {
     //renkleri tanımla
   }, [appearance]);
   return (
-    <div className="w-full  bg-[color:var(--bg-base)]  ">
+    <div className="w-full  bg-[color:var(--bg-base)]   ">
       <DashboardNav />
-      <main className="flex-col mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
+      <main className=" mx-auto pt-[80px]  w-[70%] max-w-[1920px]">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

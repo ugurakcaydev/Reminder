@@ -6,21 +6,61 @@ import {
 import { dashMenu } from "../../../const/const";
 import classNames from "classnames";
 import { useAppearance } from "../../../store/appearance/hooks";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Menu, Transition } from "@headlessui/react";
+import { getAuthToken, getFirstChar } from "../../../api/server";
 
 function DashboardNav() {
   const { /*backgroundColor*/ color } = useAppearance();
   const [currentPage, setCurrentPage] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const LogOut = async () => {
+    try {
+      const authToken = getAuthToken();
+
+      // Eğer authToken varsa, server'a logout isteği gönderilebilir
+      // Ancak bu örnekte sadece cookie silme işlemi gösterilecek
+      if (authToken) {
+        // Burada server'a logout isteği gönderilebilir
+
+        // Cookie'yi silme
+        document.cookie =
+          "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      }
+
+      // Kullanıcıyı login sayfasına yönlendirme
+      window.location.href = "/login"; // Yönlendirme yapacağınız sayfanın yolunu belirtin
+
+      return null;
+    } catch (error) {
+      console.error("Çıkış yaparken hata oluştu: ", error);
+      return null;
+    }
+  };
+
   return (
     <>
       <div
-        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-base)] bg-transparent  transition-translate duration-200 text-xl z-20 ${
+        className={`fixed top-0 w-full flex justify-center font-inter text-[color:var(--color-base)] bg-transparent    transition-translate duration-200 text-xl z-20 ${
           scrollY > 10 ? "translate-y-6 " : ""
         }`}
       >
         <div
           className={classNames(
-            " flex justify-center items-center  py-4 mobile:px-0  bg-transparent  transition-translate duration-200 ",
+            " flex justify-center items-center  py-4 mobile:px-0  bg-transparent  transition-translate duration-200 w-[70%] ",
             {
               "text-tgold !bg-[#2a2a2a] shadow-sm shadow-gray-400 rounded-full":
                 scrollY > 10,
@@ -57,8 +97,147 @@ function DashboardNav() {
                   </Link>
                 ))}
             </div>
-            <div className="flex items-center gap-x-2">
-              <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
+            <div className="flex items-center gap-x-5">
+              <Link
+                to={"/"}
+                className="w-[2.5rem] h-[2.5rem] rounded-full p-.5 transition-all duration-500 hover:bg-[color:var(--bg-secondary)]  flex items-center justify-center"
+              >
+                <svg
+                  className="h-[1.5rem]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M 12 2 A 1 1 0 0 0 11.289062 2.296875 L 1.203125 11.097656 A 0.5 0.5 0 0 0 1 11.5 A 0.5 0.5 0 0 0 1.5 12 L 4 12 L 4 20 C 4 20.552 4.448 21 5 21 L 9 21 C 9.552 21 10 20.552 10 20 L 10 14 L 14 14 L 14 20 C 14 20.552 14.448 21 15 21 L 19 21 C 19.552 21 20 20.552 20 20 L 20 12 L 22.5 12 A 0.5 0.5 0 0 0 23 11.5 A 0.5 0.5 0 0 0 22.796875 11.097656 L 12.716797 2.3027344 A 1 1 0 0 0 12.710938 2.296875 A 1 1 0 0 0 12 2 z"
+                  ></path>
+                </svg>
+              </Link>
+
+              <div className="h-[2.5rem] flex items-center justify-center">
+                <Menu as="div" className="relative inline-block text-left">
+                  <div>
+                    <Menu.Button className="flex items-center w-8 h-8 justify-center rounded-full bg-[color:var(--color-primary)] p-2 text-sm font-medium text-white focus:outline-none  ">
+                      {getFirstChar().toUpperCase()}
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+                      <div className="px-1 py-1 ">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Account
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Billing
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Integrations
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Team Management
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Upgrade
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="px-1 py-1">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              onClick={() => {
+                                LogOut();
+                              }}
+                              className={`${
+                                active
+                                  ? "bg-[color:var(--color-primary)] text-white"
+                                  : "text-gray-900"
+                              } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                            >
+                              {/* {active ? <p>active</p> : <p>active</p>} */}
+                              Logout
+                            </button>
+                          )}
+                        </Menu.Item>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              </div>
+
+              <label className="swap swap-rotate transition-all duration-500 hover:bg-[color:var(--color-primary)] rounded-full h-[2.3rem] w-[2.3rem] ">
                 <input type="checkbox" />
                 {/* Karanlık Mod */}
                 <svg
@@ -76,7 +255,7 @@ function DashboardNav() {
                       secondary: "#3f3f3f", //hover olduğunda karanlık mod
                     });
                   }}
-                  className="swap-on fill-current w-10 h-10"
+                  className="swap-on fill-current h-[1.5rem]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -99,7 +278,7 @@ function DashboardNav() {
                       secondary: "#D1D1D1",
                     });
                   }}
-                  className="swap-off fill-current w-10 h-10"
+                  className="swap-off fill-current h-[1.5rem]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
