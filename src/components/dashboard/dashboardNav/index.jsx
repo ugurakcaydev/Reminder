@@ -237,7 +237,7 @@ function DashboardNav() {
                 </Menu>
               </div>
 
-              <label className="swap swap-rotate transition-all duration-500 hover:bg-[color:var(--color-primary)] rounded-full h-[2.3rem] w-[2.3rem] ">
+              <label className="swap swap-rotate transition-all duration-500 rounded-full h-[2.3rem] w-[2.3rem] ">
                 <input type="checkbox" />
                 {/* Karanlık Mod */}
                 <svg

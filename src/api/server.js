@@ -105,30 +105,36 @@ export const LoginUser = async ({ _email, _password }) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-export const AddComment = async ({ _text, _stars }) => {
+export const AddComment = async (_text, _star) => {
   try {
     const authToken = getAuthToken();
 
     const response = await fetch(
-      "http://localhost:5206/api/Comment/Add-Comment",
+      `http://localhost:5206/api/Comment/Add-Comment`,
       {
-        method: "POST",
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+
         headers: {
-          "Content-Type": "application/json",
           Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          UserComment: "koddan yazı gönderiyorum", // Değişiklik burada
-          Star: 2, // Değişiklik burada
-        }),
+          UserComment: _text, // Değişiklik burada
+          Star: _star, // Değişiklik burada
+        }), // body data type must match "Content-Type" header
       }
     );
-
-    console.log(response, "aaaaa");
+    return response.json();
 
     // Handle the response as needed
   } catch (error) {
-    console.error("Giriş yaparken hata oluştu: ", error);
+    console.error("Error during request:", error);
+
+    // Log response details
+    console.log("Response status:", error.status);
+    console.log("Response status text:", error.statusText);
+    console.log("Response body:", await error.text());
+
     return null;
   }
 };
@@ -144,7 +150,7 @@ export const getAllCommand = async () => {
 
     const allJsonCommand = await response.json();
 
-    console.log(allJsonCommand);
+    return allJsonCommand.$values;
   } catch (error) {
     console.error(error);
   }

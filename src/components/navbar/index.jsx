@@ -135,13 +135,13 @@ export default function Navbar() {
                 </div>
               ) : (
                 <Link
-                    to={"/dashboard"}
-                    className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
-                  >
-                    Dashboard
-                  </Link>
+                  to={"/dashboard"}
+                  className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
+                >
+                  Dashboard
+                </Link>
               )}
-              <label className="swap swap-rotate transition-all duration-500 hover:bg-blue-300 rounded-full p-1">
+              <label className="swap swap-rotate transition-all duration-500  rounded-full h-[2.3rem] w-[2.3rem]">
                 <input type="checkbox" />
                 {/* Karanlık Mod */}
                 <svg
@@ -159,7 +159,7 @@ export default function Navbar() {
                       secondary: "#3f3f3f", //hover olduğunda karanlık mod
                     });
                   }}
-                  className="swap-on fill-current w-10 h-10"
+                  className="swap-on fill-current h-[1.5rem]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
@@ -182,7 +182,7 @@ export default function Navbar() {
                       secondary: "#D1D1D1",
                     });
                   }}
-                  className="swap-off fill-current w-10 h-10"
+                  className="swap-off fill-current h-[1.5rem]"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                 >
