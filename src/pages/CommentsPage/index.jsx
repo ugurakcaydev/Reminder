@@ -1,16 +1,18 @@
 import { Button, Rating } from "@mui/material";
 import { useEffect, useState } from "react";
-import { AddComment, getAllCommand, getAuthToken } from "../../api/server";
+import { AddComment, GetAllCommand } from "../../api/server";
 // import { Add } from "@mui/icons-material";
-
+import { useCurrentUser } from "../../store/currentUser/hooks";
+import classNames from "classnames";
 export default function Comments() {
   const [commentData, setCommentData] = useState(null);
   const [comment, setComment] = useState("");
   const [star, setStar] = useState(5);
+  const { currentUser } = useCurrentUser();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getAllCommand();
+        const response = await GetAllCommand();
         setCommentData(response);
       } catch (error) {
         console.error(error);
@@ -20,54 +22,17 @@ export default function Comments() {
     fetchData();
   }, []);
 
-  // const [userImage, setUserImage] = useState(''); // Kullanıcının profil resmi
-  // const [stars, setStars] = useState(0); // Kullanıcının verdiği yıldız sayısı
-
-  // const handleStarsChange = (newValue) => {
-  //     setStars(newValue);
-  // };
-
-  // const handleSendComment = async () => {
-  //   try {
-  //     // Burada comment, userImage, stars gibi verileri kullanarak bir API'ye gönderme işlemi yapabilirsiniz.
-  //     // Örneğin, fetch veya başka bir HTTP kütüphanesi kullanarak bir POST isteği gönderilebilir.
-  //     const response = await fetch("https://your-api-endpoint.com/comments", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         // Diğer gereken başlıkları burada ekleyebilirsiniz.
-  //       },
-  //       body: JSON.stringify({
-  //         comment: comment,
-  //         userImage: userImage,
-  //         stars: stars,
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       console.log("Yorum başarıyla gönderildi.");
-  //       // Yorum başarıyla gönderildiyse, gerekiyorsa kullanıcıya bir bilgi verebilirsiniz.
-  //     } else {
-  //       console.error("Yorum gönderilirken bir hata oluştu.");
-  //       // Hata durumunda kullanıcıya bir hata mesajı verebilirsiniz.
-  //     }
-  //   } catch (error) {
-  //     console.error("Bir hata oluştu:", error);
-  //   }
-  // };
-
-  const exampleDay = new Date();
-
   const handleInput = (event) => {
     const textarea = event.target;
-    textarea.style.height = "auto"; // Önce textarea'nın yüksekliğini sıfırla
-    textarea.style.height = `${textarea.scrollHeight}px`; // Yüksekliği içeriğe göre ayarla
-    setComment(textarea.value); // Yorumu güncelle
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+    setComment(textarea.value);
   };
+
   return (
     <div className="w-full  flex flex-col items-center">
       <div className="desktop2:w-6/12 desktop1:w-7/12">
-        {getAuthToken() != undefined ? (
+        {currentUser && currentUser.usertoken != undefined ? (
           <div className=" w-full min-h-[155px] flex gap-x-4 p-3 mb-10 shadow-md shadow-[color:var(--bg-secondary)] rounded-2xl bg-[color:var(--bg-base-secondary)]">
             <div className="w-16  flex  justify-center items-start ">
               <img
@@ -95,7 +60,12 @@ export default function Comments() {
                 <div>
                   <Button
                     onClick={() => {
-                      AddComment(comment, star);
+                      AddComment(
+                        comment,
+                        star,
+                        currentUser.usermail,
+                        currentUser.usertoken
+                      );
                     }}
                     className="font-poppins py-2 px-4 rounded-full border border-[color:var(--bg-secondary)] transition-all hover:bg-[color:var(--bg-base)] hover:text-[color:var(--color-basse)] hover:scale-90"
                   >
@@ -118,10 +88,17 @@ export default function Comments() {
               <span className="loading loading-spinner loading-lg"></span>
             ) : (
               <>
-                {commentData.map((comment, index) => (
+                {commentData?.map((comment, index) => (
                   <div
                     key={index}
-                    className="w-full flex gap-x-4 p-3 mb-5 shadow-md shadow-[color:var(--bg-secondary)] bg-[color:var(--bg-base-secondary)] rounded-2xl"
+                    className={classNames(
+                      "w-full flex gap-x-4 p-3 mb-5 shadow-md shadow-[color:var(--bg-secondary)] bg-[color:var(--bg-base-secondary)] rounded-2xl",
+                      {
+                        "bg-red-50":
+                          comment.UserName ==
+                          currentUser.usermail.split("@")[0],
+                      }
+                    )}
                   >
                     <div className="w-16 flex justify-center items-center">
                       <img
@@ -146,7 +123,7 @@ export default function Comments() {
                           />
                         </div>
                         <div className="text-[color:var(--color-base-secondary)] font-roboto text-xs">
-                          {exampleDay.toLocaleDateString()}
+                          22.07.2023
                         </div>
                       </div>
                     </div>

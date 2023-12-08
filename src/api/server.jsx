@@ -1,27 +1,28 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setCurrentUser } from "../store/currentUser/actions";
 
-export const getAuthToken = () => {
-  const cookies = document.cookie.split(";");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=").map((c) => c.trim());
-    if (name === "authToken") {
-      return value;
-    }
-  }
-  return null;
-};
+// export const getAuthToken = () => {
+//   const cookies = document.cookie.split(";");
+//   for (const cookie of cookies) {
+//     const [name, value] = cookie.split("=").map((c) => c.trim());
+//     if (name === "authToken") {
+//       return value;
+//     }
+//   }
+//   return null;
+// };
 
-export const getFirstChar = () => {
-  const cookies = document.cookie.split(";");
-  for (const cookie of cookies) {
-    const [name, value] = cookie.split("=").map((c) => c.trim());
-    if (name === "firstChar") {
-      return value;
-    }
-  }
-  return null;
-};
+// export const getFirstChar = () => {
+//   const cookies = document.cookie.split(";");
+//   for (const cookie of cookies) {
+//     const [name, value] = cookie.split("=").map((c) => c.trim());
+//     if (name === "firstChar") {
+//       return value;
+//     }
+//   }
+//   return null;
+// };
 
 function showToast(message) {
   toast.warning(message, {
@@ -80,50 +81,52 @@ export const LoginUser = async ({ _email, _password }) => {
     if (!response.ok) {
       showToast("Kullanıcı adı veya şifre hatalı");
       console.log("Login failed");
-      return response;
+      return { loginSuccess: false };
+    } else {
+      const responseJson = await response.json();
+      const authToken = responseJson.Token;
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({
+          usermail: _email,
+          userpassword: _password,
+          usertoken: authToken,
+        })
+      );
+      setCurrentUser({
+        usermail: _email,
+        userpassword: _password,
+        usertoken: authToken,
+      });
+      return { loginSuccess: true };
     }
-
-    const responseJson = await response.json();
-
-    // Extract the token from the response
-    const authToken = responseJson.Token;
-
-    // Store the token in a cookie
-    document.cookie = `authToken=${authToken}; path=/`;
-
-    const firstChar = _email.charAt(0).toLowerCase();
-
-    // Store the first character in a cookie
-    document.cookie = `firstChar=${firstChar}; path=/`;
-
-    window.location.href = "/dashboard";
-    return { response, responseJson };
   } catch (error) {
-    console.error("Giriş yaparken hata oluştu: ", error);
-    return null;
+    return { loginSuccess: false };
   }
 };
 
 // eslint-disable-next-line no-unused-vars
-export const AddComment = async (_text, _star) => {
+export const AddComment = async (_text, _star = 5, _mail, _token) => {
   try {
-    const authToken = getAuthToken();
-
+    console.log(_mail,"mail",_token,"token");
     const response = await fetch(
-      `http://localhost:5206/api/Comment/Add-Comment`,
+      `http://localhost:5206/api/Comment/Create-Comment`,
       {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
 
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${_token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          UserComment: _text, // Değişiklik burada
-          Star: _star, // Değişiklik burada
+          Comment: _text, // Değişiklik burada
+          Star: _star,
+          Email: _mail, // Değişiklik burada
         }), // body data type must match "Content-Type" header
       }
     );
+    response.ok ? console.log("Yorum yapma başarılı") : console.log("Kullanıcı birden fazla yorum yapamaz");
+      console.log(response);
     return response.json();
 
     // Handle the response as needed
@@ -139,7 +142,7 @@ export const AddComment = async (_text, _star) => {
   }
 };
 
-export const getAllCommand = async () => {
+export const GetAllCommand = async () => {
   try {
     const response = await fetch(
       "http://localhost:5206/api/Comment/Get-All-Comment",

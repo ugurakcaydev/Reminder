@@ -8,13 +8,15 @@ import classNames from "classnames";
 import { useAppearance } from "../../../store/appearance/hooks";
 import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { getAuthToken, getFirstChar } from "../../../api/server";
-
+import { useCurrentUser } from "../../../store/currentUser/hooks";
+import { useNavigate } from "react-router-dom";
 function DashboardNav() {
-  const { /*backgroundColor*/ color } = useAppearance();
+  const { color } = useAppearance();
   const [currentPage, setCurrentPage] = useState(0);
   const [scrollY, setScrollY] = useState(0);
-
+  const navigate = useNavigate();
+  const { currentUser } = useCurrentUser();
+  console.log({ currentUser });
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -29,21 +31,11 @@ function DashboardNav() {
 
   const LogOut = async () => {
     try {
-      const authToken = getAuthToken();
-
-      // Eğer authToken varsa, server'a logout isteği gönderilebilir
-      // Ancak bu örnekte sadece cookie silme işlemi gösterilecek
-      if (authToken) {
-        // Burada server'a logout isteği gönderilebilir
-
-        // Cookie'yi silme
-        document.cookie =
-          "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      if (currentUser.usertoken) {
+        localStorage.removeItem("currentUser");
+        localStorage.clear();
       }
-
-      // Kullanıcıyı login sayfasına yönlendirme
-      window.location.href = "/login"; // Yönlendirme yapacağınız sayfanın yolunu belirtin
-
+      navigate("/login");
       return null;
     } catch (error) {
       console.error("Çıkış yaparken hata oluştu: ", error);
@@ -120,7 +112,7 @@ function DashboardNav() {
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="flex items-center w-8 h-8 justify-center rounded-full bg-[color:var(--color-primary)] p-2 text-sm font-medium text-white focus:outline-none  ">
-                      {getFirstChar().toUpperCase()}
+                      A
                     </Menu.Button>
                   </div>
                   <Transition

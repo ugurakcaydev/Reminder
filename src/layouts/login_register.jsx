@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { CreateUser, LoginUser } from "../api/server";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function LoginRegisterLayout({ title }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [passwordAgain, setPasswordAgain] = useState("");
-
   const [show, setShow] = useState(true);
+  const navigate = useNavigate();
 
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
@@ -173,8 +174,17 @@ function LoginRegisterLayout({ title }) {
                   <Link
                     // to={"/dashboard"}
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
-                    onClick={() => {
-                      LoginUser({ _email: email, _password: password });
+                    onClick={async () => {
+                      const { loginSuccess } = await LoginUser({
+                        _email: email,
+                        _password: password,
+                      });
+                      console.log({ loginSuccess });
+                      if (loginSuccess) {
+                        navigate("/dashboard");
+                      } else {
+                        console.log("giriş başrısız");
+                      }
                     }}
                   >
                     Giriş Yap

@@ -3,16 +3,15 @@ import { mainMenu } from "../../const/const";
 import { useEffect } from "react";
 import { setColor, setBackgroundColor } from "../../store/appearance/actions";
 import { useAppearance } from "../../store/appearance/hooks";
-
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { getAuthToken } from "../../api/server";
+import { useCurrentUser } from "../../store/currentUser/hooks";
 
 export default function Navbar() {
   const { /*backgroundColor*/ color } = useAppearance(); //backgroundcolor koşul kullanılıcaksa açılıcak
   const [currentPage, setCurrentPage] = useState(0);
   const [scrollY, setScrollY] = useState(0);
-
+  const { currentUser } = useCurrentUser();
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -112,7 +111,7 @@ export default function Navbar() {
                     )}
                   </Link>
                 ))}
-              {getAuthToken() == undefined ? (
+              {currentUser && currentUser.usertoken == undefined ? (
                 <div className="flex gap-x-2">
                   <Link
                     to={"/login"}
