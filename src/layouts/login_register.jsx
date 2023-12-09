@@ -179,7 +179,6 @@ function LoginRegisterLayout({ title }) {
                         _email: email,
                         _password: password,
                       });
-                      console.log({ loginSuccess });
                       if (loginSuccess) {
                         navigate("/dashboard");
                       } else {

@@ -83,20 +83,26 @@ export const LoginUser = async ({ _email, _password }) => {
       console.log("Login failed");
       return { loginSuccess: false };
     } else {
+      console.log(response, " reponseee")
+
       const responseJson = await response.json();
+      console.log(responseJson, " loginSuccess")
       const authToken = responseJson.Token;
+      const userId = responseJson.UserId;
       localStorage.setItem(
         "currentUser",
         JSON.stringify({
           usermail: _email,
           userpassword: _password,
           usertoken: authToken,
+          userId: userId,
         })
       );
       setCurrentUser({
         usermail: _email,
         userpassword: _password,
         usertoken: authToken,
+        userId: userId,
       });
       return { loginSuccess: true };
     }
@@ -108,7 +114,7 @@ export const LoginUser = async ({ _email, _password }) => {
 // eslint-disable-next-line no-unused-vars
 export const AddComment = async (_text, _star = 5, _mail, _token) => {
   try {
-    console.log(_mail,"mail",_token,"token");
+    console.log(_mail, "mail", _token, "token");
     const response = await fetch(
       `http://localhost:5206/api/Comment/Create-Comment`,
       {
@@ -125,8 +131,9 @@ export const AddComment = async (_text, _star = 5, _mail, _token) => {
         }), // body data type must match "Content-Type" header
       }
     );
+
     response.ok ? console.log("Yorum yapma başarılı") : console.log("Kullanıcı birden fazla yorum yapamaz");
-      console.log(response);
+    console.log(response);
     return response.json();
 
     // Handle the response as needed
@@ -152,7 +159,6 @@ export const GetAllCommand = async () => {
     );
 
     const allJsonCommand = await response.json();
-
     return allJsonCommand.$values;
   } catch (error) {
     console.error(error);
