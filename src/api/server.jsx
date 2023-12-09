@@ -83,10 +83,9 @@ export const LoginUser = async ({ _email, _password }) => {
       console.log("Login failed");
       return { loginSuccess: false };
     } else {
-      console.log(response, " reponseee")
 
       const responseJson = await response.json();
-      console.log(responseJson, " loginSuccess")
+
       const authToken = responseJson.Token;
       const userId = responseJson.UserId;
       localStorage.setItem(
@@ -114,7 +113,6 @@ export const LoginUser = async ({ _email, _password }) => {
 // eslint-disable-next-line no-unused-vars
 export const AddComment = async (_text, _star = 5, _mail, _token) => {
   try {
-    console.log(_mail, "mail", _token, "token");
     const response = await fetch(
       `http://localhost:5206/api/Comment/Create-Comment`,
       {
@@ -133,7 +131,6 @@ export const AddComment = async (_text, _star = 5, _mail, _token) => {
     );
 
     response.ok ? console.log("Yorum yapma başarılı") : console.log("Kullanıcı birden fazla yorum yapamaz");
-    console.log(response);
     return response.json();
 
     // Handle the response as needed
