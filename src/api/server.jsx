@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setCurrentUser } from "../store/currentUser/actions";
+import { useNavigate } from "react-router-dom";
+
 
 // export const getAuthToken = () => {
 //   const cookies = document.cookie.split(";");
@@ -164,6 +166,7 @@ export const GetAllCommand = async () => {
 
 // DELETE COMMENT
 export const DeleteUserComment = async (_token, userId) => {
+  const navigate = useNavigate();
   try {
     const response = await fetch(
       `http://localhost:5206/api/Comment/Delete-Comment`,
@@ -180,7 +183,7 @@ export const DeleteUserComment = async (_token, userId) => {
 
     if (response.ok) {
       console.log("Kullanıcı yorumu başarıyla silindi!");
-      window.location.reload();
+      navigate(0);
     } else {
       console.error(
         "Kullanıcı yorumu silinirken bir hata oluştu. Status: ",
