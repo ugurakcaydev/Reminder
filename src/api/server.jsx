@@ -162,6 +162,38 @@ export const GetAllCommand = async () => {
   }
 };
 
+// DELETE COMMENT
+export const DeleteUserComment = async (_token, userId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5206/api/Comment/Delete-Comment`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          UserId: `${userId}`,
+          "Content-Type": "application/json",
+          // Diğer isteğe özel başlıkları burada ekleyebilirsiniz
+        },
+      }
+    );
+
+    if (response.ok) {
+      console.log("Kullanıcı yorumu başarıyla silindi!");
+      window.location.reload();
+    } else {
+      console.error(
+        "Kullanıcı yorumu silinirken bir hata oluştu. Status: ",
+        response.status
+      );
+    }
+  } catch (error) {
+    console.error("Hata oluştu: ", error);
+  }
+};
+
+
+
 // export const DeleteUser = async (userId) => {
 //   try {
 //     const response = await fetch(

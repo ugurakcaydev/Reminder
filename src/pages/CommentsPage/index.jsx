@@ -79,7 +79,7 @@ export default function Comments() {
             </div>
           </div>
         ) : null}
-        <UserComments commentData={commentData} />
+        <UserComments commentData={commentData}/>
 
       </div>
 
