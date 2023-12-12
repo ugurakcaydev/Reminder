@@ -9,8 +9,8 @@ import DarkLightMode from "../../on/off_theme";
 function DashboardNav() {
   const [currentPage, setCurrentPage] = useState(0);
   const [scrollY, setScrollY] = useState(0);
-  const navigate = useNavigate();
   const { currentUser } = useCurrentUser();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);

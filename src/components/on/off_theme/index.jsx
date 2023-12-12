@@ -1,9 +1,16 @@
-
 import { useAppearance } from "../../../store/appearance/hooks";
-import { setBackgroundColor, setColor } from "../../../store/appearance/actions";
+import {
+  setBackgroundColor,
+  setColor,
+} from "../../../store/appearance/actions";
+import { useEffect } from "react";
 
 function DarkLightMode() {
-  const { /*backgroundColor*/ color } = useAppearance();
+  const { backgroundColor, color } = useAppearance();
+  useEffect(() => {
+    localStorage.setItem("color", JSON.stringify(color));
+    localStorage.setItem("backgroundColor", JSON.stringify(backgroundColor));
+  }, [color, backgroundColor]);
   return (
     <label className="swap swap-rotate transition-all duration-500  rounded-full h-[2.3rem] w-[2.3rem]">
       <input type="checkbox" />

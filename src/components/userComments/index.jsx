@@ -38,7 +38,6 @@ export default function UserComments({ commentData }) {
                       {comment.UserName}
                     </span>
                     <button className="border border-black">
-                      {" "}
                       Yorumu kaldır
                     </button>
                     <span className="text-[color:var(--color-base-secondary)] text-xs font-roboto">

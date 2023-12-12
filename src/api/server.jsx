@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setCurrentUser } from "../store/currentUser/actions";
+import { useNavigate } from "react-router-dom";
 
 // export const getAuthToken = () => {
 //   const cookies = document.cookie.split(";");
@@ -32,6 +33,7 @@ function showToast(message) {
 
 // eslint-disable-next-line no-unused-vars
 export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
+  const navigate = useNavigate();
   try {
     const response = await fetch(
       `http://localhost:5206/api/User/Register-User`,
@@ -56,7 +58,7 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
     }
 
     const responseJson = await response.json(); //true dönyor
-    window.location.href = "/login";
+    navigate("/login");
     return responseJson;
   } catch (error) {
     console.error("Kayıt yaparken hata oluştu: ", error);
@@ -83,7 +85,6 @@ export const LoginUser = async ({ _email, _password }) => {
       console.log("Login failed");
       return { loginSuccess: false };
     } else {
-
       const responseJson = await response.json();
 
       const authToken = responseJson.Token;
@@ -130,7 +131,9 @@ export const AddComment = async (_text, _star = 5, _mail, _token) => {
       }
     );
 
-    response.ok ? console.log("Yorum yapma başarılı") : console.log("Kullanıcı birden fazla yorum yapamaz");
+    response.ok
+      ? console.log("Yorum yapma başarılı")
+      : console.log("Kullanıcı birden fazla yorum yapamaz");
     return response.json();
 
     // Handle the response as needed
