@@ -14,6 +14,7 @@ const initialBackgroundColor = JSON.parse(
   base: "#ffffff", // Saf beyaz
   baseSecondary: "#f0f0f0", // Hafif gri tonu
   secondary: "#dcdcdc",
+  modal: "#1f2528cc",
 };
 
 const initialState = {

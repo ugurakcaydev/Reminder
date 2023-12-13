@@ -166,7 +166,7 @@ export const GetAllCommand = async () => {
 };
 
 // DELETE COMMENT
-export const DeleteUserComment = async (_token, userId) => {
+export const DeleteUserComment = async (_token, _userId) => {
   const navigate = useNavigate();
   try {
     const response = await fetch(
@@ -175,13 +175,12 @@ export const DeleteUserComment = async (_token, userId) => {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${_token}`,
-          UserId: `${userId}`,
+          UserId: `${_userId}`,
           "Content-Type": "application/json",
           // Diğer isteğe özel başlıkları burada ekleyebilirsiniz
         },
       }
     );
-
     if (response.ok) {
       console.log("Kullanıcı yorumu başarıyla silindi!");
       navigate(0);

@@ -3,20 +3,19 @@ import classNames from "classnames";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import PropTypes from "prop-types";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteUserComment, GetAllCommand } from "../../api/server";
-import { useEffect } from "react";
+import { DeleteUserComment} from "../../api/server";
+
 
 // eslint-disable-next-line react/prop-types
 export default function UserComments({ commentData }) {
     const { currentUser } = useCurrentUser();
-
 
     return (
         <div>
             <div className="w-full h-auto flex flex-col gap-y-2 justify-start items-center ">
                 <p className="text-xl font-bold font-sans pb-2">Kullanıcı Yorumları</p>
                 <div className="w-full h-auto flex flex-col items-center justify-start">
-                    {commentData === null ? (
+                    {commentData?.length === 0 ? (
                         <span className="loading loading-spinner loading-lg"></span>
                     ) : (
                         <>
@@ -58,9 +57,7 @@ export default function UserComments({ commentData }) {
                                         </div>
                                     </div>
                                     {currentUser && currentUser?.userId === comment?.UserId && (
-
                                         <>
-
                                             <div className="flex justify-center items-center">
                                                 <button onClick={async () =>
                                                     await DeleteUserComment(

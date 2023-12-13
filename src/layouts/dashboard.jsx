@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../components/dashboard/footer";
+//import Footer from "../components/dashboard/footer";
 import DashboardNav from "../components/dashboard/dashboardNav";
 import { useAppearance } from "../store/appearance/hooks";
 import { useEffect } from "react";
+import Modal from "../modals";
+import { useModal } from "../store/modal/hooks";
 
 function DashboradLayout() {
+  const modal = useModal();
   const appearance = useAppearance();
   useEffect(() => {
     //Custom colors for text
@@ -31,6 +34,10 @@ function DashboradLayout() {
       appearance.backgroundColor.base
     );
     document.documentElement.style.setProperty(
+      "--bg-modal",
+      appearance.backgroundColor.modal
+    );
+    document.documentElement.style.setProperty(
       "--bg-base-secondary", //Sayfada bulunan kutuların rengi
       appearance.backgroundColor.baseSecondary
     );
@@ -43,6 +50,7 @@ function DashboradLayout() {
   }, [appearance]);
   return (
     <div className="w-full  bg-[color:var(--bg-base)]   ">
+      {modal && <Modal />}
       <DashboardNav />
       <main className=" mx-auto pt-[80px]  w-[70%] max-w-[1920px]">
         <Outlet />

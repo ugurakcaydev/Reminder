@@ -31,6 +31,10 @@ export default function MainLayout() {
       appearance.backgroundColor.base
     );
     document.documentElement.style.setProperty(
+      "--bg-modal",
+      appearance.backgroundColor.modal
+    );
+    document.documentElement.style.setProperty(
       "--bg-base-secondary", //Sayfada bulunan kutuların rengi
       appearance.backgroundColor.baseSecondary
     );

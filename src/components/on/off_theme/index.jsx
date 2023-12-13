@@ -27,7 +27,8 @@ function DarkLightMode() {
           setBackgroundColor({
             base: "#252525", //sayfa arka planı
             baseSecondary: "#1a1a1a", //contentlerin arka planı
-            secondary: "#3f3f3f", //hover olduğunda karanlık mod
+            secondary: "#3f3f3f",
+            modal: "#1f2528cc", //hover olduğunda karanlık mod
           });
         }}
         className="swap-on fill-current h-[1.5rem]"
@@ -51,6 +52,7 @@ function DarkLightMode() {
             base: "#e2e2e2", //e7e9ea
             baseSecondary: "#e7e9ea", //e2e2e2
             secondary: "#D1D1D1",
+            modal: "#1f2528cc",
           });
         }}
         className="swap-off fill-current h-[1.5rem]"

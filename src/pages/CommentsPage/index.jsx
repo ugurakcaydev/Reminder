@@ -5,7 +5,7 @@ import { AddComment, GetAllCommand } from "../../api/server";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import UserComments from "../../components/userComments";
 export default function Comments() {
-  const [commentData, setCommentData] = useState(null);
+  const [commentData, setCommentData] = useState([]);
   const [comment, setComment] = useState("");
   const [star, setStar] = useState(5);
   const { currentUser } = useCurrentUser();
@@ -82,10 +82,6 @@ export default function Comments() {
         <UserComments commentData={commentData}/>
 
       </div>
-
-
-
-
     </div>
   );
 }

@@ -1,9 +1,8 @@
 // import { getCurrentUser } from "../../api/currentUser";
 import { AddComment } from "../../api/server";
+import { setModal } from "../../store/modal/actions";
 
 function Dashboard() {
-
-
   return (
     <div className="w-full h-[80vh]  flex gap-x-5  px-5">
       <div className="dashboardleft w-[70%]">
@@ -11,7 +10,10 @@ function Dashboard() {
           <div className="w-full flex justify-between items-center">
             <div className="flex gap-x-4 items-center">
               <p className="text-2xl font-semibold">All booking pages</p>
-              <button className="w-[2rem] h-[2rem] rounded-full p-.5 hover:bg-gray-600 flex items-center justify-center">
+              <button
+                onClick={() => setModal("createBooks")}
+                className="w-[2rem] h-[2rem] rounded-full p-.5 hover:bg-gray-600 flex items-center justify-center"
+              >
                 <svg className="h-[1rem]" viewBox="0 0 16 16">
                   <path
                     fill="currentColor"
