@@ -1,0 +1,67 @@
+
+
+function SelectBookDays() {
+  return (
+    <div className="max-h-[150px] flex flex-col gap-y-2 ">
+      <div className="w-full flex items-center justify-between">
+        <span className="font-semibold text-base">
+          When are you free to take bookings?
+        </span>
+        <div className="group">
+          <button className="font-normal ">
+            <span className="group-hover:underline group-hover:text-[#f7b32cce] text-[color:var(--color-primary)]">
+              Edit
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div className="rounded-tl-lg rounded-tr-lg group overflow-auto border border-[#32414a] border-b-0 bg-[#232E35] hover:bg-[#2d3b45]  ">
+          <div className="w-full overflow-auto ">
+            <div className="cursor-pointer flex items-center justify-between py-1 px-4 transition-all duration-500 min-h-[40px]">
+              <div className="py-2 flex items-center justify-between w-full">
+                <div className="flex flex-grow">
+                  <div className="font-normal text-base">08:00-17:00</div>
+                </div>
+                <div className="group-hover:hidden block">
+                  <span>Pzt-Cum</span>
+                </div>
+                <div className="group-hover:block hidden">
+                  <button className="font-normal ">
+                    <span className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]">
+                      Edit
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-bl-lg rounded-br-lg group overflow-auto border border-[#32414a] bg-[#232E35] hover:bg-[#2d3b45] ">
+          <div className="w-full overflow-auto ">
+            <div className="cursor-pointer flex items-center justify-between py-1 px-4 transition-all duration-500 min-h-[40px]">
+              <div className="py-2 flex items-center justify-between w-full">
+                <div className="flex flex-grow">
+                  <div className="font-normal text-base">Unavailable</div>
+                </div>
+                <div className="group-hover:hidden block">
+                  <span>Cts-Paz</span>
+                </div>
+                <div className="group-hover:block hidden">
+                  <button className="font-normal ">
+                    <span className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]">
+                      Edit
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default SelectBookDays;

@@ -47,9 +47,9 @@ export default function MainLayout() {
   }, [appearance]);
 
   return (
-    <div className="w-full  bg-[color:var(--bg-base)]  ">
+    <div className="w-full min-h-[100vh] flex flex-col justify-between items-center  bg-[color:var(--bg-base)]  ">
       <Navbar />
-      <main className="mx-auto pt-[80px]  w-[90%] max-w-[1920px]">
+      <main className="mx-auto py-[80px]  w-[90%] max-w-[1920px]">
         <Outlet />
       </main>
       <Footer />
