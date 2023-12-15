@@ -157,7 +157,9 @@ export default function Calender() {
                 <DateTimePickerComponent setDateTime={setDateTimeHome} />
               )}
               {showForm && <CalenderFormComponent />}
-              {/* {showDateTimePicker ? (
+             
+              {
+              /* {showDateTimePicker ? (
                 <DateTimePickerComponent setDateTime={setDateTimeHome} />
               ) : (
                 <DaySlots selectedDay={selectedDay} />
