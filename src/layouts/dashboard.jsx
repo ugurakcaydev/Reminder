@@ -49,10 +49,10 @@ function DashboradLayout() {
     //renkleri tanımla
   }, [appearance]);
   return (
-    <div className="w-full  bg-[color:var(--bg-base)]   ">
-      {modal && <Modal />}
+    <div className="w-full min-h-[100vh] flex flex-col justify-between items-center  bg-[color:var(--bg-base)]  ">
+      {modal && <Modal/>}
       <DashboardNav />
-      <main className=" mx-auto pt-[80px]  w-[70%] max-w-[1920px]">
+      <main className=" mx-auto pt-[80px] w-[70%] max-w-[1920px]">
         <Outlet />
       </main>
       {/* <Footer /> */}

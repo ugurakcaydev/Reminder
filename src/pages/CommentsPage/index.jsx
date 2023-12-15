@@ -5,13 +5,12 @@ import { AddComment, GetAllCommand } from "../../api/server";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import UserComments from "../../components/userComments";
 
-
 export default function Comments() {
   const [commentData, setCommentData] = useState([]);
   const [comment, setComment] = useState("");
   const [star, setStar] = useState(5);
   const { currentUser } = useCurrentUser();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const handleInput = (event) => {
     const textarea = event.target;
@@ -29,7 +28,7 @@ export default function Comments() {
         setTimeout(() => {
           setCommentData(response);
           setLoading(false);
-        }, 3000);
+        }, 700);
       } catch (error) {
         console.error(error);
       }
@@ -39,9 +38,13 @@ export default function Comments() {
   }, []);
 
   return (
-    <div className="w-full min-h-[calc(100vh-450px)] flex flex-col items-center">
-      <div className="desktop2:w-6/12 desktop1:w-7/12">
-        {currentUser && currentUser?.usertoken && !commentData?.find(comment => comment?.UserId === currentUser?.userId) ? (
+    <div className="w-full flex flex-col items-center justify-start">
+      <div className="w-[64%] max-w-[1920px]">
+        {currentUser &&
+        currentUser?.usertoken &&
+        !commentData?.find(
+          (comment) => comment?.UserId === currentUser?.userId
+        ) ? (
           <div className="w-full min-h-[155px] flex gap-x-4 p-3 mb-10 shadow-md shadow-[color:var(--bg-secondary)] rounded-2xl bg-[color:var(--bg-base-secondary)]">
             <div className="w-16  flex  justify-center items-start ">
               <img
@@ -88,7 +91,6 @@ export default function Comments() {
           </div>
         ) : null}
         <UserComments commentData={commentData} loading={loading} />
-
       </div>
     </div>
   );

@@ -6,7 +6,9 @@
 
     font-size: var(--font-size);
 }
-
+.focus-within\:shadow-custom:focus-within {
+    box-shadow: 1px 1px 0 0 rgba(247, 178, 44, 1)
+  }
 body {
     @apply bg-[color:var(--background-primary)] text-[color:var(--color-base)] text-[0.938rem] antialiased;
 }
