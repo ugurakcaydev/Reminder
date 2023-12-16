@@ -1,33 +1,38 @@
 import classNames from "classnames";
-import { useState } from "react";
-import ComboBox from "../../comboBox";
+import { useEffect, useState } from "react";
+import ComboBox from "../comboBox";
+import { bookDateHours, bookDateMinuets } from "../../../const/const";
 function SelectBookHour() {
-  const hoursArray = [
-    { value: 0 },
-    { value: 1 },
-    { value: 2 },
-    { value: 3 },
-    { value: 4 },
-    { value: 8 },
-    { value: 12 },
-    { value: 24 },
-  ];
-  const minuetsArray = [
-    { value: 0 },
-    { value: 10 },
-    { value: 15 },
-    { value: 20 },
-    { value: 30 },
-    { value: 40 },
-    { value: 45 },
-    { value: 50 },
-  ];
-
   const [showHours, setShowHours] = useState(false);
+  const [selectBookingHour, setSelectBookingHour] = useState(bookDateHours[1]);
+  const [selectBookingMinuets, setSelectBookingMinuets] = useState(
+    bookDateMinuets[0]
+  );
 
+  const [isValid, setIsValid] = useState(true);
   function showHoursFunction() {
     setShowHours(!showHours);
   }
+
+  useEffect(() => {}, [selectBookingHour, selectBookingMinuets]);
+  const setHour = (value) => {
+    if (selectBookingMinuets == 0 && value == 0) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setSelectBookingHour(value);
+    }
+  };
+  const setMinuets = (value) => {
+    if (selectBookingHour == 0 && value == 0) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setSelectBookingMinuets(value);
+    }
+  };
+
+
   return (
     <div className="min-h-[120px] flex flex-col gap-y-2">
       <p className="font-semibold text-base ">
@@ -48,7 +53,12 @@ function SelectBookHour() {
         >
           <div className="w-full overflow-auto ">
             <div className="cursor-pointer flex items-center justify-between py-1 px-4 transition-all duration-500 min-h-[40px]">
-              <div className="font-normal text-base">1 Saat</div>
+              <div className="font-normal text-base">
+                {selectBookingHour == 0 ? "" : selectBookingHour + " saat "}
+                {selectBookingMinuets == 0
+                  ? ""
+                  : selectBookingMinuets + " dakika "}
+              </div>
               <div className="rounded-full p-.5 hover:bg-[#3a4750] invisible group-hover:visible">
                 <button className="rounded-full bg-transparent h-8 w-8 text-center flex items-center justify-center ">
                   <svg viewBox="0 0 16 16" className="h-[1rem]">
@@ -66,20 +76,66 @@ function SelectBookHour() {
           <>
             <div className="flex flex-col w-full">
               <div className="w-full flex justify-center items-center  gap-x-3">
-                <ComboBox array={hoursArray} title={"hours"} />
-                <ComboBox array={minuetsArray} title={"minuets"} />               
+                <ComboBox
+                  array={bookDateHours}
+                  title={"hours"}
+                  selectedValue={selectBookingHour}
+                  onChange={(value) => {
+                    setHour(value);
+                  }}
+          
+                />
+                <ComboBox
+                  array={bookDateMinuets}
+                  title={"minuets"}
+                  selectedValue={selectBookingMinuets}
+                  onChange={(value) => {
+                    setMinuets(value);
+                  }}
+                 
+                />
               </div>
-              <div className="w-full flex items-center gap-x-3 justify-end px-2 py-4">
+
+              {!isValid && (
+                <div className="flex items-center justify-start p-1 gap-x-2">
+                  <svg
+                    className="h-[0.875rem] text-red-500"
+                    viewBox="0 0 16 16"
+                  >
+                    <g fill="currentColor">
+                      <circle fill="currentColor" cx="8" cy="8" r="8"></circle>
+                      <path
+                        d="M7 4v5a1 1 0 1 0 2 0V4a1 1 0 1 0-2 0Zm0 8a1 1 0 1 0 2 0 1 1 0 0 0-2 0Z"
+                        fill="var(--invert-text-default)"
+                      ></path>
+                    </g>
+                  </svg>
+                  <p className="text-sm text-red-500 ">
+                    Saat ve dakika aynı anda sifir olamaz
+                  </p>
+                </div>
+              )}
+              <div className="w-full flex items-center gap-x-3 justify-end px-2 py-3">
                 <button
                   onClick={(event) => {
-                    event.preventDefault(); // Prevent default form submission behavior
+                    // Prevent default form submission behavior
                     showHoursFunction();
+                    event.preventDefault();
                   }}
                   className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]"
                 >
                   Cancel
                 </button>
-                <button onClick={()=>{}} className="bg-[color:var(--color-primary)] rounded-full px-4 py-1">
+                <button
+                  onClick={(event) => {
+                    
+                    setIsValid(true);
+                    showHoursFunction();
+                   
+                    event.preventDefault();
+                  }}
+                  className="bg-[color:var(--color-primary)] rounded-full px-4 py-1"
+                >
                   OK
                 </button>
               </div>

@@ -88,7 +88,7 @@ export const dashMenu = [
     path: "/bookings",
     name: "Bookings",
   },
-]
+];
 
 export let [pricePolicy] = [
   {
@@ -156,7 +156,6 @@ export let [pricePolicy] = [
   },
 ];
 
-
 export const userComments = [
   {
     _id: 1,
@@ -219,3 +218,6 @@ export const userComments = [
     stars: 2,
   },
 ];
+
+export const bookDateHours = [0, 1, 2, 3, 4, 8, 12, 24];
+export const bookDateMinuets = [0, 10, 15, 20, 35, 40, 45, 50];

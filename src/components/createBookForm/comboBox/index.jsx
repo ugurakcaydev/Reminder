@@ -1,20 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import "../../assets/css/tailwind.css";
+import "../../../assets/css/tailwind.css";
 import PropTypes from "prop-types";
 
 // eslint-disable-next-line react/prop-types
-export default function ComboBox({ array, title }) {
-  const [selected, setSelected] = useState(
-    title === "hours" ? array[1] : array[0]
-  );
+export default function ComboBox({ array, title, selectedValue, onChange }) {
   return (
     <div className="flex-1  group relative items-start justify-start border border-[#32414a] rounded-lg   focus-within:shadow-custom ">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selectedValue} onChange={onChange}>
         <div className="relative h-full">
           <Listbox.Button className="relative w-full cursor-default rounded-lg  bg-[#1d2629] py-2 pl-3 pr-10 text-left shadow-md  focus:outline-none  sm:text-sm">
-            <span className="block truncate">{selected.value}</span>
+            <span className="block truncate">{selectedValue}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"></span>
           </Listbox.Button>
           <Transition
@@ -24,9 +21,9 @@ export default function ComboBox({ array, title }) {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute mt-1 max-h-48 w-full overflow-auto rounded-md bg-[#232E35] py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {array.map((person, personIdx) => (
+              {array.map((item, itemIdx) => (
                 <Listbox.Option
-                  key={personIdx}
+                  key={itemIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-5 pr-4 ${
                       active
@@ -34,7 +31,7 @@ export default function ComboBox({ array, title }) {
                         : "text-[color:var(--color-base)]"
                     }`
                   }
-                  value={person}
+                  value={item}
                 >
                   {({ selected }) => (
                     <>
@@ -43,9 +40,7 @@ export default function ComboBox({ array, title }) {
                           selected ? "font-medium" : "font-normal"
                         }`}
                       >
-                        {title == "hours"
-                          ? `${person.value} saat`
-                          : `${person.value} dakika`}
+                        {title == "hours" ? `${item} saat` : `${item} dakika`}
                       </span>
                     </>
                   )}
