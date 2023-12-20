@@ -160,12 +160,17 @@ function LoginRegisterLayout({ title }) {
                 {title === "register" ? (
                   <Link
                     className="w-full my-2 text-xl p-2 font-bold bg-[#252525] rounded-full"
-                    onClick={() => {
-                      CreateUser({
+                    onClick={async () => {
+                      const { registerSuccess } = await CreateUser({
                         _email: email,
                         _password: password,
-                        // _passwordAgain: passwordAgain,
                       });
+                      console.log(registerSuccess, "aa");
+                      if (registerSuccess) {
+                        navigate("/login");
+                      } else {
+                        console.log("kayıt başrısız");
+                      }
                     }}
                   >
                     Kayıt Ol

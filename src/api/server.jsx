@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setCurrentUser } from "../store/currentUser/actions";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 // export const getAuthToken = () => {
 //   const cookies = document.cookie.split(";");
@@ -33,7 +33,6 @@ function showToast(message) {
 
 // eslint-disable-next-line no-unused-vars
 export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
-  const navigate = useNavigate();
   try {
     const response = await fetch(
       `http://localhost:5206/api/User/Register-User`,
@@ -51,18 +50,18 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
     );
 
     if (!response.ok) {
-      //kullanıcı zaten var da olabilir
+      // kullanıcı zaten var da olabilir
       showToast("Kullanıcı zaten kayıtlı");
       console.log("Register failed");
-      return null;
+      return { registerSuccess: false }
     }
-
-    const responseJson = await response.json(); //true dönyor
-    navigate("/login");
-    return responseJson;
+    console.log(response);
+    //const responseJson = await response.json(); // true dönyor
+    return { registerSuccess: true };
+    // return responseJson;
   } catch (error) {
     console.error("Kayıt yaparken hata oluştu: ", error);
-    return null;
+    return { registerSuccess: false }
   }
 };
 
@@ -165,7 +164,6 @@ export const GetAllCommand = async () => {
   }
 };
 
-
 /**
  * *DELETE COMMENT
  * ! Çalışmıyor sebebi navigate olabilir.
@@ -198,8 +196,6 @@ export const GetAllCommand = async () => {
 //     console.error("Hata oluştu: ", error);
 //   }
 // };
-
-
 
 // export const DeleteUser = async (userId) => {
 //   try {
