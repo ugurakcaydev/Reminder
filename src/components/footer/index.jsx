@@ -20,114 +20,114 @@ export default function Footer() {
             </span>
           </a>
           <p className="mt-2 text-sm text-[color:var(--color-base-secondary)]">
-            Air plant banjo lyft occupy retro adaptogen indego
+            Rezervasyonun en doğru adresi
           </p>
         </div>
         <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center ">
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-[color:var(--color-base)]tracking-widest text-sm mb-3">
-              KATEGORİLER
+              ÜRÜN
             </h2>
             <nav className="list-none mb-10">
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  First Link
+                  Bir tur atın
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Second Link
+                  Fiyatlandırma
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Third Link
+                  Özellikler
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Fourth Link
+                  Bireyler İçin
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-[color:var(--color-base)]tracking-widest text-sm mb-3">
-              KATEGORİLER
+              DESTEK
             </h2>
             <nav className="list-none mb-10">
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  First Link
+                  Yardım Merkezi
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Second Link
+                  Topluluk formu
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Third Link
+                  Akademi
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Fourth Link
+                  Güvenlik
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-[color:var(--color-base)]tracking-widest text-sm mb-3">
-              KATEGORİLER
+              İLETİŞİME GEÇİN
             </h2>
             <nav className="list-none mb-10">
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  First Link
+                  Ürün güncellemeleri
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Second Link
+                  Blog
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Third Link
+                  Satışla iletişim
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Fourth Link
+                  Chrome uzantısı
                 </a>
               </li>
             </nav>
           </div>
           <div className="lg:w-1/4 md:w-1/2 w-full px-4">
             <h2 className="title-font font-medium text-[color:var(--color-base)]tracking-widest text-sm mb-3">
-              KATEGORİLER
+              ŞİRKET
             </h2>
             <nav className="list-none mb-10">
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  First Link
+                  Hakkımızda
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Second Link
+                  Bizimle çalışın
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Third Link
+                  Yorumlar
                 </a>
               </li>
               <li>
                 <a className="text-[color:var(--color-base-secondary)] transition-all hover:text-[color:var(--color-base)] cursor-pointer">
-                  Fourth Link
+                  Marka varlıkları
                 </a>
               </li>
             </nav>

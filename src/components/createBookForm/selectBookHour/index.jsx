@@ -31,7 +31,7 @@ function SelectBookHour() {
   return (
     <div className="min-h-[120px] flex flex-col gap-y-2">
       <p className="font-semibold text-base ">
-        How long are your meetings for?
+      Toplantılarınız ne kadar sürüyor?
       </p>
       <div className="pb-4 flex ">
         <div
@@ -77,10 +77,10 @@ function SelectBookHour() {
                   }}
                   className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]"
                 >
-                  Cancel
+                  İptal
                 </button>
                 <button onClick={()=>{}} className="bg-[color:var(--color-primary)] rounded-full px-4 py-1">
-                  OK
+                  Tamam
                 </button>
               </div>
             </div>

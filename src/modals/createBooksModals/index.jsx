@@ -35,7 +35,7 @@ function CreateBooksModals({ close }) {
               >
                 <div className="text-center flex justify-center items-center ">
                   <h2 className="font-semibold text-xl">
-                    Set your availability
+                  Müsaitlik durumunuzu ayarlayın
                   </h2>
                 </div>
                 <div className="flex flex-col gap-y-4 text-left ">
@@ -45,7 +45,7 @@ function CreateBooksModals({ close }) {
                 <div className="mt-6 flex text-center justify-center items-center">
                   <button className="rounded-full w-full bg-[color:var(--color-primary)] hover:bg-[#f7b32ce1] relative cursor-pointer font-semibold text-base">
                     <span className="px-5 h-10 overflow-hidden text-base flex text-center justify-center items-center">
-                      <span>Next step</span>
+                      <span>Sonraki adım</span>
                     </span>
                   </button>
                 </div>

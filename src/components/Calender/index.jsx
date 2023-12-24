@@ -34,7 +34,7 @@ export default function Calender() {
             ></path>
           </svg>
           <span className="text-[color:var(--color-base)]">
-            Powered by YouCanBookMe
+           HighFives tarafından desteklenmektedir
           </span>
         </div>
         <div className="w-full  flex">
@@ -48,7 +48,7 @@ export default function Calender() {
                 />
               </div>
               <span className="font-semibold text-[1.5rem] leading-8 text-[color:var(--color-base)]">
-                Interactive Demo
+               İnteraktif Demo Versiyonu
               </span>
               {/* Düzenlenecek yerler var  */}
               {showForm ? (
@@ -66,7 +66,7 @@ export default function Calender() {
                             parseFloat(selectedItem.randomTimes[selectedTime]) +
                             0.3
                           ).toFixed(2)}{" "}
-                          AM
+                          Öğleden Öncesi
                         </span>
                         <div className="flex gap-x-2 items-center justify-start">
                           <svg
@@ -79,7 +79,7 @@ export default function Calender() {
                             ></path>
                           </svg>
                           <span className="text-xs text-[#656d72]">
-                            Europe / Istanbul
+                            Türkiye / İstanbul
                           </span>
                         </div>
                       </button>
@@ -92,7 +92,7 @@ export default function Calender() {
                           d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 2a6 6 0 100 12A6 6 0 008 2zm0 2c.5 0 1 .4 1 .9V7h1c.5 0 1 .4 1 .9V8c0 .6-.4 1-1 1H8a1 1 0 01-1-.9V5c0-.6.4-1 1-1z"
                         ></path>
                       </svg>
-                      <span className="font-bold">30 minutes</span>
+                      <span className="font-bold">30 dakika</span>
                     </div>
                   </div>
                 </>
@@ -106,11 +106,11 @@ export default function Calender() {
                       ></path>
                     </svg>
                     <span className="text-[color:var(--color-base)] font-semibold text-sm">
-                      30 minutes
+                      30 dakika
                     </span>
                   </div>
                   <span className="mt-[1rem] text-[color:var(--color-base-secondary)] text-[16px]">
-                    Choose a date and time that works for you.
+                  Size uygun olan bir tarih ve saat seçin.
                   </span>
                 </>
               )}
@@ -125,10 +125,10 @@ export default function Calender() {
                 }}
                 className="px-4 py-0.5 border text-[14px] font-semibold border-[color:var(--bg-secondary)] rounded-full text-[color:var(--color-base)] hover:bg-[color:var(--bg-secondary)]"
               >
-                Today
+                Bugün
               </button>
               <span className="text-[color:var(--color-base)] font-semibold">
-                November 2023
+                Kasım 2023
               </span>
               <div className="w-[71.19px] text-right">
                 <button
@@ -173,9 +173,9 @@ export default function Calender() {
                     d="M8.6 0l.02.02a8 8 0 010 15.96L8.6 16l-.03-.02a8.12 8.12 0 01-1.14 0L7.4 16l-.02-.02a8 8 0 010-15.96L7.4 0l.03.02a8.12 8.12 0 011.14 0L8.6 0zm4.6 11h-1.67c-.26.83-.63 1.65-1.11 2.47l-.02.03a6.02 6.02 0 002.8-2.5zm-8.73 0H2.8a6.02 6.02 0 002.8 2.5c-.49-.83-.86-1.66-1.13-2.5zm4.83 0H6.7c.31.78.74 1.57 1.3 2.36.56-.8.99-1.58 1.3-2.36zM4.05 7H2.08a6.04 6.04 0 000 2h1.97a9.6 9.6 0 010-2zm9.87 0h-1.97a9.6 9.6 0 010 2h1.97a6.04 6.04 0 000-2zM9.83 7H6.17a7.52 7.52 0 000 2h3.66a7.52 7.52 0 000-2zM5.6 2.5l-.08.03A6.03 6.03 0 002.8 5h1.67c.27-.84.64-1.67 1.13-2.5zm4.8 0l.02.03c.48.82.85 1.64 1.1 2.47h1.68a6.02 6.02 0 00-2.8-2.5zM8 2.64l-.13.19c-.5.73-.88 1.45-1.17 2.17h2.6A11.6 11.6 0 008 2.64z"
                   ></path>
                 </svg>
-                <span>Time zone</span>
+                <span>Saat dilimi</span>
               </div>
-              <div className="font-semibold">Europe/İstanbul (3:41 PM)</div>
+              <div className="font-semibold">Türkiye / İstanbul (3:41 Öğleden Sonrası)</div>
             </div>
           </div>
         </div>

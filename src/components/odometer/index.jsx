@@ -18,7 +18,7 @@ export const OdometerNumbers = ({ value, duration }) => {
         <Odometer value={odometerValue} format="(.ddd),dd" />
       </span>
       <span className="text-[1rem] text-[color:var(--color-secondary)]">
-        Books Year
+        Rezervasyon
       </span>
     </div>
   );

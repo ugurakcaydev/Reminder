@@ -32,9 +32,9 @@ export const mainMenu = [
           "Programınızı ve toplantılarınızı yaşam tarzınıza uyacak ve işinizi kolaylaştıracak şekilde uyarlayın. Müsaitlik durumunuzu anında güncellemek için takvimlerinizi bağlayın.",
       },
       content_2: {
-        title: "For educations",
+        title: "Tüm özellikler",
         comment:
-          "Automate bookings so you can focus on delivering an outstanding student experience. ",
+          "Planları karşılaştırın ve HighFives'ın tüm güçlü özelliklerini görün. ",
       },
     },
   },

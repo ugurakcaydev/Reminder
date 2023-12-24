@@ -129,7 +129,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Account
+                              Hesap
                             </button>
                           )}
                         </Menu.Item>
@@ -145,7 +145,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Billing
+                             Faturalandırma
                             </button>
                           )}
                         </Menu.Item>
@@ -161,7 +161,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Integrations
+                              Entegrasyonlar
                             </button>
                           )}
                         </Menu.Item>
@@ -177,7 +177,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Team Management
+                              Takım yönetimi
                             </button>
                           )}
                         </Menu.Item>
@@ -194,7 +194,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Upgrade
+                              Yükselt
                             </button>
                           )}
                         </Menu.Item>
@@ -213,7 +213,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                              Logout
+                              Çıkış Yap
                             </button>
                           )}
                         </Menu.Item>

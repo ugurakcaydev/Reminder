@@ -12,7 +12,7 @@ function Dashboard() {
         <div className="flex flex-col w-full justify-between px-2 gap-y-5">
           <div className="w-full flex justify-between items-center">
             <div className="flex gap-x-4 items-center">
-              <p className="text-2xl font-semibold">All booking pages</p>
+              <p className="text-2xl font-semibold">Tüm rezervasyon sayfaları</p>
               <button
                 onClick={() => setModal("createBooks")}
                 className="w-[2rem] h-[2rem] rounded-full p-.5 hover:bg-gray-600 flex items-center justify-center"
@@ -34,10 +34,10 @@ function Dashboard() {
                     d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 2a6 6 0 100 12A6 6 0 008 2zm0 2c.5 0 1 .4 1 .9V7h1c.5 0 1 .4 1 .9V8c0 .6-.4 1-1 1H8a1 1 0 01-1-.9V5c0-.6.4-1 1-1z"
                   ></path>
                 </svg>
-                <div>Filters</div>
+                <div>Filteler</div>
               </div>
               <div className="bg-[color:var(--bg-secondary)] transition-all duration-500 flex items-center gap-x-2 p-2 rounded-md">
-                <div>Sort by page title</div>
+                <div>Sayfanın başlığına göre sırala</div>
                 <svg className="h-[1rem]" viewBox="0 0 16 16">
                   <path
                     fill="currentColor"
@@ -59,11 +59,11 @@ function Dashboard() {
             <div className="w-full bg-[color:var(--bg-base-secondary)] transition-all duration-500 rounded-md flex justify-between items-center px-4 py-2">
               <div className="flex items-center justify-start gap-x-5">
                 <div className="bg-gray-300 rounded-full w-10 h-10 text-center flex items-center justify-center">
-                  img
+                  görsel
                 </div>
                 <div className="flex flex-col justify-center items-start gap-y-1">
                   <p>Can Yiğit</p>
-                  <p>Can1045.youcanbookme</p>
+                  <p>Can1045.highfives</p>
                 </div>
               </div>
               <div className="flex  items-center justify-end">
@@ -112,11 +112,11 @@ function Dashboard() {
             <div className="w-full bg-[color:var(--bg-base-secondary)] transition-all duration-500 rounded-md flex justify-between items-center px-4 py-2">
               <div className="flex items-center justify-start gap-x-5">
                 <div className="bg-gray-300 rounded-full w-10 h-10 text-center flex items-center justify-center">
-                  img
+                  görsel
                 </div>
                 <div className="flex flex-col justify-center items-start gap-y-1">
                   <p>Can Yiğit</p>
-                  <p>Can1045.youcanbookme</p>
+                  <p>Can1045.highfives</p>
                 </div>
               </div>
               <div className="flex  items-center justify-end">
@@ -165,11 +165,11 @@ function Dashboard() {
             <div className="w-full bg-[color:var(--bg-base-secondary)] transition-all duration-500 rounded-md flex justify-between items-center px-4 py-2">
               <div className="flex items-center justify-start gap-x-5">
                 <div className="bg-gray-300 rounded-full w-10 h-10 text-center flex items-center justify-center">
-                  img
+                  görsel
                 </div>
                 <div className="flex flex-col justify-center items-start gap-y-1">
                   <p>Can Yiğit</p>
-                  <p>Can1045.youcanbookme</p>
+                  <p>Can1045.highfives</p>
                 </div>
               </div>
               <div className="flex items-center justify-end">
@@ -223,14 +223,14 @@ function Dashboard() {
       </div>
       <div className="dashboardright flex-1 flex flex-col px-2 gap-y-4">
         <button className="w-full rounded-full py-1.5 flex items-center justify-center bg-[color:var(--color-primary)]">
-          Create booking page
+        Rezervasyon sayfası oluştur
         </button>
         <div className="flex items-center justify-start p-2 rounded-md gap-x-3 bg-[color:var(--bg-secondary)] transition-all duration-500">
           <div className="w-10 h-10 rounded-full bg-white"></div>
           <div className="flex-1 ">
-            <p className="font-bold text-lg">Create a folder</p>
+            <p className="font-bold text-lg">Bir dosya oluştur</p>
             <p className="text-sm ">
-              Use folders to organize and group your bookings page
+            Rezervasyon sayfanızı organize etmek ve gruplandırmak için dosyaları kullanın
             </p>
           </div>
         </div>

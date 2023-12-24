@@ -46,7 +46,7 @@ export default function Navbar() {
                 alt="logo"
               />
               <span className="font-poppins font-bold tracking-tight text-[color:var(--color-primary)] laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
-                YouCanBookMe
+                HighFives
               </span>
             </div>
             <div className="flex items-center gap-x-2">
@@ -135,7 +135,7 @@ export default function Navbar() {
                   to={"/dashboard"}
                   className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
                 >
-                  Dashboard
+                  Kontrol Paneli
                 </Link>
               )}
               <DarkLightMode/>

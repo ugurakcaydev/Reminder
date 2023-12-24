@@ -12,7 +12,7 @@ export default function DaySlots({ selectedDay, handleButtonClick }) {
     <>
       <div className="flex w-full items-center gap-x-3  ">
         <span className="flex-1 block h-[.5px]  bg-[color:var(--color-base-secondary)]" />
-        <span className="text-sm">This Week</span>
+        <span className="text-sm">Bu Hafta</span>
         <span className="flex-1 block h-[.5px] bg-[color:var(--color-base-secondary)]"></span>
       </div>
       {daysAndHours.map((item, index) => (
@@ -20,7 +20,7 @@ export default function DaySlots({ selectedDay, handleButtonClick }) {
           <div className="flex text-[color:var(--color-base-secondary)] items-center mb-2 text-left gap-x-1">
             {item.weekday == `${today},` && (
               <span className="w-14 h-5 flex items-center justify-center rounded-full bg-[color:var(--color-primary)] text-[color:var(--color-base)] px-0.5 text-[10px]">
-                TODAY
+                BUGÜN
               </span>
             )}
             <span className="font-bold">{item.weekday}</span>
@@ -43,7 +43,7 @@ export default function DaySlots({ selectedDay, handleButtonClick }) {
         </div>
       ))}
       <span className="w-full  text-center py-4 ">
-        No availability after 9 November
+      9 Kasım'dan sonra müsaitlik durumu yoktur
       </span>
     </>
   );

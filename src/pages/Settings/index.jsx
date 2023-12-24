@@ -3,7 +3,7 @@
 export default function Settings() {
   return (
     <div>
-      setting page
+      ayarlar sayfası
     </div>
   );
 }

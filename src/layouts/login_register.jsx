@@ -42,7 +42,7 @@ function LoginRegisterLayout({ title }) {
                       Hesabınızı Oluşturun
                     </p>
                     <p className="text-sm font-normal text-[#d4dbe0]">
-                      Free forever. Upgrade anytime.
+                      Daima ücretsiz. İstediğiniz zaman yükseltebilirsiniz.
                     </p>
                     <div className="flex flex-col gap-y-2 p-8">
                       <LoginRegisterButtons
@@ -99,7 +99,7 @@ function LoginRegisterLayout({ title }) {
               <div className="flex justify-normal items-center">
                 <span className="w-full h-[1px] bg-[#a0a0a0]" />
                 <div className=" p-2 rounded-full bg-[#6161617e] border border-[#a0a0a0] text-xs font-semibold whitespace-nowrap">
-                  OR
+                  Yada
                 </div>
                 <span className="w-full h-[1px] bg-[#a0a0a0]" />
               </div>
@@ -198,9 +198,9 @@ function LoginRegisterLayout({ title }) {
                   </div>
                 ) : (
                   <div className="text-[#D4DBE0]">
-                    Already have an account?{" "}
+                    Zaten hesabınız var mı?{" "}
                     <Link to={"/login"} className="text-tgold hover:underline">
-                      Log in
+                      Giriş yap
                     </Link>
                   </div>
                 )}
@@ -225,12 +225,12 @@ function LoginRegisterLayout({ title }) {
             </svg>
             <div className="text-left">
               <span className="font-semibold text-xl">
-                Need to join a meeting?
+              Bir toplantıya katılmanız mı gerekiyor?
               </span>
               <p className="text-sm text-[#d4dbe0]">
-                Our meeting finder can help - no sign up required!{" "}
+              Toplantı bulucumuz yardımcı olabilir - kayıt olmanıza gerek yok!{" "}
                 <a href="" className="text-tgold hover:underline">
-                  Find my meeting
+                Toplantımı bul
                 </a>{" "}
               </p>
             </div>
