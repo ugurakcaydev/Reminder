@@ -23,12 +23,12 @@ function LeftSideSecondPage({ onClick }) {
           className="min-h-[410px] flex flex-col gap-y-2 "
         >
           <div className="text-center flex justify-center items-center ">
-            <h2 className="font-semibold text-xl">Add details</h2>
+            <h2 className="font-semibold text-xl">Detay ekleyin</h2>
           </div>
           <div className="flex gap-x-4 text-left mb-4">
             <div className="w-20 h-20 rounded-full bg-gray-500"></div>
             <div className="flex flex-1 flex-col justify-start gap-y-2">
-              <p className="font-semibold text-base ">Booking page title</p>
+              <p className="font-semibold text-base ">Rezervasyon sayfası başlığı</p>
               <div className="rounded-lg  group overflow-auto border border-[#32414a] bg-[#1d2629] hover:bg-[#2d3b45]  ">
                 <div className="w-full h-full overflow-auto ">
                   <div className="cursor-pointer h-full transition-all duration-500 min-h-[40px]">
@@ -44,7 +44,7 @@ function LeftSideSecondPage({ onClick }) {
           </div>
 
           <div className="flex flex-1 flex-col justify-start gap-y-2">
-            <p className="font-semibold text-base ">Invite people</p>
+            <p className="font-semibold text-base ">İnsanları davet edin</p>
             <UserEmailAutoComplate users={users} />
             {/* <div className="rounded-lg  group overflow-auto border border-[#32414a] bg-[#1d2629] hover:bg-[#2d3b45]  ">
               <div className="w-full h-full overflow-auto ">
