@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import CommentSlider from "../../components/Slider";
 import { OdometerNumbers } from "../../components/odometer";
 import BenefitPanel from "../../components/benefitPanel";

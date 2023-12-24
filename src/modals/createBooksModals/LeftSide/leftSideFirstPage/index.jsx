@@ -1,5 +1,5 @@
-import SelectBookHour from "../../../components/createBookForm/selectBookHour";
-import SelectBookDays from "../../../components/createBookForm/selectBookDays";
+import SelectBookHour from "../../../../components/createBookForm/selectBookHour";
+import SelectBookDays from "../../../../components/createBookForm/selectBookDays";
 import PropTypes from "prop-types";
 function LeftSideFirstPage({ onClick }) {
   return (
@@ -36,11 +36,8 @@ function LeftSideFirstPage({ onClick }) {
   );
 }
 
-
-
 export default LeftSideFirstPage;
 
 LeftSideFirstPage.propTypes = {
-    onClick: PropTypes.func,
-   
-  };
+  onClick: PropTypes.func,
+};

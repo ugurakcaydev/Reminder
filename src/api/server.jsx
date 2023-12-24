@@ -1,29 +1,6 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { setCurrentUser } from "../store/currentUser/actions";
-//import { useNavigate } from "react-router-dom";
-
-// export const getAuthToken = () => {
-//   const cookies = document.cookie.split(";");
-//   for (const cookie of cookies) {
-//     const [name, value] = cookie.split("=").map((c) => c.trim());
-//     if (name === "authToken") {
-//       return value;
-//     }
-//   }
-//   return null;
-// };
-
-// export const getFirstChar = () => {
-//   const cookies = document.cookie.split(";");
-//   for (const cookie of cookies) {
-//     const [name, value] = cookie.split("=").map((c) => c.trim());
-//     if (name === "firstChar") {
-//       return value;
-//     }
-//   }
-//   return null;
-// };
 
 function showToast(message) {
   toast.warning(message, {
@@ -53,7 +30,7 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
       // kullanıcı zaten var da olabilir
       showToast("Kullanıcı zaten kayıtlı");
       console.log("Register failed");
-      return { registerSuccess: false }
+      return { registerSuccess: false };
     }
     console.log(response);
     //const responseJson = await response.json(); // true dönyor
@@ -61,7 +38,7 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
     // return responseJson;
   } catch (error) {
     console.error("Kayıt yaparken hata oluştu: ", error);
-    return { registerSuccess: false }
+    return { registerSuccess: false };
   }
 };
 
@@ -159,6 +136,23 @@ export const GetAllCommand = async () => {
 
     const allJsonCommand = await response.json();
     return allJsonCommand.$values;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const GetAllUser = async () => {
+  try {
+    const response = await fetch(
+      "http://localhost:5206/api/User/Get-All-User",
+      {
+        method: "GET",
+      }
+    );
+
+    const allJsonCommand = await response.json();
+    const value = allJsonCommand.$values;
+    return value;
   } catch (error) {
     console.error(error);
   }
