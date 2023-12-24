@@ -17,7 +17,7 @@ function LeftSideFirstPage({ onClick }) {
             <SelectBookHour />
             <SelectBookDays />
           </div>
-          <div className="mt-10 flex text-center justify-center items-center">
+          {/* <div className="mt-10 flex text-center justify-center items-center">
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -29,7 +29,8 @@ function LeftSideFirstPage({ onClick }) {
                 <span>Sonraki adım</span>
               </span>
             </button>
-          </div>
+          </div> */}
+          
         </form>
       </div>
     </div>
