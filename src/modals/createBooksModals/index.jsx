@@ -1,6 +1,4 @@
 import { useState } from "react";
-// import SelectBookDays from "../../components/createBookForm/selectBookDays";
-// import SelectBookHour from "../../components/createBookForm/selectBookHour";
 import LeftSideFirstPage from "./leftSideFirstPage";
 import LeftSideSecondPage from "./leftSideSecondPage";
 import classNames from "classnames";
@@ -52,31 +50,6 @@ function CreateBooksModals({ close }) {
               ></span>
             </span>
           </div>
-          <div className="relative">
-            <div className="opacity-100">
-              <form
-                action="
-                    "
-                className="min-h-[410px] flex flex-col gap-y-2"
-              >
-                <div className="text-center flex justify-center items-center ">
-                  <h2 className="font-semibold text-xl">
-                  Müsaitlik durumunuzu ayarlayın
-                  </h2>
-                </div>
-                <div className="flex flex-col gap-y-4 text-left ">
-                  <SelectBookHour />
-                  <SelectBookDays />
-                </div>
-                <div className="mt-6 flex text-center justify-center items-center">
-                  <button className="rounded-full w-full bg-[color:var(--color-primary)] hover:bg-[#f7b32ce1] relative cursor-pointer font-semibold text-base">
-                    <span className="px-5 h-10 overflow-hidden text-base flex text-center justify-center items-center">
-                      <span>Sonraki adım</span>
-                    </span>
-                  </button>
-                </div>
-              </form>
-            </div>
           <div className="px-10 py-5 w-full overflow-hidden">
             {activePageIndex == 0 ? (
               <LeftSideFirstPage
@@ -98,9 +71,7 @@ function CreateBooksModals({ close }) {
         </div>
       </div>
     </div>
-    </div>
   );
-
 }
 
 export default CreateBooksModals;
