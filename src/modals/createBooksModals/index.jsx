@@ -1,16 +1,40 @@
-import { useState } from "react";
-import LeftSideFirstPage from "./leftSideFirstPage";
-import LeftSideSecondPage from "./leftSideSecondPage";
+import React, { useState } from "react";
+import LeftSideFirstPage from "./LeftSide/leftSideFirstPage";
+import LeftSideSecondPage from "./LeftSide/leftSideSecondPage";
 import classNames from "classnames";
+import RightSideBookModal from "./RightSide";
+import { useCurrentUser } from "../../store/currentUser/hooks";
 
 // eslint-disable-next-line react/prop-types
 function CreateBooksModals({ close }) {
+  const { currentUser } = useCurrentUser();
   const [activePageIndex, setActivePageIndex] = useState(0);
+  const pageCount = 2;
+  const [bookData, setBookData] = useState({
+    title: currentUser.usermail[0].toUpperCase(),
+    hour: 1,
+    minuets:0,
+    invitedPeople:[],
+  });
+  const pages = Array.from({ length: pageCount }, (_, index) => index);
   function changePage(selectedIndex) {
     setActivePageIndex(selectedIndex);
   }
+  const leftSidePages = [
+    <LeftSideFirstPage
+      key="page1"
+      bookData={bookData}
+      setBookData={setBookData}
+    />,
+    <LeftSideSecondPage
+      key="page2"
+      bookData={bookData}
+      setBookData={setBookData}
+    />,
+  ];
+
   return (
-    <div className="w-full   relative   border-1 border-[#32414a] shadow-md rounded-xl text-[#F4F5F7] block ">
+    <div className="w-full  max-h-[555px] relative   border-1 border-[#32414a] shadow-md rounded-xl text-[#F4F5F7] block ">
       <div className="absolute top-1 right-1 z-[2]">
         <button
           className="w-7 h-7 border-none flex items-center justify-center"
@@ -24,51 +48,38 @@ function CreateBooksModals({ close }) {
           </svg>
         </button>
       </div>
-      <div className="flex min-h-[554px] ">
-        <div className="flex-1 flex flex-col pt-6">
-          <div className="flex justify-center ">
-            <span className="flex items-center gap-x-1">
-              <span
-                onClick={() => changePage(0)}
-                className={classNames(
-                  "w-3 h-3 rounded-full bg-[color:var(--color-base)]  p-1 cursor-pointer",
-                  {
-                    "w-4 h-4 bg-[color:var(--color-primary)] border border-[color:var(--color-primary)]":
-                      activePageIndex === 0,
-                  }
-                )}
-              ></span>
-              <span
-                onClick={() => changePage(1)}
-                className={classNames(
-                  "w-3 h-3 rounded-full bg-[color:var(--color-base)]  p-1  cursor-pointer",
-                  {
-                    "w-4 h-4 bg-[color:var(--color-primary)] border border-[color:var(--color-primary)]":
-                      activePageIndex === 1,
-                  }
-                )}
-              ></span>
+      <div className="flex max-h-[555px] ">
+        <div className="flex-1 flex flex-col py-6 ">
+          <div className="flex justify-center mb-5">
+            <span className="flex items-center gap-x-2">
+              {pages.map((pageIndex) => (
+                <span
+                  key={pageIndex}
+                  onClick={(e) => {
+                    changePage(pageIndex);
+                    e.preventDefault();
+                  }}
+                  className={classNames(
+                    "w-3 h-3 rounded-full bg-[color:var(--color-base)]  p-1 cursor-pointer",
+                    {
+                      "w-4 h-4 bg-[color:var(--color-primary)] border border-[color:var(--color-primary)]":
+                        activePageIndex === pageIndex,
+                    }
+                  )}
+                ></span>
+              ))}
             </span>
           </div>
-          <div className="px-10 py-5 w-full overflow-hidden">
-            {activePageIndex == 0 ? (
-              <LeftSideFirstPage
-                onClick={(selectedIndex) => {
+          <div className="px-10 min-h-[475px]  w-full overflow-hidden">
+            {leftSidePages[activePageIndex] &&
+              React.cloneElement(leftSidePages[activePageIndex], {
+                onClick: (selectedIndex) => {
                   changePage(selectedIndex);
-                }}
-              />
-            ) : (
-              <LeftSideSecondPage
-                onClick={(selectedIndex) => {
-                  changePage(selectedIndex);
-                }}
-              />
-            )}
+                },
+              })}
           </div>
         </div>
-        <div className="flex-1 p-1 overflow-hidden z-[1] relative bg-red-500  ">
-          test
-        </div>
+        <RightSideBookModal bookData={bookData}/>
       </div>
     </div>
   );

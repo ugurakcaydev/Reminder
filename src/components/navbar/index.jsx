@@ -133,7 +133,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={"/dashboard"}
-                  className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-1 mobile:px-4  desktop1:py-2 desktop1:px-5 "
+                  className="whitespace-nowrap font-bold bg-tgold  rounded-full text-white mobile:text-base mobile:py-2 mobile:px-4  desktop1:py-2 desktop1:px-5 "
                 >
                   Kontrol Paneli
                 </Link>

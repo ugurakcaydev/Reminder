@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import CommentSlider from "../../components/Slider";
 import { OdometerNumbers } from "../../components/odometer";
 import BenefitPanel from "../../components/benefitPanel";
@@ -20,7 +21,7 @@ export default function Home() {
             </p>
             <div className="flex justify-between items-center gap-x-3">
               <button className="bg-[color:var(--color-primary)] text-white text-center text-[1.25rem] py-[.8rem] px-[1.875rem] rounded-full">
-              Ücretsiz rezervasyon sayfanızı oluşturun
+              Ücretsiz rezervasyon oluşturun
               </button>
               <button className="border-2 border-[white] rounded-full text-[1.25rem] py-[.8rem] px-[1.875rem] text-center text-[color:var(--color-base)] bg-transparent w-[200px] hover:bg-white hover:text-black ease-in-out transition-all duration-300">
                 ✨ Tur atın

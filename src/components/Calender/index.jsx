@@ -34,7 +34,7 @@ export default function Calender() {
             ></path>
           </svg>
           <span className="text-[color:var(--color-base)]">
-           HighFives tarafından desteklenmektedir
+            HighFives tarafından desteklenmektedir
           </span>
         </div>
         <div className="w-full  flex">
@@ -48,7 +48,7 @@ export default function Calender() {
                 />
               </div>
               <span className="font-semibold text-[1.5rem] leading-8 text-[color:var(--color-base)]">
-               İnteraktif Demo Versiyonu
+                İnteraktif Demo Versiyonu
               </span>
               {/* Düzenlenecek yerler var  */}
               {showForm ? (
@@ -110,7 +110,7 @@ export default function Calender() {
                     </span>
                   </div>
                   <span className="mt-[1rem] text-[color:var(--color-base-secondary)] text-[16px]">
-                  Size uygun olan bir tarih ve saat seçin.
+                    Size uygun olan bir tarih ve saat seçin.
                   </span>
                 </>
               )}
@@ -121,7 +121,9 @@ export default function Calender() {
             <div className="w-full h-[4.5rem]  flex justify-between items-center border-b border-[color:var(--color-base)]">
               <button
                 onClick={() => {
-                  setSelectedDay(new Date()), setShowForm(false);
+                  setSelectedDay(new Date()),
+                    setShowForm(false),
+                    setDateTimePicker(false);
                 }}
                 className="px-4 py-0.5 border text-[14px] font-semibold border-[color:var(--bg-secondary)] rounded-full text-[color:var(--color-base)] hover:bg-[color:var(--bg-secondary)]"
               >
@@ -133,7 +135,9 @@ export default function Calender() {
               <div className="w-[71.19px] text-right">
                 <button
                   className="p-2 hover:bg-[color:var(--bg-secondary)] rounded-full"
-                  onClick={() => setDateTimePicker(!showDateTimePicker)}
+                  onClick={() => {
+                    setDateTimePicker(!showDateTimePicker), setShowForm(false);
+                  }}
                 >
                   <svg className="h-[1rem]" viewBox="0 0 16 16">
                     <path
@@ -157,9 +161,8 @@ export default function Calender() {
                 <DateTimePickerComponent setDateTime={setDateTimeHome} />
               )}
               {showForm && <CalenderFormComponent />}
-             
-              {
-              /* {showDateTimePicker ? (
+
+              {/* {showDateTimePicker ? (
                 <DateTimePickerComponent setDateTime={setDateTimeHome} />
               ) : (
                 <DaySlots selectedDay={selectedDay} />
@@ -175,7 +178,9 @@ export default function Calender() {
                 </svg>
                 <span>Saat dilimi</span>
               </div>
-              <div className="font-semibold">Türkiye / İstanbul (3:41 Öğleden Sonrası)</div>
+              <div className="font-semibold">
+                Türkiye / İstanbul (3:41 Öğleden Sonrası)
+              </div>
             </div>
           </div>
         </div>
