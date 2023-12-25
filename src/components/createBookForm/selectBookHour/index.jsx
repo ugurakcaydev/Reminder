@@ -78,7 +78,7 @@ function SelectBookHour() {
               <div className="w-full flex justify-center items-center  gap-x-3">
                 <ComboBox
                   array={bookDateHours}
-                  title={"hours"}
+                  title={"saat"}
                   selectedValue={selectBookingHour}
                   onChange={(value) => {
                     setHour(value);
@@ -87,7 +87,7 @@ function SelectBookHour() {
                 />
                 <ComboBox
                   array={bookDateMinuets}
-                  title={"minuets"}
+                  title={"dakika"}
                   selectedValue={selectBookingMinuets}
                   onChange={(value) => {
                     setMinuets(value);
