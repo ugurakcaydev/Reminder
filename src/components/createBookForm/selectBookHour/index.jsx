@@ -2,7 +2,8 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import ComboBox from "../comboBox";
 import { bookDateHours, bookDateMinuets } from "../../../const/const";
-function SelectBookHour() {
+import PropTypes from "prop-types";
+function SelectBookHour({ bookData, setBookData }) {
   const [showHours, setShowHours] = useState(false);
   const [selectBookingHour, setSelectBookingHour] = useState(bookDateHours[1]);
   const [selectBookingMinuets, setSelectBookingMinuets] = useState(
@@ -21,6 +22,7 @@ function SelectBookHour() {
     } else {
       setIsValid(true);
       setSelectBookingHour(value);
+      setBookData({ ...bookData, hour: value });
     }
   };
   const setMinuets = (value) => {
@@ -29,16 +31,14 @@ function SelectBookHour() {
     } else {
       setIsValid(true);
       setSelectBookingMinuets(value);
+      setBookData({ ...bookData, minuets: value });
     }
   };
 
-
   return (
-    <div className="min-h-[120px] flex flex-col gap-y-2">
-      <p className="font-semibold text-base ">
-      Toplantılarınız ne kadar sürüyor?
-      </p>
-      <div className="pb-4 flex ">
+    <div className=" flex flex-col gap-y-2 min-h-[120px] mb-4">
+      <p className="font-semibold text-base ">Toplantı Süresi</p>
+      <div className="flex ">
         <div
           onClick={(event) => {
             event.preventDefault(); // Prevent default form submission behavior
@@ -83,7 +83,6 @@ function SelectBookHour() {
                   onChange={(value) => {
                     setHour(value);
                   }}
-          
                 />
                 <ComboBox
                   array={bookDateMinuets}
@@ -92,7 +91,6 @@ function SelectBookHour() {
                   onChange={(value) => {
                     setMinuets(value);
                   }}
-                 
                 />
               </div>
 
@@ -115,7 +113,7 @@ function SelectBookHour() {
                   </p>
                 </div>
               )}
-              <div className="w-full flex items-center gap-x-3 justify-end px-2 py-3">
+              <div className="w-full flex items-center gap-x-3 justify-end p-2">
                 <button
                   onClick={(event) => {
                     // Prevent default form submission behavior
@@ -128,10 +126,9 @@ function SelectBookHour() {
                 </button>
                 <button
                   onClick={(event) => {
-                    
                     setIsValid(true);
                     showHoursFunction();
-                   
+
                     event.preventDefault();
                   }}
                   className="bg-[color:var(--color-primary)] rounded-full px-4 py-1"
@@ -148,3 +145,9 @@ function SelectBookHour() {
 }
 
 export default SelectBookHour;
+
+SelectBookHour.propTypes = {
+  onClick: PropTypes.func,
+  bookData: PropTypes.object,
+  setBookData: PropTypes.any,
+};

@@ -45,7 +45,7 @@ const ReservationSystem = () => {
             {isEditable ? (
                 <div className='w-full'>
                     {days.map((day, index) => (
-                        <div key={index} className=' w-full h-12 grid grid-cols-5 gap-y-2 items-center' style={{ gridTemplateColumns: '0.5fr 1.5fr 1fr 0.1fr 1fr' }}>
+                        <div key={index} className=' w-full h-12 grid grid-cols-5 gap-y-2 items-center' style={{ gridTemplateColumns: '0.5fr 1.5fr 1fr  0.1fr  1fr' }}>
                             <input
                                 className='accent-tgold w-4 h-4 cursor-pointer'
                                 type="checkbox"

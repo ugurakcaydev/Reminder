@@ -1,16 +1,14 @@
 /* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
-import { useCurrentUser } from "../../../../store/currentUser/hooks";
-import UserEmailAutoComplate from "./userEmailAutoComplate";
-import { GetAllUser } from "../../../../api/server";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InvitePeopleInput from "./InvitePeopleInput";
 import classNames from "classnames";
-function LeftSideSecondPage({ onClick }) {
-  const { currentUser } = useCurrentUser();
-  const [invitedPeople, setInvitedPeople] = useState([]);
-  console.log(invitedPeople, "invitedPeople");
+function LeftSideSecondPage({ bookData, setBookData }) {
+  const [invitedPeople, setInvitedPeople] = useState(bookData.invitedPeople);
+  const changeBookData = (event) => {
+    setBookData({ ...bookData, title: event.target.value });
+  };
   return (
     <div className="relative">
       <div className="opacity-100">
@@ -32,7 +30,8 @@ function LeftSideSecondPage({ onClick }) {
                     <input
                       className="border-none px-2 w-full h-full bg-[#1d2629] focus:outline-none "
                       type="text"
-                      placeholder={currentUser.usermail[0].toUpperCase()}
+                      value={bookData.title}
+                      onChange={changeBookData}
                     />
                   </div>
                 </div>
@@ -57,7 +56,7 @@ function LeftSideSecondPage({ onClick }) {
                   {invitedPeople?.map((people, index) => (
                     <div
                       key={people.id}
-                      className="text-white group flex justify-between items-center  px-2 py-2 bg-gray-800 hover:bg-[#2d3b45]"
+                      className="text-white group flex justify-between items-center  px-4 py-2 bg-gray-800 hover:bg-[#2d3b45]"
                     >
                       <div className="flex justify-start items-center gap-x-3 ">
                         <div className="text-lg font-semibold">{`${
@@ -85,10 +84,29 @@ function LeftSideSecondPage({ onClick }) {
               )}
             </div>
           </div>
-          <div className="w-full  flex items-center justify-end">
+          <div className="w-full  flex items-center justify-end gap-x-3">
             <button
               onClick={(e) => {
                 e.preventDefault();
+                if (window.confirm("Silmek istediğinize emin misiniz ?")) {
+                  setBookData({ ...bookData, invitedPeople: [] });
+                  setInvitedPeople([]);
+                }
+              }}
+              className={classNames(
+                "py-2 px-4 h-full bg-red-600 rounded-lg flex items-center my-0.5 justify-center focus:outline-none transition-colors duration-700",
+                {
+                  "!bg-gray-500 !pointer-events-none !cursor-not-allowed":
+                    invitedPeople.length == 0,
+                }
+              )}
+            >
+              Temizle
+            </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setBookData({ ...bookData, invitedPeople: invitedPeople });
               }}
               className={classNames(
                 "py-2 px-4 h-full bg-green-600 rounded-lg flex items-center my-0.5 justify-center focus:outline-none transition-colors duration-700",
@@ -111,4 +129,6 @@ export default LeftSideSecondPage;
 
 LeftSideSecondPage.propTypes = {
   onClick: PropTypes.func,
+  bookData: PropTypes.object,
+  setBookData: PropTypes.any,
 };

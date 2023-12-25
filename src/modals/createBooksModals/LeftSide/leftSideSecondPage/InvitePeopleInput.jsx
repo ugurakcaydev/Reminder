@@ -15,6 +15,8 @@ export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
         !invitedPeople.some((invitedPerson) => invitedPerson.id === person.id)
       ) {
         setInvitedPeople([...invitedPeople, person]);
+        setSelected(null);
+        setQuery(""); // Input değerini sıfırla
       }
     } catch (error) {
       console.error(error, "hata");
@@ -50,7 +52,7 @@ export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
             <Combobox.Input
               placeholder="Davet At"
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 bg-[#1d2629] text-white focus:ring-0 focus:outline-none"
-              displayValue={(useremail) => useremail}
+              // displayValue={(useremail) => useremail}
               onChange={(event) => setQuery(event.target.value || "")}
             />
             <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2"></Combobox.Button>
@@ -108,7 +110,7 @@ export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
           e.preventDefault();
           handleSelectPerson(selected);
         }}
-        className="absolute top-1/2 -translate-y-1/2 right-0 w-1/6 h-full bg-green-600 rounded-tr-lg rounded-br-lg flex items-center my-0.5 justify-center focus:outline-none"
+        className="absolute top-1/2 -translate-y-1/2 right-0 w-1/6 h-full bg-green-600 rounded-tr-lg rounded-br-lg flex items-center justify-center focus:outline-none"
       >
         Davet
       </button>
