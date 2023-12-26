@@ -6,7 +6,10 @@ function RightSideBookModal({ bookData }) {
   const { currentUser } = useCurrentUser();
   return (
     <div className="flex-1 px-2 pt-8 overflow-hidden z-[1] relative ">
-      <div className="flex bg-[#1d2629] h-full rounded rounded-tl-3xl rounded-tr-3xl">
+      <div
+        className="flex bg-[#1d2629] h-full rounded rounded-tl-3xl rounded-tr-3xl "
+        style={{ overflow: "hidden" }}
+      >
         <div className="w-1/2  relative pl-5 px-5 py-5 flex flex-col gap-y-5">
           <div className="w-24 h-24 rounded-full flex items-center justify-center bg-[#32414a] " />
           <div

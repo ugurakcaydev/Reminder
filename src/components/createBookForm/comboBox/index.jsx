@@ -3,15 +3,23 @@ import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import "../../../assets/css/tailwind.css";
 import PropTypes from "prop-types";
+import { on } from "rsuite/esm/DOMHelper";
 
 // eslint-disable-next-line react/prop-types
 export default function ComboBox({ array, title, selectedValue, onChange }) {
+  const [selectedValueBox, setSelectedValueBox] = useState(selectedValue);
   return (
     <div className="flex-1  group relative items-start justify-start border border-[#32414a] rounded-lg   focus-within:shadow-custom ">
-      <Listbox value={selectedValue} onChange={onChange}>
+      <Listbox
+        value={selectedValueBox}
+        onChange={(value) => {
+          onChange(value);
+          setSelectedValueBox(value);
+        }}
+      >
         <div className="relative h-full">
           <Listbox.Button className="relative w-full cursor-default rounded-lg  bg-[#1d2629] py-2 pl-3 pr-10 text-left shadow-md  focus:outline-none  sm:text-sm">
-            <span className="block truncate">{selectedValue}</span>
+            <span className="block truncate">{selectedValueBox}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"></span>
           </Listbox.Button>
           <Transition
@@ -26,9 +34,7 @@ export default function ComboBox({ array, title, selectedValue, onChange }) {
                   key={itemIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-5 pr-4 ${
-                      active
-                        ? "bg-[#2d3b45] text-[color:var(--color-base)]"
-                        : "text-[color:var(--color-base)]"
+                      active ? "bg-[#2d3b45] text-white" : "text-white"
                     }`
                   }
                   value={item}
