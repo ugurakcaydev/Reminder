@@ -158,8 +158,10 @@ export const GetAllUser = async () => {
   }
 };
 
-export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _hours, _emails }) => {
+export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _hours, _invitedPeople }) => {
+
   try {
+    let _emails = _invitedPeople.map(person => person.email);
     const response = await fetch(
       `http://localhost:5206/api/Meeting/Create-Meeting`,
       {
@@ -174,16 +176,18 @@ export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _h
           Year: _year,
           Month: _month,
           Day: _day,
-          Hours: _hours,
+          Hours: _hours.toString(),
           Emails: _emails
 
 
         }), // body data type must match "Content-Type" header
       }
     );
-    console.log(_hours)
-    const allJsonCommand = await response.json();
-    return allJsonCommand;
+
+    console.log(_emails);
+    const value = await response.json();
+    console.log(value)
+    return value;
 
 
 

@@ -39,7 +39,7 @@ function RightSideBookModal({ bookData }) {
             <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
             <div className="w-[70%] h-3 rounded-full mt-3 bg-[#32414a]" />
           </div>
-          <button onClick={() => { MeetCreate({ _meetingName: bookData.title, _year: "", _month: "", _day: "", _hours: (bookData.hour + bookData.minuets), _emails: bookData.invitedPeople, _token: currentUser.usertoken }) }}>gönder</button>
+          <button onClick={() => { MeetCreate({ _meetingName: bookData.title, _year: "2112", _month: "12", _day: "8", _hours: bookData.hour, _invitedPeople: bookData.invitedPeople, _token: currentUser.usertoken }) }}>gönder</button>
         </div>
         <div className="flex-1 bg-[#1d2629]  p-4 rounded-tr-3xl border-l-2 border-l-[#2d3b45] flex flex-col gap-y-3 overflow-auto">
           {bookData?.invitedPeople.map((p, i) => (

@@ -13,8 +13,8 @@ function CreateBooksModals({ close }) {
   const [bookData, setBookData] = useState({
     title: currentUser.usermail[0].toUpperCase(),
     hour: 1,
-    minuets:0,
-    invitedPeople:[],
+    minuets: 0,
+    invitedPeople: [],
   });
   const pages = Array.from({ length: pageCount }, (_, index) => index);
   function changePage(selectedIndex) {
@@ -79,7 +79,7 @@ function CreateBooksModals({ close }) {
               })}
           </div>
         </div>
-        <RightSideBookModal bookData={bookData}/>
+        <RightSideBookModal bookData={bookData} />
       </div>
     </div>
   );
