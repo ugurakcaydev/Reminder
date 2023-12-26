@@ -5,35 +5,32 @@ import { bookDateHours, bookDateMinuets } from "../../../const/const";
 import PropTypes from "prop-types";
 function SelectBookHour({ bookData, setBookData }) {
   const [showHours, setShowHours] = useState(false);
-  const [selectBookingHour, setSelectBookingHour] = useState(bookDateHours[1]);
-  const [selectBookingMinuets, setSelectBookingMinuets] = useState(
+  let [selectBookingHour, setSelectBookingHour] = useState(bookDateHours[1]);
+  let [selectBookingMinuets, setSelectBookingMinuets] = useState(
     bookDateMinuets[0]
   );
-
   const [isValid, setIsValid] = useState(true);
   function showHoursFunction() {
     setShowHours(!showHours);
   }
 
+  function checkHourAndMinuets(_selectedHour, _selectedMinuets) {
+    if (_selectedHour == 0 && _selectedMinuets == 0) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setSelectBookingHour(_selectedHour);
+      setSelectBookingMinuets(_selectedMinuets);
+      showHoursFunction();
+      setBookData({
+        ...bookData,
+        hour: _selectedHour,
+        minuets: _selectedMinuets,
+      });
+    }
+  }
+
   useEffect(() => {}, [selectBookingHour, selectBookingMinuets]);
-  const setHour = (value) => {
-    if (selectBookingMinuets == 0 && value == 0) {
-      setIsValid(false);
-    } else {
-      setIsValid(true);
-      setSelectBookingHour(value);
-      setBookData({ ...bookData, hour: value });
-    }
-  };
-  const setMinuets = (value) => {
-    if (selectBookingHour == 0 && value == 0) {
-      setIsValid(false);
-    } else {
-      setIsValid(true);
-      setSelectBookingMinuets(value);
-      setBookData({ ...bookData, minuets: value });
-    }
-  };
 
   return (
     <div className=" flex flex-col gap-y-2 min-h-[120px] mb-4">
@@ -41,8 +38,9 @@ function SelectBookHour({ bookData, setBookData }) {
       <div className="flex ">
         <div
           onClick={(event) => {
-            event.preventDefault(); // Prevent default form submission behavior
+            event.preventDefault();
             showHoursFunction();
+            setIsValid(true)
           }}
           className={classNames(
             "rounded-lg w-full group overflow-auto border border-[#32414a] bg-[#232E35]  hover:bg-[#2d3b45] ",
@@ -78,10 +76,10 @@ function SelectBookHour({ bookData, setBookData }) {
               <div className="w-full flex justify-center items-center  gap-x-3">
                 <ComboBox
                   array={bookDateHours}
-                  title={"saat"}
+                  title={"hours"}
                   selectedValue={selectBookingHour}
                   onChange={(value) => {
-                    setHour(value);
+                    selectBookingHour = value;
                   }}
                 />
                 <ComboBox
@@ -89,7 +87,7 @@ function SelectBookHour({ bookData, setBookData }) {
                   title={"dakika"}
                   selectedValue={selectBookingMinuets}
                   onChange={(value) => {
-                    setMinuets(value);
+                    selectBookingMinuets = value;
                   }}
                 />
               </div>
@@ -116,8 +114,7 @@ function SelectBookHour({ bookData, setBookData }) {
               <div className="w-full flex items-center gap-x-3 justify-end p-2">
                 <button
                   onClick={(event) => {
-                    // Prevent default form submission behavior
-                    showHoursFunction();
+                    showHoursFunction();                 
                     event.preventDefault();
                   }}
                   className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]"
@@ -126,9 +123,10 @@ function SelectBookHour({ bookData, setBookData }) {
                 </button>
                 <button
                   onClick={(event) => {
-                    setIsValid(true);
-                    showHoursFunction();
-
+                    checkHourAndMinuets(
+                      selectBookingHour,
+                      selectBookingMinuets
+                    );
                     event.preventDefault();
                   }}
                   className="bg-[color:var(--color-primary)] rounded-full px-4 py-1"
