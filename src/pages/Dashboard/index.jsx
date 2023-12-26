@@ -1,5 +1,7 @@
 import { setModal } from "../../store/modal/actions";
+
 function Dashboard() {
+
   return (
     <div className="w-full h-[80vh]  flex gap-x-5  px-5">
       <div className="dashboardleft w-[70%]">
@@ -115,6 +117,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
+import { useCurrentUser } from "../../../store/currentUser/hooks";
+import { MeetCreate } from "../../../api/server";
 
 function RightSideBookModal({ bookData }) {
+  const { currentUser } = useCurrentUser();
   return (
     <div className="flex-1 px-2 pt-8 overflow-hidden z-[1] relative ">
       <div className="flex bg-[#1d2629] h-full rounded rounded-tl-3xl rounded-tr-3xl">
@@ -33,6 +36,7 @@ function RightSideBookModal({ bookData }) {
             <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
             <div className="w-[70%] h-3 rounded-full mt-3 bg-[#32414a]" />
           </div>
+          <button onClick={() => { MeetCreate({ _meetingName: bookData.title, _year: "", _month: "", _day: "", _hours: (bookData.hour + bookData.minuets), _emails: bookData.invitedPeople, _token: currentUser.usertoken }) }}>gönder</button>
         </div>
         <div className="flex-1 bg-[#1d2629]  p-4 rounded-tr-3xl border-l-2 border-l-[#2d3b45] flex flex-col gap-y-3 overflow-auto">
           {bookData?.invitedPeople.map((p, i) => (
@@ -44,7 +48,9 @@ function RightSideBookModal({ bookData }) {
             </div>
           ))}
         </div>
+
       </div>
+
     </div>
   );
 }

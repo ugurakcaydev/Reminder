@@ -158,6 +158,41 @@ export const GetAllUser = async () => {
   }
 };
 
+export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _hours, _emails }) => {
+  try {
+    const response = await fetch(
+      `http://localhost:5206/api/Meeting/Create-Meeting`,
+      {
+        method: "POST",
+
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          MeetingName: _meetingName,
+          Year: _year,
+          Month: _month,
+          Day: _day,
+          Hours: _hours,
+          Emails: _emails
+
+
+        }), // body data type must match "Content-Type" header
+      }
+    );
+    console.log(_hours)
+    const allJsonCommand = await response.json();
+    return allJsonCommand;
+
+
+
+  } catch (error) {
+    console.error(error);
+
+  }
+};
+
 /**
  * *DELETE COMMENT
  * ! Çalışmıyor sebebi navigate olabilir.
