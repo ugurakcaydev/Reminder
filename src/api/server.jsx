@@ -189,12 +189,36 @@ export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _h
     console.log(value)
     return value;
 
-
-
   } catch (error) {
     console.error(error);
 
   }
+};
+
+export const GetAllMeetings = async (_token) => {
+
+  try {
+    const response = await fetch(
+      "http://localhost:5206/api/Meeting/Get-All-Meetings",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const allJsonCommand = await response.json();
+    const value = allJsonCommand.$values;
+    return value;
+
+
+
+  } catch (error) {
+    console.log(error)
+  }
+
 };
 
 /**

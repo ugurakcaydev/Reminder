@@ -33,8 +33,22 @@ function LoginRegisterLayout({ title }) {
             </div>
           </div>
           <div className="w-[1px] h-auto bg-[#a0a0a0]" />
+          {/**Giriş Sayfası - Sağ Kısım */}
           <div className="w-1/2 ">
-            <div className="flex flex-col  px-8 py-5 text-center break-words">
+            <form className="flex flex-col  px-8 py-5 text-center break-words"
+              onSubmit={async (event) => {
+                event.preventDefault();
+                const { loginSuccess } = await LoginUser({
+                  _email: email,
+                  _password: password,
+                });
+                if (loginSuccess) {
+                  navigate("/dashboard");
+                } else {
+                  console.log("giriş başarısız");
+                }
+              }}
+            >
               <div>
                 {title === "register" ? (
                   <>
@@ -136,6 +150,8 @@ function LoginRegisterLayout({ title }) {
                     }}
                     className="bg-[#616161] rounded-lg py-2 pl-2"
                     type={show ? "text" : "password"}
+                    placeholder="Şifreniz"
+
                   />
                 </div>
 
@@ -176,23 +192,35 @@ function LoginRegisterLayout({ title }) {
                     Kayıt Ol
                   </Link>
                 ) : (
-                  <Link
-                    // to={"/dashboard"}
-                    className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
-                    onClick={async () => {
-                      const { loginSuccess } = await LoginUser({
-                        _email: email,
-                        _password: password,
-                      });
-                      if (loginSuccess) {
-                        navigate("/dashboard");
-                      } else {
-                        console.log("giriş başrısız");
-                      }
-                    }}
-                  >
-                    Giriş Yap
-                  </Link>
+                  <>
+                    <input
+                      className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
+                      type="submit"
+                      value="Giriş Yap" />
+
+
+                    {/*
+                      Buradaki kodlar form etiketinin kendisine aktarılmış ve bu kısımdaki kodlar yerine üst kısımda 
+                      bulunan input eklenmiştir.
+                    <Link
+                      // to={"/dashboard"}
+                      className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
+                      onClick={async () => {
+                        const { loginSuccess } = await LoginUser({
+                          _email: email,
+                          _password: password,
+                        });
+                        if (loginSuccess) {
+                          navigate("/dashboard");
+                        } else {
+                          console.log("giriş başrısız");
+                        }
+                      }}
+                    >
+                      Giriş Yap
+                    </Link> */}
+                  </>
+
                 )}
 
                 {title === "login" ? (
@@ -204,13 +232,15 @@ function LoginRegisterLayout({ title }) {
                 ) : (
                   <div className="text-[#D4DBE0]">
                     Zaten hesabınız var mı?{" "}
-                    <Link to={"/login"} className="text-tgold hover:underline">
+                    <Link
+                      to={"/login"}
+                      className="text-tgold hover:underline">
                       Giriş yap
                     </Link>
                   </div>
                 )}
               </div>
-            </div>
+            </form>
           </div>
         </div>
         {title === "login" ? (
@@ -230,19 +260,19 @@ function LoginRegisterLayout({ title }) {
             </svg>
             <div className="text-left">
               <span className="font-semibold text-xl">
-              Bir toplantıya katılmanız mı gerekiyor?
+                Bir toplantıya katılmanız mı gerekiyor?
               </span>
               <p className="text-sm text-[#d4dbe0]">
-              Toplantı bulucumuz yardımcı olabilir - kayıt olmanıza gerek yok!{" "}
+                Toplantı bulucumuz yardımcı olabilir - kayıt olmanıza gerek yok!{" "}
                 <a href="" className="text-tgold hover:underline">
-                Toplantımı bul
+                  Toplantımı bul
                 </a>{" "}
               </p>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 }
 
