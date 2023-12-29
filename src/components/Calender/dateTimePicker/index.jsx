@@ -24,7 +24,6 @@ const slotProps = {
 };
 
 export default function DateTimePickerComponent({ setDateTime }) {
-
   return (
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -68,35 +67,11 @@ export default function DateTimePickerComponent({ setDateTime }) {
             disableFuture={false} //o anki günden sonrakileri kapatır
             disableHighlightToday={false} //o anki günü belli eder çerçeveyle
             disablePast={true} //geçmiş günleri disabled yapar güzel özellik
-            //displayWeekNumber={true} //hafta sayılarını gösteriyor ne işe yarar anlamadım pek
-            //fixedWeekNumber={5} //bir sayfada kaç hafta alt alta dizsin onu ayarlıyoruz
-            // focusedView={"day"} //anlamadım arka açık mavi renk
             loading={false} // adı üstünde bir süre sonra false çekilebilir
-            //maxDate={} anlamadım type=any
-            //monthsPerRow={3} anlamadım
             onChange={(value) => {
-              //value.$D günü seçer sayı olarak
-              //value.$y yılı seçer sayı olarak
-              //value.$d Thu Nov olarak yazıyor
               setDateTime(value.$d);
             }}
-            // onFocusedViewChange={(view, hasFocus) => {
-            //   console.log(view, hasFocus); //true false dönüyor hasfocus
-            // }}
-            // onMonthChange={(month)=>{
-            //   console.log(month); //hangi ay olduğunun değerini alabiliyoruz
-            // }}
-            // onViewChange={(view) => {
-            //   console.log(view);
-            // }}
-            // onYearChange={(year)=>{
-            //   console.log(year); // tahmin ediceğin gibi
-            // }}
-            reduceAnimations={false} //geçiş efekti
-            // shouldDisableDate={(day) => {
-            //   console.log(day); //bişe anlamadım
-            //   return true;
-            // }}
+            reduceAnimations={false}
             yearsPerRow={3}
           />
         </Stack>

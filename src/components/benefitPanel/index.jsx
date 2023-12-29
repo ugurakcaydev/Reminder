@@ -5,7 +5,7 @@ function BenefitPanel({ index, title, description }) {
   return (
     <div
       className={classNames(
-        "flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem]   flex flex-col gap-y-3 h-[254px] items-center  max-w-[343.95px]",
+        "flex-1 m-[0.675rem] py-[0.75rem] px-[1.5625rem]   flex flex-col gap-y-3 h-[300px] items-center  max-w-[343.95px]",
         {
           "border-r border-r-[color:var(--color-base)] border-l border-l-[color:var(--color-base)]":
             index == 1,

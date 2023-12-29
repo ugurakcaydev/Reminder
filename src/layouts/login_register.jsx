@@ -181,7 +181,6 @@ function LoginRegisterLayout({ title }) {
                         _email: email,
                         _password: password,
                       });
-                      console.log(registerSuccess, "aa");
                       if (registerSuccess) {
                         navigate("/login");
                       } else {

@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { useCurrentUser } from "../../../store/currentUser/hooks";
 import { MeetCreate } from "../../../api/server";
+import classNames from "classnames";
+import { Button } from "rsuite";
 
 function RightSideBookModal({ bookData }) {
   const { currentUser } = useCurrentUser();
@@ -10,36 +12,56 @@ function RightSideBookModal({ bookData }) {
         className="flex bg-[#1d2629] h-full rounded rounded-tl-3xl rounded-tr-3xl "
         style={{ overflow: "hidden" }}
       >
-        <div className="w-1/2  relative pl-5 px-5 py-5 flex flex-col gap-y-5">
-          <div className="w-24 h-24 rounded-full flex items-center justify-center bg-[#32414a] " />
-          <div
-            className="flex break-words font-semibold text-lg"
-            style={{
-              wordWrap: "break-word",
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
-            }}
-          >
-            {bookData.title}
-          </div>
-          <div className="flex w-fit items-center justify-start gap-x-1 border px-2 py-0.5 rounded-full  border-gray-500">
-            <svg className="w-4 h-4" viewBox="0 0 16 16">
-              <path
-                fill="currentColor"
-                d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 2a6 6 0 100 12A6 6 0 008 2zm0 2c.5 0 1 .4 1 .9V7h1c.5 0 1 .4 1 .9V8c0 .6-.4 1-1 1H8a1 1 0 01-1-.9V5c0-.6.4-1 1-1z"
-              ></path>
-            </svg>
+        <div className="w-1/2  relative px-5 py-6 flex flex-col justify-between">
+          <div className="flex flex-col gap-y-5 w-full">
+            <div className="w-24 h-24 rounded-full flex items-center justify-center bg-[#32414a] " />
+            <div
+              className="flex break-words font-semibold text-lg min-h-[30px]"
+              style={{
+                wordWrap: "break-word",
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-word",
+              }}
+            >
+              {bookData.title}
+            </div>
+            <div className="flex w-fit items-center justify-start gap-x-1 border px-2 py-0.5 rounded-full  border-gray-500">
+              <svg className="w-4 h-4" viewBox="0 0 16 16">
+                <path
+                  fill="currentColor"
+                  d="M8 0a8 8 0 110 16A8 8 0 018 0zm0 2a6 6 0 100 12A6 6 0 008 2zm0 2c.5 0 1 .4 1 .9V7h1c.5 0 1 .4 1 .9V8c0 .6-.4 1-1 1H8a1 1 0 01-1-.9V5c0-.6.4-1 1-1z"
+                ></path>
+              </svg>
+              <div>
+                {bookData.hour == 0 ? "" : bookData.hour + " saat "}
+                {bookData.minuets == 0 ? "" : bookData.minuets + " dakika "}
+              </div>
+            </div>
             <div>
-              {bookData.hour == 0 ? "" : bookData.hour + " saat "}
-              {bookData.minuets == 0 ? "" : bookData.minuets + " dakika "}
+              <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
+              <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
+              <div className="w-[70%] h-3 rounded-full mt-3 bg-[#32414a]" />
             </div>
           </div>
-          <div>
-            <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
-            <div className="w-full h-3 rounded-full mt-3 bg-[#32414a]" />
-            <div className="w-[70%] h-3 rounded-full mt-3 bg-[#32414a]" />
-          </div>
-          <button onClick={() => { MeetCreate({ _meetingName: bookData.title, _year: "2112", _month: "12", _day: "8", _hours: bookData.hour, _invitedPeople: bookData.invitedPeople, _token: currentUser.usertoken }) }}>gönder</button>
+
+          <Button
+            className={classNames("px-3 py-1.5 rounded-full bg-[color:var(--color-primary)] text-base",{
+              "!bg-gray-500 !pointer-events-none !cursor-not-allowed":bookData.invitedPeople.length ===0
+            })}
+            onClick={() => {
+              MeetCreate({
+                _meetingName: bookData.title,
+                _year: "2112",
+                _month: "12",
+                _day: "8",
+                _hours: bookData.hour,
+                _invitedPeople: bookData.invitedPeople,
+                _token: currentUser.usertoken,
+              });
+            }}
+          >
+            Toplantıyı oluştur
+          </Button>
         </div>
         <div className="flex-1 bg-[#1d2629]  p-4 rounded-tr-3xl border-l-2 border-l-[#2d3b45] flex flex-col gap-y-3 overflow-auto">
           {bookData?.invitedPeople.map((p, i) => (
@@ -51,9 +73,7 @@ function RightSideBookModal({ bookData }) {
             </div>
           ))}
         </div>
-
       </div>
-
     </div>
   );
 }

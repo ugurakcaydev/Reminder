@@ -58,7 +58,7 @@ export const LoginUser = async ({ _email, _password }) => {
 
     if (!response.ok) {
       showToast("Kullanıcı adı veya şifre hatalı");
-      console.log("Giriş Hatalı");
+
       return { loginSuccess: false };
     } else {
       const responseJson = await response.json();
@@ -158,10 +158,17 @@ export const GetAllUser = async () => {
   }
 };
 
-export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _hours, _invitedPeople }) => {
-
+export const MeetCreate = async ({
+  _token,
+  _meetingName,
+  _year,
+  _month,
+  _day,
+  _hours,
+  _invitedPeople,
+}) => {
   try {
-    let _emails = _invitedPeople.map(person => person.email);
+    let _emails = _invitedPeople.map((person) => person.email);
     const response = await fetch(
       `http://localhost:5206/api/Meeting/Create-Meeting`,
       {
@@ -177,29 +184,22 @@ export const MeetCreate = async ({ _token, _meetingName, _year, _month, _day, _h
           Month: _month,
           Day: _day,
           Hours: _hours.toString(),
-          Emails: _emails
-
-
+          Emails: _emails,
         }), // body data type must match "Content-Type" header
       }
     );
 
-    console.log(_emails);
     const value = await response.json();
-    console.log(value)
     return value;
-
   } catch (error) {
     console.error(error);
-
   }
 };
 
-export const GetAllMeetings = async (_token) => {
-
+export const GetActiveMeetings = async (_token) => {
   try {
     const response = await fetch(
-      "http://localhost:5206/api/Meeting/Get-All-Meetings",
+      "http://localhost:5206/api/Meeting/Get-Active-Meeting",
       {
         method: "GET",
         headers: {
@@ -211,14 +211,11 @@ export const GetAllMeetings = async (_token) => {
 
     const allJsonCommand = await response.json();
     const value = allJsonCommand.$values;
+
     return value;
-
-
-
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-
 };
 
 /**
