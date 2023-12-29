@@ -52,6 +52,12 @@ function Dashboard() {
             </button>
           </div>
         </section>
+        {meetings.length > 0 && (
+          <div className="w-full flex items-center justify-between  py-4">
+            <p>Oluşturulan toplantı sayısı</p>
+            {meetings.length}
+          </div>
+        )}
         <div className="flex flex-col w-full justify-between text-[color:var(--color-base)]   gap-y-2">
           {loading ? (
             <div>
