@@ -88,7 +88,11 @@ function LeftSideSecondPage({ bookData, setBookData }) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                if (window.confirm("Silmek istediğinize emin misiniz ?")) {
+                if (
+                  window.confirm(
+                    "Davet edilen kullanıcıları temizlemek istediğinize emin misiniz ?"
+                  )
+                ) {
                   setBookData({ ...bookData, invitedPeople: [] });
                   setInvitedPeople([]);
                 }

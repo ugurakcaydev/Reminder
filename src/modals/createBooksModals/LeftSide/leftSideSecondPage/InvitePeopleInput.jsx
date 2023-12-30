@@ -2,8 +2,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { GetAllUser } from "../../../../api/server";
+import { useCurrentUser } from "../../../../store/currentUser/hooks";
 
 export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
+  const { currentUser } = useCurrentUser();
   const [selected, setSelected] = useState(null);
   const [query, setQuery] = useState("");
   const [users, setUsers] = useState([]);
@@ -25,25 +27,35 @@ export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const usersFromServer = await GetAllUser();
-      const usersData = usersFromServer.map((user) => ({
-        id: user.Id,
-        email: user.Email,
-      }));
-      setUsers(usersData);
+      try {
+        const usersFromServer = await GetAllUser();
+        const usersData = usersFromServer.map((user) => ({
+          id: user.Id,
+          email: user.Email,
+        }));
+        setUsers(usersData);
+      } catch (error) {
+        console.error(error, "hata");
+      }
     };
 
     fetchUsers();
   }, []);
-  const filteredUsers =
-    query === ""
-      ? users
-      : users.filter((user) =>
-          user.email
-            .toLowerCase()
-            .replace(/\s+/g, "")
-            .includes(query.toLowerCase().replace(/\s+/g, ""))
-        );
+
+  const filteredUsers = users.filter((user) => {
+    const isDifferentUser = currentUser && user.id !== currentUser.userId;
+
+    if (isDifferentUser) {
+      const matchesQuery = user.email
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .includes(query.toLowerCase().replace(/\s+/g, ""));
+
+      return matchesQuery;
+    }
+
+    return false;
+  });
   return (
     <div className="relative">
       <Combobox value={selected?.email || ""} onChange={setSelected}>

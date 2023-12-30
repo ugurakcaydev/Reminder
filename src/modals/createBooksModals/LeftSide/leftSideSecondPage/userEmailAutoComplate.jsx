@@ -8,7 +8,7 @@ const UserEmailAutoComplete = ({ users }) => {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
- 
+
   return (
     <div className="rounded-lg group overflow-auto border border-[#32414a] bg-[#1d2629]  ">
       <div className="w-full  overflow-auto ">
@@ -20,7 +20,11 @@ const UserEmailAutoComplete = ({ users }) => {
             onChange={handleChange}
             placeholder="Kelimeyi yazın..."
           />
-          <UserEmailSuggestions users={users} inputValue={inputValue} />
+          <UserEmailSuggestions
+            users={users}
+            inputValue={inputValue}
+           
+          />
         </div>
       </div>
     </div>

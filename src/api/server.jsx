@@ -218,6 +218,27 @@ export const GetActiveMeetings = async (_token) => {
   }
 };
 
+export const DeleteMeeting = async (_token, _meetingId) => {
+  try {
+    const response = await fetch(
+      "http://localhost:5206/api/Meeting/Disactive-Meeting-Update",
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          meetingId: _meetingId,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const value = await response.json();
+    return value;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 /**
  * *DELETE COMMENT
  * ! Çalışmıyor sebebi navigate olabilir.

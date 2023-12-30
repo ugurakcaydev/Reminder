@@ -5,8 +5,10 @@ const UserEmailSuggestions = ({ users, inputValue }) => {
   }
 
   const matchingUsers = users.filter((user) => {
-    const emailPrefix = user.email.split("@")[0]; // '@' işaretinden önceki kısmı al
-    return emailPrefix.includes(inputValue);
+    // Kendi hesabınızı kontrol et ve filtrele
+    return (
+      user.email.toLowerCase().startsWith(inputValue.toLowerCase()) 
+    );
   });
 
   const suggestions = matchingUsers.slice(0, 5);

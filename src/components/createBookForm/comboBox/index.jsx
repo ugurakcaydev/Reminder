@@ -46,7 +46,7 @@ export default function ComboBox({ array, title, selectedValue, onChange }) {
                           selected ? "font-medium" : "font-normal"
                         }`}
                       >
-                        {title == "hours" ? `${item} saat` : `${item} dakika`}
+                        {title == "saat" ? `${item} saat` : `${item} dakika`}
                       </span>
                     </>
                   )}

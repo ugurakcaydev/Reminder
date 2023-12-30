@@ -1,5 +1,5 @@
 import { setModal } from "../../store/modal/actions";
-import { GetActiveMeetings } from "../../api/server";
+import { DeleteMeeting, GetActiveMeetings } from "../../api/server";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import { useEffect, useState } from "react";
 import BookingButtons from "../../components/bookingButtons";
@@ -13,7 +13,6 @@ function Dashboard() {
     "M11 0a1 1 0 011 1h2a2 2 0 012 2v11a2 2 0 01-2 2H2a2 2 0 01-2-2V3c0-1.1.9-2 2-2h2a1 1 0 112 0h4a1 1 0 011-1zm3 8H2v6h12V8zm-9 2a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM4 3H2v3h12V3h-2a1 1 0 01-2 0H6a1 1 0 11-2 0z",
     "M12 0a3 3 0 1 1-1.87 5.35l-3.2 2a3.01 3.01 0 0 1 0 1.3l3.2 2a3 3 0 1 1-1.06 1.7l-3.2-2a3 3 0 1 1 0-4.7l3.2-2A3.01 3.01 0 0 1 12 0Zm0 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm8-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z",
     "M10.3.3a1 1 0 011.4 0l4 4c.4.4.4 1 0 1.4l-10 10a1 1 0 01-.7.3H1a1 1 0 01-1-1v-4c0-.3.1-.5.3-.7zM8 5.4l-6 6V14h2.6l6-6L8 5.4zm3-3L9.4 4 12 6.6 13.6 5 11 2.4z",
-    "M8 12a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4zm0-6a2 2 0 110 4 2 2 0 010-4z",
   ];
   useEffect(() => {
     const fetchData = async () => {
@@ -52,10 +51,10 @@ function Dashboard() {
             </button>
           </div>
         </section>
-        {meetings.length > 0 && (
+        {meetings?.length > 0 && (
           <div className="w-full flex items-center justify-between  py-4">
             <p>Oluşturulan toplantı sayısı</p>
-            {meetings.length}
+            {meetings?.length}
           </div>
         )}
         <div className="flex flex-col w-full justify-between text-[color:var(--color-base)]   gap-y-2">
@@ -65,7 +64,7 @@ function Dashboard() {
             </div>
           ) : (
             <>
-              {currentUser && meetings.length === 0 ? (
+              {currentUser && meetings?.length === 0 ? (
                 <div className="flex flex-col items-center justify-center text-xl font-semibold w-full min-h-[300px] bg-[color:var(--bg-base-secondary)] rounded-lg gap-y-5">
                   <p>İlk toplantınızı şimdi oluşturun..</p>
                   <button
@@ -84,18 +83,46 @@ function Dashboard() {
                     <div className="flex items-center justify-start gap-x-5">
                       <div className="bg-gray-300 rounded-full w-12 h-12 text-center flex items-center justify-center" />
 
-                      <div className="flex flex-col justify-center items-start gap-y-1">
-                        <p>{meeting.UserName}</p>
-                        <p>{meeting.Email}</p>
+                      <div className="flex flex-col justify-center items-start ">
+                        <p>{meeting.MeetingName}</p>
+                        <p className="text-[color:var(--color-primary)]">
+                          {meeting.Email}
+                        </p>
                       </div>
                     </div>
-                    <div className="text-center">{meeting.MeetingName}</div>
+
                     <div className="flex  items-center justify-end ">
                       {butttonSvgPath?.map((path, index) => (
                         <div key={index}>
                           <BookingButtons path={path} index={index} />
                         </div>
                       ))}
+                      <button
+                        onClick={(e) => {
+                          if (
+                            window.confirm(
+                              `${meeting.MeetingName} adlı toplantıyı silmek istediğinize emin misiniz ?`
+                            )
+                          ) {
+                            DeleteMeeting(currentUser.usertoken, meeting.Id);
+                            window.location.reload();
+                          }
+                          e.preventDefault();
+                        }}
+                        className="w-[2rem] h-[2rem] rounded-full p-.5 hover:bg-[color:var(--bg-secondary)] flex items-center justify-center "
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          className="bi bi-trash text-red-500"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
                 ))
@@ -105,7 +132,12 @@ function Dashboard() {
         </div>
       </div>
       <div className="dashboardright flex-1 flex flex-col px-2 gap-y-4">
-        <button className="w-full rounded-full py-1.5 flex items-center justify-center bg-[color:var(--color-primary)]">
+        <button
+          onClick={() => {
+            setModal("createBooks");
+          }}
+          className="w-full rounded-full py-1.5 flex items-center justify-center bg-[color:var(--color-primary)]"
+        >
           Rezervasyon sayfası oluştur
         </button>
         <div className="flex items-center justify-start p-2 rounded-md gap-x-3 bg-[color:var(--bg-secondary)] transition-all duration-500">

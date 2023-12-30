@@ -6,6 +6,21 @@ import { Button } from "rsuite";
 
 function RightSideBookModal({ bookData }) {
   const { currentUser } = useCurrentUser();
+  const createMeeting = async () => {
+    await MeetCreate({
+      _meetingName: bookData.title,
+      _year: "2112",
+      _month: "12",
+      _day: "8",
+      _hours: bookData.hour,
+      _invitedPeople: bookData.invitedPeople,
+      _token: currentUser.usertoken,
+    });
+
+    // MeetCreate fonksiyonu tamamlandıktan sonra sayfayı yenile
+    window.location.reload();
+  };
+
   return (
     <div className="flex-1 px-2 pt-8 overflow-hidden z-[1] relative ">
       <div
@@ -45,20 +60,14 @@ function RightSideBookModal({ bookData }) {
           </div>
 
           <Button
-            className={classNames("px-3 py-1.5 rounded-full bg-[color:var(--color-primary)] text-base",{
-              "!bg-gray-500 !pointer-events-none !cursor-not-allowed":bookData.invitedPeople.length ===0
-            })}
-            onClick={() => {
-              MeetCreate({
-                _meetingName: bookData.title,
-                _year: "2112",
-                _month: "12",
-                _day: "8",
-                _hours: bookData.hour,
-                _invitedPeople: bookData.invitedPeople,
-                _token: currentUser.usertoken,
-              });
-            }}
+            className={classNames(
+              "px-3 py-1.5 rounded-full bg-[color:var(--color-primary)] text-base",
+              {
+                "!bg-gray-500 !pointer-events-none !cursor-not-allowed":
+                  bookData.invitedPeople.length === 0,
+              }
+            )}
+            onClick={createMeeting}
           >
             Toplantıyı oluştur
           </Button>
