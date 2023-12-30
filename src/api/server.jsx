@@ -161,10 +161,8 @@ export const GetAllUser = async () => {
 export const MeetCreate = async ({
   _token,
   _meetingName,
-  _year,
-  _month,
-  _day,
   _hours,
+  _meetingDetailDtos,
   _invitedPeople,
 }) => {
   try {
@@ -180,16 +178,15 @@ export const MeetCreate = async ({
         },
         body: JSON.stringify({
           MeetingName: _meetingName,
-          Year: _year,
-          Month: _month,
-          Day: _day,
-          Hours: _hours.toString(),
+          Hours: _hours,
+          MeetingDetailDtos: _meetingDetailDtos,
           Emails: _emails,
         }), // body data type must match "Content-Type" header
       }
     );
 
     const value = await response.json();
+    console.log(value)
     return value;
   } catch (error) {
     console.error(error);

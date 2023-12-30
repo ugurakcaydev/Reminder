@@ -15,6 +15,8 @@ function CreateBooksModals({ close }) {
     hour: 1,
     minuets: 0,
     invitedPeople: [],
+    meetingDetailDtos: []
+
   });
   const pages = Array.from({ length: pageCount }, (_, index) => index);
   function changePage(selectedIndex) {

@@ -1,6 +1,6 @@
 import ReservationSystem from "../selectDateAndTime";
 
-function SelectBookDays() {
+function SelectBookDays({ bookData, setBookData }) {
   return (
     <div className=" flex flex-col gap-y-2 ">
       <div className="w-full flex items-center justify-between">
@@ -19,7 +19,7 @@ function SelectBookDays() {
           <div className=" w-full h-36 px-5 overflow-y-scroll">
             <div className=" w-full flex flex-col  items-center justify-between ">
               <div className="w-full ">
-                <ReservationSystem />
+                <ReservationSystem bookData={bookData} setBookData={setBookData} />
               </div>
             </div>
           </div>

@@ -1,8 +1,26 @@
 import classNames from "classnames";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-function BookingButtons({ path, index }) {
+function BookingButtons({ path, index, meeting }) {
+  const router = useNavigate()
+  function checkOnClick(index) {
+    switch (index) {
+      case 0: {
+        console.log(meeting.Id);
+        router(`/dashboard/${meeting.Id}`, { state: { meetingKey: meeting } });
+
+        break;
+      }
+    }
+
+  }
+
   return (
     <button
+      onClick={() => {
+        checkOnClick(index)
+
+      }}
       className={classNames(
         "w-[2rem] h-[2rem] rounded-full p-.5 hover:bg-[color:var(--bg-secondary)] flex items-center justify-center ",
         {

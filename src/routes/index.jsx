@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import Pricing from "../pages/Pricing";
 import LoginPage from "../pages/LoginPage";
 import Comments from "../pages/CommentsPage";
+import SurveyPage from "../pages/SurveyPage";
 
 const routes = createBrowserRouter([
   {
@@ -45,8 +46,15 @@ const routes = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
+
     ],
+
   },
+  {
+    path: "/dashboard/:meetingID",
+    element: <SurveyPage />,
+  },
+
 
   {
     path: "/login",
@@ -56,6 +64,10 @@ const routes = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  // {
+  //   path: "/survey",
+  //   element: <SurveyPage />
+  // },
   {},
 ]);
 export default routes;

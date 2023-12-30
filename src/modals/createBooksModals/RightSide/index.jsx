@@ -8,17 +8,21 @@ function RightSideBookModal({ bookData }) {
   const { currentUser } = useCurrentUser();
   const createMeeting = async () => {
     await MeetCreate({
-      _meetingName: bookData.title,
-      _year: "2112",
-      _month: "12",
-      _day: "8",
-      _hours: bookData.hour,
-      _invitedPeople: bookData.invitedPeople,
+      // _meetingName: bookData.title,
+      // _days: "8",
+      // _hours: bookData.hour,
+      // _invitedPeople: bookData.invitedPeople,
+      // _token: currentUser.usertoken,
       _token: currentUser.usertoken,
+      _meetingName: bookData.title,
+      _hours: bookData.hour,
+      _meetingDetailDtos: bookData.meetingDetailDtos,
+      _invitedPeople: bookData.invitedPeople,
     });
+    console.log(bookData);
 
     // MeetCreate fonksiyonu tamamlandıktan sonra sayfayı yenile
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -68,6 +72,7 @@ function RightSideBookModal({ bookData }) {
               }
             )}
             onClick={createMeeting}
+
           >
             Toplantıyı oluştur
           </Button>

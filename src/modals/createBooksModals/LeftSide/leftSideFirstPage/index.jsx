@@ -18,7 +18,7 @@ function LeftSideFirstPage({ onClick, bookData, setBookData }) {
           </div>
           <div className="flex flex-col text-left ">
             <SelectBookHour bookData={bookData} setBookData={setBookData} />
-            <SelectBookDays />
+            <SelectBookDays bookData={bookData} setBookData={setBookData} />
           </div>
         </form>
         <div className="mt-10 flex text-center justify-center items-center">

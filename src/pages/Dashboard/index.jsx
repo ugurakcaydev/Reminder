@@ -94,7 +94,7 @@ function Dashboard() {
                     <div className="flex  items-center justify-end ">
                       {butttonSvgPath?.map((path, index) => (
                         <div key={index}>
-                          <BookingButtons path={path} index={index} />
+                          <BookingButtons path={path} index={index} meeting={meeting} />
                         </div>
                       ))}
                       <button
