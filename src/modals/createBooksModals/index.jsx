@@ -25,8 +25,7 @@ function CreateBooksModals({ close }) {
   const leftSidePages = [
     <LeftSideFirstPage
       key="page1"
-      bookData={bookData}
-      setBookData={setBookData}
+
     />,
     <LeftSideSecondPage
       key="page2"

@@ -3,9 +3,12 @@ import { useCurrentUser } from "../../../store/currentUser/hooks";
 import classNames from "classnames";
 import { Button } from "rsuite";
 import { MeetCreate } from "../../../api/BookData";
+import { useBookData } from "../../../store/bookData/hook";
 
-function RightSideBookModal({ bookData }) {
+function RightSideBookModal() {
   const { currentUser } = useCurrentUser();
+  const bookData  = useBookData()
+  
   const createMeeting = async () => {
     await MeetCreate({
       _token: currentUser.usertoken,
@@ -16,7 +19,7 @@ function RightSideBookModal({ bookData }) {
       _invitedPeople: bookData.invitedPeople,
     });
     console.log(bookData, "bookdata");
-    //window.location.reload();
+    window.location.reload();
   };
 
   return (

@@ -4,10 +4,12 @@ import { useCurrentUser } from "../../store/currentUser/hooks";
 import { useEffect, useState } from "react";
 import BookingButtons from "../../components/bookingButtons";
 import { DeleteMeeting, GetActiveMeetings } from "../../api/BookData";
+import { useBookData } from "../../store/bookData/hook";
 
 function Dashboard() {
   const [meetings, setMeetings] = useState([]);
   const { currentUser } = useCurrentUser();
+  const bookData  = useBookData()
   const [loading, setLoading] = useState(false);
   const butttonSvgPath = [
     "M5 3h1a1 1 0 01.12 2H5a3 3 0 00-.18 6H6a1 1 0 01.12 2H5a5 5 0 01-.22-10H6zm6 0a5 5 0 010 10h-1a1 1 0 010-2h1a3 3 0 000-6h-1a1 1 0 110-2zm0 4a1 1 0 01.12 2H4.88a1 1 0 010-2H11z",
@@ -32,6 +34,8 @@ function Dashboard() {
 
     fetchData();
   }, [currentUser.usertoken]);
+
+  console.log(bookData.title,"aaaaa");
 
   return (
     <div className="w-full  flex gap-x-5  px-5">

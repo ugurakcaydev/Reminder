@@ -221,3 +221,83 @@ export const userComments = [
 
 export const bookDateHours = [0, 1, 2, 3, 4, 8, 12, 24];
 export const bookDateMinuets = [0, 10, 15, 20, 35, 40, 45, 50];
+
+// export const daysOfWeek = [
+//   "Pazartesi",
+//   "Salı",
+//   "Çarşamba",
+//   "Perşembe",
+//   "Cuma",
+//   "Cumartesi",
+//   "Pazar",
+// ];
+
+export const reservationTimeData = [
+  {
+    name: "Pazartesi",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Salı",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Çarşamba",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Perşembe",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Cuma",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Cumartesi",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+  {
+    name: "Pazar",
+    startTime: "09:00",
+    endTime: "17:00",
+    checked: false,
+  },
+];
+//  export const morningTimes = [
+//     "8:00",
+//     "8:30",
+//     "9:00",
+//     "9:30",
+//     "10:00",
+//     "10:30",
+//     "11:00",
+//     "11:30",
+//   ];
+//  export const afternoonTimes = [
+//     "12:00",
+//     "12:30",
+//     "13:00",
+//     "13:30",
+//     "14:00",
+//     "14:30",
+//     "15:00",
+//     "15:30",
+//     "16:00",
+//     "16:30",
+//     "17:00",
+//     "17:30",
+//     "18:00",
+//   ];

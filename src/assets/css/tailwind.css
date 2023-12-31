@@ -12,3 +12,15 @@
 body {
     @apply bg-[color:var(--background-primary)] text-[color:var(--color-base)] text-[0.938rem] antialiased;
 }
+
+.react-ios-time-picker-main{
+    width: 80px;
+}
+.react-ios-time-picker-input{
+    width: 100%;
+    border: 1px solid #ccc !important;
+    text-align: center;
+}
+.react-ios-time-picker-popup{
+    align-items: center !important;
+}

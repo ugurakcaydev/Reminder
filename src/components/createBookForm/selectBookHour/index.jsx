@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import ComboBox from "../comboBox";
 import { bookDateHours, bookDateMinuets } from "../../../const/const";
 import PropTypes from "prop-types";
-function SelectBookHour({ bookData, setBookData }) {
+import { useBookData } from "../../../store/bookData/hook";
+import { setBookData } from "../../../store/bookData/actions";
+function SelectBookHour() {
   const [showHours, setShowHours] = useState(false);
+  const bookData  = useBookData()
   let [selectBookingHour, setSelectBookingHour] = useState(bookDateHours[1]);
   let [selectBookingMinuets, setSelectBookingMinuets] = useState(
     bookDateMinuets[0]
@@ -30,7 +33,8 @@ function SelectBookHour({ bookData, setBookData }) {
     }
   }
 
-  useEffect(() => {}, [selectBookingHour, selectBookingMinuets]);
+  useEffect(() => {
+  }, [selectBookingHour, selectBookingMinuets]);
 
   return (
     <div className=" flex flex-col gap-y-2 min-h-[120px] mb-4">

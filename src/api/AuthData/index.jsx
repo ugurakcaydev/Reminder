@@ -1,5 +1,6 @@
 import { setCurrentUser } from "../../store/currentUser/actions";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function showToast(message) {
   toast.warning(message, {
     position: toast.POSITION.TOP_CENTER,
@@ -31,7 +32,7 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
       return { registerSuccess: false };
     }
     console.log(response);
-    //const responseJson = await response.json(); // true dönyor
+
     return { registerSuccess: true };
     // return responseJson;
   } catch (error) {
