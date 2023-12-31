@@ -25,7 +25,7 @@ function SelectBookHour({ bookData, setBookData }) {
       setBookData({
         ...bookData,
         hour: _selectedHour,
-        minuets: _selectedMinuets,
+        minutes: _selectedMinuets,
       });
     }
   }
@@ -40,7 +40,7 @@ function SelectBookHour({ bookData, setBookData }) {
           onClick={(event) => {
             event.preventDefault();
             showHoursFunction();
-            setIsValid(true)
+            setIsValid(true);
           }}
           className={classNames(
             "rounded-lg w-full group overflow-auto border border-[#32414a] bg-[#232E35]  hover:bg-[#2d3b45] ",
@@ -114,7 +114,7 @@ function SelectBookHour({ bookData, setBookData }) {
               <div className="w-full flex items-center gap-x-3 justify-end p-2">
                 <button
                   onClick={(event) => {
-                    showHoursFunction();                 
+                    showHoursFunction();
                     event.preventDefault();
                   }}
                   className="hover:underline hover:text-[#f7b32cce] text-[color:var(--color-primary)]"

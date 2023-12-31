@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import LoginRegisterButtons from "../components/loginRegisterButtons";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { CreateUser, LoginUser } from "../api/server";
+import { CreateUser, LoginUser } from "../api/AuthData/index";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 

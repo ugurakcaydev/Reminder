@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Fragment, useEffect, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
-import { GetAllUser } from "../../../../api/server";
+
 import { useCurrentUser } from "../../../../store/currentUser/hooks";
+import { GetAllUser } from "../../../../api/AuthData";
 
 export default function InvitePeopleInput({ invitedPeople, setInvitedPeople }) {
   const { currentUser } = useCurrentUser();

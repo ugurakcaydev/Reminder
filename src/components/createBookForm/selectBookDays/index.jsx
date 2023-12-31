@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ReservationSystem from "../selectDateAndTime";
 
 function SelectBookDays({ bookData, setBookData }) {

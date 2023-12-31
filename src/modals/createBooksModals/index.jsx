@@ -13,7 +13,7 @@ function CreateBooksModals({ close }) {
   const [bookData, setBookData] = useState({
     title: currentUser.usermail[0].toUpperCase(),
     hour: 1,
-    minuets: 0,
+    minutes: 0,
     invitedPeople: [],
     meetingDetailDtos: []
 

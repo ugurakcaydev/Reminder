@@ -1,9 +1,10 @@
 import { Button, Rating } from "@mui/material";
 import { useEffect, useState } from "react";
-import { AddComment, GetAllCommand } from "../../api/server";
+
 // import { Add } from "@mui/icons-material";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import UserComments from "../../components/userComments";
+import { AddComment, GetAllCommand } from "../../api/CommentData";
 
 export default function Comments() {
   const [commentData, setCommentData] = useState([]);

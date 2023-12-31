@@ -1,28 +1,22 @@
 import PropTypes from "prop-types";
 import { useCurrentUser } from "../../../store/currentUser/hooks";
-import { MeetCreate } from "../../../api/server";
 import classNames from "classnames";
 import { Button } from "rsuite";
+import { MeetCreate } from "../../../api/BookData";
 
 function RightSideBookModal({ bookData }) {
   const { currentUser } = useCurrentUser();
   const createMeeting = async () => {
     await MeetCreate({
-      // _meetingName: bookData.title,
-      // _days: "8",
-      // _hours: bookData.hour,
-      // _invitedPeople: bookData.invitedPeople,
-      // _token: currentUser.usertoken,
       _token: currentUser.usertoken,
       _meetingName: bookData.title,
       _hours: bookData.hour,
+      _minutes: bookData.minutes,
       _meetingDetailDtos: bookData.meetingDetailDtos,
       _invitedPeople: bookData.invitedPeople,
     });
-    console.log(bookData);
-
-    // MeetCreate fonksiyonu tamamlandıktan sonra sayfayı yenile
-    // window.location.reload();
+    console.log(bookData, "bookdata");
+    //window.location.reload();
   };
 
   return (
@@ -53,7 +47,7 @@ function RightSideBookModal({ bookData }) {
               </svg>
               <div>
                 {bookData.hour == 0 ? "" : bookData.hour + " saat "}
-                {bookData.minuets == 0 ? "" : bookData.minuets + " dakika "}
+                {bookData.minutes == 0 ? "" : bookData.minutes + " dakika "}
               </div>
             </div>
             <div>
@@ -72,7 +66,6 @@ function RightSideBookModal({ bookData }) {
               }
             )}
             onClick={createMeeting}
-
           >
             Toplantıyı oluştur
           </Button>

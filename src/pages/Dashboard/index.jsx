@@ -1,8 +1,9 @@
 import { setModal } from "../../store/modal/actions";
-import { DeleteMeeting, GetActiveMeetings } from "../../api/server";
+
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import { useEffect, useState } from "react";
 import BookingButtons from "../../components/bookingButtons";
+import { DeleteMeeting, GetActiveMeetings } from "../../api/BookData";
 
 function Dashboard() {
   const [meetings, setMeetings] = useState([]);
@@ -94,7 +95,11 @@ function Dashboard() {
                     <div className="flex  items-center justify-end ">
                       {butttonSvgPath?.map((path, index) => (
                         <div key={index}>
-                          <BookingButtons path={path} index={index} meeting={meeting} />
+                          <BookingButtons
+                            path={path}
+                            index={index}
+                            meeting={meeting}
+                          />
                         </div>
                       ))}
                       <button
