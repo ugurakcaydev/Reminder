@@ -1,44 +1,48 @@
 /* eslint-disable react/prop-types */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { reservationTimeData } from "../../../const/const";
 import { TimePicker } from "react-ios-time-picker";
 import PropTypes from "prop-types";
 const ReservationSystem = (props) => {
   const [defaultDateData, setDefaultDateData] = useState(reservationTimeData);
-
+  const { finalSelectedData } = props;
   const selectedData = useMemo(() => {
     return defaultDateData.filter((item) => item.checked);
   }, [defaultDateData]);
 
-  useMemo(() => {
-    props.finalSelectedData(selectedData);
-  }, [props, selectedData]);
+  useEffect(() => {
+    finalSelectedData(selectedData);
+  }, [finalSelectedData, selectedData]);
 
   const onChange = (day, timeValue, type) => {
-    setDefaultDateData();
-
-    let updatedItems = [];
-    if (type === "start") {
-      updatedItems = defaultDateData.map((data) =>
-        data.name === day.name ? { ...data, startTime: timeValue } : data
-      );
-    } else if (type === "end") {
-      updatedItems = defaultDateData.map((data) =>
-        data.name === day.name ? { ...data, endTime: timeValue } : data
-      );
-    }
-    setDefaultDateData(updatedItems);
+    setDefaultDateData((prevData) => {
+      let updatedItems = [...prevData];
+      if (type === "start") {
+        updatedItems = updatedItems.map((data) =>
+          data.MeetingsDay === day.MeetingsDay
+            ? { ...data, MeetingsStart: timeValue }
+            : data
+        );
+      } else if (type === "end") {
+        updatedItems = updatedItems.map((data) =>
+          data.MeetingsDay === day.MeetingsDay
+            ? { ...data, MeetingsFinish: timeValue }
+            : data
+        );
+      }
+      return updatedItems;
+    });
   };
 
   const CheckBox = (checked, day) => {
     setDefaultDateData(
       defaultDateData.map((data) =>
-        data.name === day.name ? { ...data, checked: checked } : data
+        data.MeetingsDay === day.MeetingsDay
+          ? { ...data, checked: checked }
+          : data
       )
     );
   };
-
-  console.log({ selectedData });
 
   return (
     <>
@@ -54,20 +58,22 @@ const ReservationSystem = (props) => {
                 type="checkbox"
                 onChange={(e) => CheckBox(e.target.checked, day)}
               />
-              <div className="text-left w-20 font-semibold">{day.name}</div>
+              <div className="text-left w-20 font-semibold">
+                {day.MeetingsDay}
+              </div>
               <div className="flex items-center gap-x-2">
                 <TimePicker
                   id="start"
                   className="w-10"
                   onChange={(timeValue) => onChange(day, timeValue, "start")}
-                  value={day.startTime}
+                  value={day.MeetingsStart}
                 />
                 <div className="w-5 h-[1px] bg-white" />
                 <TimePicker
                   id="end"
                   className="w-10"
                   onChange={(timeValue) => onChange(day, timeValue, "end")}
-                  value={day.endTime}
+                  value={day.MeetingsFinish}
                 />
               </div>
             </div>
@@ -80,5 +86,5 @@ const ReservationSystem = (props) => {
 export default ReservationSystem;
 
 ReservationSystem.propTypes = {
-  props: PropTypes.func,
+  props: PropTypes.any,
 };

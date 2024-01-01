@@ -11,7 +11,7 @@ export default function Comments() {
   const [comment, setComment] = useState("");
   const [star, setStar] = useState(5);
   const { currentUser } = useCurrentUser();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleInput = (event) => {
     const textarea = event.target;
@@ -25,11 +25,9 @@ export default function Comments() {
       try {
         setLoading(true);
         const response = await GetAllCommand();
-        // Veri yüklenmesini taklit etmek amacıyla yapılmış bir kod
-        setTimeout(() => {
-          setCommentData(response);
-          setLoading(false);
-        }, 700);
+
+        setCommentData(response);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }

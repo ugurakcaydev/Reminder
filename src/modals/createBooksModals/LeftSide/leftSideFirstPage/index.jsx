@@ -1,22 +1,15 @@
 import SelectBookHour from "../../../../components/createBookForm/selectBookHour";
 import SelectBookDays from "../../../../components/createBookForm/selectBookDays";
 import PropTypes from "prop-types";
-import { setBookData } from "../../../../store/bookData/actions";
-import { useEffect, useState } from "react";
-import { useBookData } from "../../../../store/bookData/hook";
+import { useState } from "react";
 
-function LeftSideFirstPage({ onClick }) {
+function LeftSideFirstPage({ onClick,getMeetingDetailFunction }) {
   const [selectedData, setselectedData] = useState([]);
-  const bookdata = useBookData();
-  console.log(bookdata,"aa");
+
   const finalSelectedData = (data) => {
     setselectedData(data);
+    
   };
-
-  useEffect(() => {
-    console.log({ bookdata });
-  }, [bookdata]);
-
   return (
     <div className="relative">
       <div className="opacity-100 flex flex-col justify-between h-full">
@@ -36,6 +29,7 @@ function LeftSideFirstPage({ onClick }) {
             onClick={(e) => {
               e.preventDefault();
               onClick(1);
+              getMeetingDetailFunction(selectedData)
             }}
             className="rounded-full w-full bg-[color:var(--color-primary)] hover:bg-[#f7b32ce1] relative cursor-pointer font-semibold text-base"
           >
@@ -51,6 +45,7 @@ function LeftSideFirstPage({ onClick }) {
 
 LeftSideFirstPage.propTypes = {
   onClick: PropTypes.func,
+  getMeetingDetailFunction:PropTypes.func
 };
 
 export default LeftSideFirstPage;

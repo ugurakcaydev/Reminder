@@ -4,7 +4,10 @@ import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import InvitePeopleInput from "./InvitePeopleInput";
 import classNames from "classnames";
-function LeftSideSecondPage({ bookData, setBookData }) {
+import { useBookData } from "../../../../store/bookData/hook";
+import { setBookData } from "../../../../store/bookData/actions";
+function LeftSideSecondPage() {
+  const bookData = useBookData()
   const [invitedPeople, setInvitedPeople] = useState(bookData.invitedPeople);
   const changeBookData = (event) => {
     setBookData({ ...bookData, title: event.target.value });

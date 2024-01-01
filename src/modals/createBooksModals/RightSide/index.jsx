@@ -7,8 +7,8 @@ import { useBookData } from "../../../store/bookData/hook";
 
 function RightSideBookModal() {
   const { currentUser } = useCurrentUser();
-  const bookData  = useBookData()
-  
+  const bookData = useBookData();
+
   const createMeeting = async () => {
     await MeetCreate({
       _token: currentUser.usertoken,
@@ -18,7 +18,6 @@ function RightSideBookModal() {
       _meetingDetailDtos: bookData.meetingDetailDtos,
       _invitedPeople: bookData.invitedPeople,
     });
-    console.log(bookData, "bookdata");
     window.location.reload();
   };
 

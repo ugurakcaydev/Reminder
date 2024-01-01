@@ -8,6 +8,7 @@ export const MeetCreate = async ({
 }) => {
   try {
     let _emails = _invitedPeople.map((person) => person.email);
+
     const response = await fetch(
       `http://localhost:5206/api/Meeting/Create-Meeting`,
       {
@@ -23,12 +24,11 @@ export const MeetCreate = async ({
           Minute: _minutes,
           MeetingDetailDtos: _meetingDetailDtos,
           Emails: _emails,
-        }), // body data type must match "Content-Type" header
+        }),
       }
     );
 
     const value = await response.json();
-    console.log(value, "value", _minutes, "minutes");
     return value;
   } catch (error) {
     console.error(error);

@@ -4,38 +4,36 @@ import { useCurrentUser } from "../../store/currentUser/hooks";
 import { useEffect, useState } from "react";
 import BookingButtons from "../../components/bookingButtons";
 import { DeleteMeeting, GetActiveMeetings } from "../../api/BookData";
-import { useBookData } from "../../store/bookData/hook";
 
 function Dashboard() {
   const [meetings, setMeetings] = useState([]);
   const { currentUser } = useCurrentUser();
-  const bookData  = useBookData()
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const butttonSvgPath = [
     "M5 3h1a1 1 0 01.12 2H5a3 3 0 00-.18 6H6a1 1 0 01.12 2H5a5 5 0 01-.22-10H6zm6 0a5 5 0 010 10h-1a1 1 0 010-2h1a3 3 0 000-6h-1a1 1 0 110-2zm0 4a1 1 0 01.12 2H4.88a1 1 0 010-2H11z",
     "M11 0a1 1 0 011 1h2a2 2 0 012 2v11a2 2 0 01-2 2H2a2 2 0 01-2-2V3c0-1.1.9-2 2-2h2a1 1 0 112 0h4a1 1 0 011-1zm3 8H2v6h12V8zm-9 2a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zm3 0a1 1 0 110 2 1 1 0 010-2zM4 3H2v3h12V3h-2a1 1 0 01-2 0H6a1 1 0 11-2 0z",
     "M12 0a3 3 0 1 1-1.87 5.35l-3.2 2a3.01 3.01 0 0 1 0 1.3l3.2 2a3 3 0 1 1-1.06 1.7l-3.2-2a3 3 0 1 1 0-4.7l3.2-2A3.01 3.01 0 0 1 12 0Zm0 12a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm8-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z",
     "M10.3.3a1 1 0 011.4 0l4 4c.4.4.4 1 0 1.4l-10 10a1 1 0 01-.7.3H1a1 1 0 01-1-1v-4c0-.3.1-.5.3-.7zM8 5.4l-6 6V14h2.6l6-6L8 5.4zm3-3L9.4 4 12 6.6 13.6 5 11 2.4z",
   ];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
         const response = await GetActiveMeetings(currentUser.usertoken);
 
-        setTimeout(() => {
-          setMeetings(response);
-          setLoading(false);
-        }, 1000);
+        // Gelen veri varsa hemen durumu güncelle
+        setMeetings(response);
+        setLoading(false);
       } catch (error) {
         console.error(error);
+        setLoading(false); // Hata durumunda da durumu güncelle
       }
     };
 
+    // currentUser.usertoken bağımlılığı ile sadece usertoken değiştiğinde çağrılacaktır.
     fetchData();
   }, [currentUser.usertoken]);
-
-  console.log(bookData.title,"aaaaa");
 
   return (
     <div className="w-full  flex gap-x-5  px-5">
@@ -64,7 +62,7 @@ function Dashboard() {
         )}
         <div className="flex flex-col w-full justify-between text-[color:var(--color-base)]   gap-y-2">
           {loading ? (
-            <div>
+            <div className="w-full min-h-[300px] flex items-center justify-center">
               <span className="loading loading-ring loading-lg"></span>
             </div>
           ) : (

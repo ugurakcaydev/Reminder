@@ -1,38 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LeftSideFirstPage from "./LeftSide/leftSideFirstPage";
 import LeftSideSecondPage from "./LeftSide/leftSideSecondPage";
 import classNames from "classnames";
 import RightSideBookModal from "./RightSide";
-import { useCurrentUser } from "../../store/currentUser/hooks";
+import { useBookData } from "../../store/bookData/hook";
+import { setBookData } from "../../store/bookData/actions";
 
 // eslint-disable-next-line react/prop-types
 function CreateBooksModals({ close }) {
-  const { currentUser } = useCurrentUser();
   const [activePageIndex, setActivePageIndex] = useState(0);
   const pageCount = 2;
-  const [bookData, setBookData] = useState({
-    title: currentUser.usermail[0].toUpperCase(),
-    hour: 1,
-    minutes: 0,
-    invitedPeople: [],
-    meetingDetailDtos: []
+  const bookData = useBookData();
 
-  });
   const pages = Array.from({ length: pageCount }, (_, index) => index);
   function changePage(selectedIndex) {
     setActivePageIndex(selectedIndex);
   }
-  const leftSidePages = [
-    <LeftSideFirstPage
-      key="page1"
 
-    />,
-    <LeftSideSecondPage
-      key="page2"
-      bookData={bookData}
-      setBookData={setBookData}
-    />,
+  function setMeetingDetailFunction(meetingDetailDtos) {
+    setBookData({ ...bookData, meetingDetailDtos: meetingDetailDtos });
+  }
+  const leftSidePages = [
+    <LeftSideFirstPage key="page1" />,
+    <LeftSideSecondPage key="page2" />,
   ];
+
+  useEffect(() => {
+    // console.log({ bookData });
+  }, [bookData]);
 
   return (
     <div className="w-full  max-h-[555px] relative   border-1 border-[#32414a] shadow-md rounded-xl text-[#F4F5F7] block ">
@@ -76,6 +71,9 @@ function CreateBooksModals({ close }) {
               React.cloneElement(leftSidePages[activePageIndex], {
                 onClick: (selectedIndex) => {
                   changePage(selectedIndex);
+                },
+                getMeetingDetailFunction: (value) => {
+                  setMeetingDetailFunction(value);
                 },
               })}
           </div>
