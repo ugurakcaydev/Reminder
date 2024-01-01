@@ -36,7 +36,7 @@ function Dashboard() {
   }, [currentUser.usertoken]);
 
   return (
-    <div className="w-full  flex gap-x-5  px-5">
+    <div className="w-full  flex gap-x-5  ">
       <div className="dashboardleft w-[70%] px-2">
         <section className="w-full flex  justify-between items-center mb-3">
           <div className="flex gap-x-4 items-center">

@@ -85,7 +85,7 @@ export const dashMenu = [
     name: "Dashboard",
   },
   {
-    path: "/bookings",
+    path: "booking",
     name: "Rezervasyonlar",
   },
 ];
