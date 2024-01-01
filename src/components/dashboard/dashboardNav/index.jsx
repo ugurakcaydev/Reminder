@@ -145,7 +145,7 @@ function DashboardNav() {
                               } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                             >
                               {/* {active ? <p>active</p> : <p>active</p>} */}
-                             Faturalandırma
+                              Faturalandırma
                             </button>
                           )}
                         </Menu.Item>

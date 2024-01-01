@@ -15,7 +15,6 @@ export const currentBookData = createSlice({
     _setBookData: (state, action) => {
       return { ...state, ...action.payload };
     },
-    
   },
 });
 

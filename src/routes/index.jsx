@@ -46,15 +46,16 @@ const routes = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
-
+      {
+        path: "booking", // Buradaki "booking" yolunu "/dashboard/booking" yerine "booking" olarak bırakın
+        element: <BookingPage />,
+      },
     ],
-
   },
   {
     path: "/dashboard/:meetingID",
     element: <VotePage />,
   },
-
 
   {
     path: "/login",
@@ -64,10 +65,5 @@ const routes = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
-  // {
-  //   path: "/survey",
-  //   element: <VotePage />
-  // },
-  {},
 ]);
 export default routes;
