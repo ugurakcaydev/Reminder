@@ -6,7 +6,6 @@ function BookingButtons({ path, index, meeting }) {
   function checkOnClick(index) {
     switch (index) {
       case 0: {
-        console.log(meeting.Id);
         router(`/dashboard/${meeting.Id}`, { state: { meetingKey: meeting } });
 
         break;
