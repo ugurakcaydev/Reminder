@@ -77,3 +77,78 @@ export const DeleteMeeting = async (_token, _meetingId) => {
     console.log(error);
   }
 };
+
+//fetch yerine axios ile backend
+// import axios from 'axios';
+
+// export const MeetCreate = async ({
+//   _token,
+//   _meetingName,
+//   _hours,
+//   _minutes,
+//   _meetingDetailDtos,
+//   _invitedPeople,
+// }) => {
+//   try {
+//     let _emails = _invitedPeople.map((person) => person.email);
+
+//     const response = await axios.post(
+//       `http://localhost:5206/api/Meeting/Create-Meeting`,
+//       {
+//         MeetingName: _meetingName,
+//         Hours: _hours,
+//         Minute: _minutes,
+//         MeetingDetailDtos: _meetingDetailDtos,
+//         Emails: _emails,
+//       },
+//       {
+//         headers: {
+//           Authorization: `Bearer ${_token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     return response.data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+// export const GetActiveMeetings = async (_token) => {
+//   try {
+//     const response = await axios.get(
+//       "http://localhost:5206/api/Meeting/Get-Active-Meeting",
+//       {
+//         headers: {
+//           Authorization: `Bearer ${_token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     return response.data.$values;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// export const DeleteMeeting = async (_token, _meetingId) => {
+//   try {
+//     const response = await axios.put(
+//       "http://localhost:5206/api/Meeting/Disactive-Meeting-Update",
+//       {},
+//       {
+//         headers: {
+//           Authorization: `Bearer ${_token}`,
+//           meetingId: _meetingId,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     return response.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
