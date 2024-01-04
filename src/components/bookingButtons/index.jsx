@@ -40,4 +40,5 @@ export default BookingButtons;
 BookingButtons.propTypes = {
   path: PropTypes.string,
   index: PropTypes.number,
+  meeting:PropTypes.any
 };

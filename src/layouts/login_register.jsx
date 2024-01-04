@@ -250,7 +250,7 @@ function LoginRegisterLayout({ title }) {
             </Link>
           </div>
         ) : (
-          <div className="mt-4 rounded-3xl py-5 px-8 border-none bg-[#232E35] hover:bg-[#2d3b45] flex justify-start items-center gap-x-7">
+          <div className="mt-2 rounded-3xl py-5 px-8 border-none bg-[#232E35] hover:bg-[#2d3b45] flex justify-start items-center gap-x-7">
             <svg className="h-[2rem]" viewBox="0 0 24 24">
               <path
                 fill="currentColor"

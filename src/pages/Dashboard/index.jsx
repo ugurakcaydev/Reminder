@@ -4,8 +4,10 @@ import { useCurrentUser } from "../../store/currentUser/hooks";
 import { useEffect, useState } from "react";
 import BookingButtons from "../../components/bookingButtons";
 import { DeleteMeeting, GetActiveMeetings } from "../../api/BookData";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
+  const router = useNavigate();
   const [meetings, setMeetings] = useState([]);
   const { currentUser } = useCurrentUser();
   const [loading, setLoading] = useState(true);
@@ -88,9 +90,16 @@ function Dashboard() {
 
                       <div className="flex flex-col justify-center items-start ">
                         <p>{meeting.MeetingName}</p>
-                        <p className="text-[color:var(--color-primary)]">
-                          {meeting.Email}
-                        </p>
+                        <button
+                          onClick={() => {
+                            router(`/dashboard/${meeting.Id}`, {
+                              state: { meetingKey: meeting },
+                            });
+                          }}
+                          className="text-[color:var(--color-primary)] underline underline-offset-2"
+                        >
+                          {meeting.Email.split("@")[0]}-highfives.com
+                        </button>
                       </div>
                     </div>
 
