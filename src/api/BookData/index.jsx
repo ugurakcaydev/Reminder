@@ -8,7 +8,7 @@ export const MeetCreate = async ({
 }) => {
   try {
     let _emails = _invitedPeople.map((person) => person.email);
-
+    console.log(_token, _meetingName, _hours, _minutes, _meetingDetailDtos, _invitedPeople, "saddas");
     const response = await fetch(
       `http://localhost:5206/api/Meeting/Create-Meeting`,
       {

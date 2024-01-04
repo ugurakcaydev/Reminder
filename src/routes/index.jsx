@@ -10,6 +10,7 @@ import Pricing from "../pages/Pricing";
 import LoginPage from "../pages/LoginPage";
 import Comments from "../pages/CommentsPage";
 import VotePage from "../pages/VotePage";
+import BookingPage from "../pages/BookingPage";
 
 const routes = createBrowserRouter([
   {
