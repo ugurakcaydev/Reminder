@@ -1,7 +1,11 @@
 // VotePage component
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import classNames from 'classnames';
+
+//Vote Results Send 
 import { sendDataToApi } from '../../api/BookingVoteData';
+
 
 export default function VotePage() {
     const location = useLocation();
@@ -9,26 +13,35 @@ export default function VotePage() {
 
     console.log("TOPLANTI DETAYLARI", meeting);
 
+    const [votingClosed, setVotingClosed] = useState(false);
     const [selectedDays, setSelectedDays] = useState([]);
 
     const handleCheckboxChange = (day) => {
-        setSelectedDays(prevDays => {
-            if (prevDays.includes(day)) {
-                return prevDays.filter(d => d !== day);
-            } else {
-                return [...prevDays, day];
-            }
-        });
+        if (!votingClosed) {
+            setSelectedDays((prevDays) => {
+                if (prevDays.includes(day)) {
+                    return prevDays.filter((d) => d !== day);
+                } else {
+                    return [...prevDays, day];
+                }
+            });
+        }
     };
 
     const handleVote = async () => {
+        if (votingClosed) {
+            console.log("Ankete zaten oy verildi!");
+            return;
+        }
+
         const meetingData = {
             ...meeting,
-            selectedDays
-
+            selectedDays,
         };
         const response = await sendDataToApi(meetingData);
-        console.log(response);
+        console.log("Anket Sonuçları: ", response);
+        setVotingClosed(true);
+
         console.log("SEÇİLEN GÜNLER: ", selectedDays);
     };
 
@@ -57,20 +70,43 @@ export default function VotePage() {
                                 ))}
                             </section>
                             <section className='flex flex-col gap-y-2 '>
-                                {meeting.GetAllMeetingDetailDtos?.$values.map((days) => (
-                                    <div key={days.$id} className='w-full flex items-center justify-start gap-x-2'>
-                                        <input
-                                            className='w-4 h-4'
-                                            type="checkbox"
-                                            onChange={() => handleCheckboxChange(days)}
-                                        />
-                                        {days.MeetingsDay} | {days.MeetingStart} : {days.MeetingFinish}
-                                    </div>
-                                ))}
+                                {meeting.GetAllMeetingDetailDtos?.$values.map((days) => {
+                                    let saat = parseInt(days.MeetingStart.split(':')[0]) + meeting.Hours;
+                                    let dakika = parseInt(days.MeetingStart.split(':')[1]) + meeting.Minute;
+
+                                    if (dakika >= 60) {
+                                        saat += 1;
+                                        dakika %= 60;
+                                    }
+
+                                    return (
+                                        <div key={days.$id} className='w-full flex items-center justify-start gap-x-2'>
+                                            <input
+                                                className='w-4 h-4'
+                                                type="checkbox"
+                                                onChange={() => handleCheckboxChange(days)}
+                                                disabled={votingClosed}
+                                            />
+                                            {`${days.MeetingsDay} | ${days.MeetingStart} : ${saat < 10 ? '0' + saat : saat}:${dakika < 10 ? '0' + dakika : dakika}`}
+                                            {/** Oyla butonuna tıkladıktan sonra her seçeneğin yanına yüzdelik değer gelecek */}
+                                        </div>
+                                    );
+                                })}
                             </section>
+
                         </div>
                         <div className='flex justify-center '>
-                            <button onClick={handleVote} className='w-[80%] bg-[#3daf26aa] py-3 text-base rounded-xl hover:bg-[#3daf26]'>OYLA</button>
+                            <div className='w-full text-center'>
+                                <button
+                                    onClick={votingClosed ? undefined : handleVote}
+                                    className={classNames('w-[80%] py-3 text-base rounded-xl', {
+                                        'bg-[#777777] cursor-not-allowed': votingClosed,
+                                        'bg-[#3daf26aa] hover:bg-[#3daf26]': !votingClosed,
+                                    })}
+                                >
+                                    {votingClosed ? 'OY VERİLDİ' : 'OYLA'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </>

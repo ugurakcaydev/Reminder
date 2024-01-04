@@ -18,7 +18,8 @@ function RightSideBookModal() {
       _meetingDetailDtos: bookData.meetingDetailDtos,
       _invitedPeople: bookData.invitedPeople,
     });
-    window.location.reload();
+    // window.location.reload();
+   
   };
 
   return (
