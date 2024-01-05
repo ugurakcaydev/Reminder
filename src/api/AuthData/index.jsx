@@ -27,7 +27,7 @@ export const CreateUser = async ({ _email, _password, _passwordAgain }) => {
 
     if (!response.ok) {
       // kullanıcı zaten var da olabilir
-      showToast("Kullanıcı zaten kayıtlı");
+      showToast("Kayıt Olma Hatası");
       console.log("Register failed");
       return { registerSuccess: false };
     }
@@ -56,7 +56,7 @@ export const LoginUser = async ({ _email, _password }) => {
     });
 
     if (!response.ok) {
-      showToast("Kullanıcı adı veya şifre hatalı");
+      showToast("Giriş Yapma Hatası");
 
       return { loginSuccess: false };
     } else {

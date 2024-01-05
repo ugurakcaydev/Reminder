@@ -35,7 +35,8 @@ function LoginRegisterLayout({ title }) {
           <div className="w-[1px] h-auto bg-[#a0a0a0]" />
           {/**Giriş Sayfası - Sağ Kısım */}
           <div className="w-1/2 ">
-            <form className="flex flex-col  px-8 py-5 text-center break-words"
+            <form
+              className="flex flex-col  px-8 py-5 text-center break-words"
               onSubmit={async (event) => {
                 event.preventDefault();
                 const { loginSuccess } = await LoginUser({
@@ -151,7 +152,6 @@ function LoginRegisterLayout({ title }) {
                     className="bg-[#616161] rounded-lg py-2 pl-2"
                     type={show ? "text" : "password"}
                     placeholder="Şifreniz"
-
                   />
                 </div>
 
@@ -195,8 +195,8 @@ function LoginRegisterLayout({ title }) {
                     <input
                       className="w-full my-2 text-xl p-2 font-bold bg-[#252525] transition-all hover:bg-[#424242] hover:text-tgold rounded-full"
                       type="submit"
-                      value="Giriş Yap" />
-
+                      value="Giriş Yap"
+                    />
 
                     {/*
                       Buradaki kodlar form etiketinin kendisine aktarılmış ve bu kısımdaki kodlar yerine üst kısımda 
@@ -219,7 +219,6 @@ function LoginRegisterLayout({ title }) {
                       Giriş Yap
                     </Link> */}
                   </>
-
                 )}
 
                 {title === "login" ? (
@@ -231,9 +230,7 @@ function LoginRegisterLayout({ title }) {
                 ) : (
                   <div className="text-[#D4DBE0]">
                     Zaten hesabınız var mı?{" "}
-                    <Link
-                      to={"/login"}
-                      className="text-tgold hover:underline">
+                    <Link to={"/login"} className="text-tgold hover:underline">
                       Giriş yap
                     </Link>
                   </div>
@@ -271,7 +268,7 @@ function LoginRegisterLayout({ title }) {
           </div>
         )}
       </div>
-    </div >
+    </div>
   );
 }
 
