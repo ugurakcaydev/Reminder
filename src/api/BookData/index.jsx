@@ -8,7 +8,6 @@ export const MeetCreate = async ({
 }) => {
   try {
     let _emails = _invitedPeople.map((person) => person.email);
-    console.log(_token, _meetingName, _hours, _minutes, _meetingDetailDtos, _invitedPeople, "saddas");
     const response = await fetch(
       `http://localhost:5206/api/Meeting/Create-Meeting`,
       {
@@ -71,11 +70,42 @@ export const GetActiveMeetings = async (_token) => {
     );
 
     const allJsonCommand = await response.json();
-
+    console.log(allJsonCommand, "aaaa");
     const value = allJsonCommand.$values;
     return value;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const SendVote = async ({
+  _token,
+  _email,
+  _meetingId,
+  _selectedDaysId,
+}) => {
+  try {
+    console.log(_email, _meetingId, _selectedDaysId, "bbbbbbbbbbbb");
+    const response = await fetch(
+      "http://localhost:5206/api/Meeting/Add-Vote-For-Meeting",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          meetingId: _meetingId,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Email: _email,
+          MeetingId: _meetingId,
+          MeetingDetailIds: _selectedDaysId,
+        }),
+      }
+    );
+
+    console.log(response, "responseee");
+  } catch (error) {
+    console.error(error);
   }
 };
 

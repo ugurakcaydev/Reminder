@@ -14,22 +14,28 @@ const ReservationSystem = (props) => {
     finalSelectedData(selectedData);
   }, [finalSelectedData, selectedData]);
 
-  const onChange = (day, timeValue, type) => {
+  const onChange = (day, timeValue) => {
     setDefaultDateData((prevData) => {
       let updatedItems = [...prevData];
-      if (type === "start") {
-        updatedItems = updatedItems.map((data) =>
-          data.MeetingsDay === day.MeetingsDay
-            ? { ...data, MeetingsStart: timeValue }
-            : data
-        );
-      } else if (type === "end") {
-        updatedItems = updatedItems.map((data) =>
-          data.MeetingsDay === day.MeetingsDay
-            ? { ...data, MeetingsFinish: timeValue }
-            : data
-        );
-      }
+      updatedItems = updatedItems.map((data) =>
+        data.MeetingsDay === day.MeetingsDay
+          ? { ...data, MeetingsStart: timeValue }
+          : data
+      );
+      // if (type === "start") {
+      //   updatedItems = updatedItems.map((data) =>
+      //     data.MeetingsDay === day.MeetingsDay
+      //       ? { ...data, MeetingsStart: timeValue }
+      //       : data
+      //   );
+      // }
+      // else if (type === "end") {
+      //   updatedItems = updatedItems.map((data) =>
+      //     data.MeetingsDay === day.MeetingsDay
+      //       ? { ...data, MeetingsFinish: timeValue }
+      //       : data
+      //   );
+      // }
       return updatedItems;
     });
   };
@@ -51,8 +57,9 @@ const ReservationSystem = (props) => {
           return (
             <div
               key={index}
-              className="flex w-full items-center justify-center gap-x-8 py-3"
+              className="flex w-full items-center justify-evenly gap-x-8 py-3"
             >
+              <div className="flex items-center justify-start gap-x-3">
               <input
                 className="accent-tgold w-4 h-4 cursor-pointer"
                 type="checkbox"
@@ -61,20 +68,21 @@ const ReservationSystem = (props) => {
               <div className="text-left w-20 font-semibold">
                 {day.MeetingsDay}
               </div>
+              </div>
               <div className="flex items-center gap-x-2">
                 <TimePicker
                   id="start"
                   className="w-10"
-                  onChange={(timeValue) => onChange(day, timeValue, "start")}
+                  onChange={(timeValue) => onChange(day, timeValue)}
                   value={day.MeetingsStart}
                 />
-                <div className="w-5 h-[1px] bg-white" />
-                <TimePicker
+                {/* <div className="w-5 h-[1px] bg-white" /> */}
+                {/* <TimePicker
                   id="end"
                   className="w-10"
                   onChange={(timeValue) => onChange(day, timeValue, "end")}
                   value={day.MeetingsFinish}
-                />
+                /> */}
               </div>
             </div>
           );

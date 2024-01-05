@@ -6,43 +6,57 @@ import { Button } from "rsuite";
 
 //Vote Results Send
 import { sendDataToApi } from "../../api/BookingVoteData";
+import { useCurrentUser } from "../../store/currentUser/hooks";
+import { SendVote } from "../../api/BookData";
 
 export default function VotePage() {
   const location = useLocation();
   const meeting = location.state?.meetingKey;
 
-  console.log("TOPLANTI DETAYLARI", meeting);
-
+  //  console.log("TOPLANTI DETAYLARI", meeting);
+  const { currentUser } = useCurrentUser();
   const [votingClosed, setVotingClosed] = useState(false);
-  const [selectedDays, setSelectedDays] = useState([]);
+  const [selectedDaysId, setSelectedDaysId] = useState([]);
 
-  const handleCheckboxChange = (day) => {
+  const handleCheckboxChange = (_selectedDayId) => {
     if (!votingClosed) {
-      setSelectedDays((prevDays) => {
-        if (prevDays.includes(day)) {
-          return prevDays.filter((d) => d !== day);
-        } else {
-          return [...prevDays, day];
+      setSelectedDaysId((prevSelectedDays) => {
+        // Eğer _selectedDayId zaten mevcut ise, çıkararak yeni bir dizi oluştur.
+        if (prevSelectedDays.includes(_selectedDayId)) {
+          const updatedSelectedDays = prevSelectedDays.filter(
+            (dayId) => dayId !== _selectedDayId
+          );
+          return updatedSelectedDays;
         }
+
+        // _selectedDayId'yi array'e ekleyerek yeni bir dizi oluştur.
+        const updatedSelectedDays = [...prevSelectedDays, _selectedDayId];
+        return updatedSelectedDays;
       });
     }
   };
-
   const handleVote = async () => {
     if (votingClosed) {
       console.log("Ankete zaten oy verildi!");
       return;
     }
 
-    const meetingData = {
-      ...meeting,
-      selectedDays,
-    };
-    const response = await sendDataToApi(meetingData);
-    console.log("Anket Sonuçları: ", response);
-    setVotingClosed(true);
+    await SendVote({
+      _token: currentUser.usertoken,
+      _email: currentUser.usermail,
+      _meetingId: meeting.Id,
+      _selectedDaysId: selectedDaysId,
+    });
 
-    console.log("SEÇİLEN GÜNLER: ", selectedDays);
+    // const meetingData = {
+    //   ...meeting,
+    //   selectedDays,
+    // };
+    // const response = await sendDataToApi(meetingData);
+    // console.log("Anket Sonuçları: ", response);
+    // setVotingClosed(true);
+
+    // console.log("SEÇİLEN GÜNLER: ", selectedDays);
   };
   return (
     <div className="w-full h-[100vh] flex items-center justify-center  p-2 text-[#fff]">
@@ -79,9 +93,9 @@ export default function VotePage() {
                   </div>
                 </div>
                 <div className="mt-2 mb-0.5 w-full text-center font-semibold text-base">
-                  Gün ve Saati Oylayınız
+                  - Gün ve Saati Oylayınız -
                 </div>
-                <div className="flex flex-col gap-y-4">
+                <div className="flex flex-col gap-y-5">
                   {meeting.GetAllMeetingDetailDtos?.$values.map((days) => {
                     let saat =
                       parseInt(days.MeetingStart.split(":")[0]) + meeting.Hours;
@@ -102,7 +116,9 @@ export default function VotePage() {
                         <input
                           className="w-4 h-4"
                           type="checkbox"
-                          onChange={() => handleCheckboxChange(days)}
+                          onChange={() =>
+                            handleCheckboxChange(days.MeetingDetailId)
+                          }
                           disabled={votingClosed}
                         />
                         {`${days.MeetingsDay} | ${days.MeetingStart} : ${
@@ -120,7 +136,7 @@ export default function VotePage() {
                   "px-3 py-1.5 rounded-full bg-[#F7B22C] text-base transition-all duration-500 ease-in",
                   {
                     "!bg-gray-500 !pointer-events-none !cursor-not-allowed":
-                      selectedDays.length === 0,
+                      selectedDaysId.length === 0,
                   }
                 )}
               >
