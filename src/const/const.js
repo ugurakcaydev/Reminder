@@ -266,3 +266,24 @@ export const reservationTimeData = [
     checked: false,
   },
 ];
+
+export const voteFormData = [
+  {
+    option: "Pazartesi  12:00 - 14:00 ",
+    vote: 1
+  },
+  {
+    option: "Salı  12:00 - 14:00 ",
+    vote: 1
+  },
+  {
+    option: "Çarşamba  12:00 - 15:00 ",
+    vote: 1
+  },
+  {
+    option: "Perşembe  12:00 - 15:00 ",
+    vote: 0
+  }
+
+
+]

@@ -34,6 +34,28 @@ export const MeetCreate = async ({
     console.error(error);
   }
 };
+// export const GetSelectedMeeting = async (_token) => {
+//   try {
+//     const response = await fetch(
+//       //URL
+//       "http://localhost:5206/api",
+//       {
+//         method: "GET",
+//         headers: {
+//           Authorization: `Bearer ${_token}`,
+//           "Content-Type": "application/json",
+//         },
+//       }
+//     );
+
+//     const allJsonCommand = await response.json();
+
+//     const value = allJsonCommand.$values;
+//     return value;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export const GetActiveMeetings = async (_token) => {
   try {
@@ -49,8 +71,8 @@ export const GetActiveMeetings = async (_token) => {
     );
 
     const allJsonCommand = await response.json();
-    const value = allJsonCommand.$values;
 
+    const value = allJsonCommand.$values;
     return value;
   } catch (error) {
     console.log(error);
