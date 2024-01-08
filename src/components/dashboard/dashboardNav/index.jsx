@@ -57,7 +57,7 @@ function DashboardNav() {
             <div className="flex  items-center gap-x-3 ">
               <img
                 className="mobile:hidden laptop2:block  h-10"
-                src="../../../src/assets/images/booking.png"
+                src="/images/booking.png"
                 alt="logo"
               />
               {dashMenu &&

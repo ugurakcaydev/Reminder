@@ -15,16 +15,12 @@ function LoginRegisterLayout({ title }) {
 
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
-      <ToastContainer /> 
+      <ToastContainer />
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
         <div className=" flex justify-between p-2  rounded-3xl  bg-[#232E35]">
           <div className="w-1/2 flex items-center">
             <div className="flex flex-col  p-7 text-center break-words">
-              <img
-                className=""
-                src="./src/assets/images/loginimage1.png"
-                alt="resim"
-              />
+              <img className="" src="/images/loginimage1.png" alt="resim" />
               <p className="text-xl font-bold">
                 Ekibinizin farklı saat dilimlerindeki kullanılabilirliğini
                 yönetin.

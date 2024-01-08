@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className="flex  items-center gap-x-2 ">
               <img
                 className="mobile:hidden laptop2:block  h-10"
-                src="../../../src/assets/images/booking.png"
+                src="/images/booking.png"
                 alt="logo"
               />
               <span className="font-poppins font-bold tracking-tight text-[color:var(--color-primary)] laptop1:text-2xl  desktop2:text-3xl 2kmonitor:text-4xl">
@@ -138,7 +138,7 @@ export default function Navbar() {
                   Kontrol Paneli
                 </Link>
               )}
-              <DarkLightMode/>
+              <DarkLightMode />
             </div>
           </div>
         </div>

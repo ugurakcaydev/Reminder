@@ -8,7 +8,7 @@ export default function Footer() {
           <a className="flex title-font font-medium items-center md:justify-start justify-center ">
             <img
               className="mobile:hidden laptop2:block  h-10"
-              src="../../../src/assets/images/booking.png"
+              src="/images/booking.png"
               alt="logo"
             />
             <span className="ml-3 text-xl text-[color:var(--color-base)]">
