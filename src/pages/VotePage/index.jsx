@@ -8,21 +8,52 @@ import { Button } from "rsuite";
 import { GetSelectedMeeting } from "../../api/BookData";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import { SendVote } from "../../api/BookData";
-import { current } from "@reduxjs/toolkit";
 
 export default function VotePage() {
-  const location = useLocation();
-  const meeting = location.state?.meetingKey;
-
   const { pathname } = useLocation();
-  const meetingId = pathname.split('/').pop();
-
-
+  const meetingId = pathname.split("/").pop();
+  let votingClosed = false;
   const { currentUser } = useCurrentUser();
-  const [votingClosed, setVotingClosed] = useState(false);
   const [selectedDaysId, setSelectedDaysId] = useState([]);
-  const [selectedMeeting, setSelectedMeeting] = useState([]);
+  const [meetingDetails, setMeetingDetails] = useState(null);
+  const [showMeet, setShowMeet] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await GetSelectedMeeting({
+          _token: currentUser.usertoken,
+          _meetingId: meetingId,
+        });
+
+        if (!meetingDetails) {
+          // Eğer meetingDetails zaten set edilmişse tekrar set etme
+          setMeetingDetails(response);
+
+          if (response) {
+            let isInvitedUser = response?.GetAllMeetingItemDto?.$values.some(
+              (e) => e.Email === currentUser.usermail
+            );
+
+            let isHost = response.Email === currentUser.usermail;
+
+            if (isHost || isInvitedUser) {
+              setShowMeet(true);
+            } else {
+              // Eğer kullanıcı davet edilmiş bir kullanıcı değilse ve toplantının sahibi de değilse, bir şey yapma
+              // Örneğin: console.log("Bu toplantıya davet edilmiş veya sahibi değilsiniz.");
+            }
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [currentUser, meetingDetails, meetingId]);
+
+  //kutucukları seçtiğimizde çalışıyor
   const handleCheckboxChange = (_selectedDayId) => {
     if (!votingClosed) {
       setSelectedDaysId((prevSelectedDays) => {
@@ -40,59 +71,28 @@ export default function VotePage() {
       });
     }
   };
-  const handleVote = async () => {
-    if (votingClosed) {
-      console.log("Ankete zaten oy verildi!");
-      return;
-    }
 
-    await SendVote({
+  //butona tıkladığında
+  const handleVote = async () => {
+    // eslint-disable-next-line no-unused-vars
+    const response = await SendVote({
       _token: currentUser.usertoken,
       _email: currentUser.usermail,
-      _meetingId: meeting.Id,
+      _meetingId: meetingDetails.Id,
       _selectedDaysId: selectedDaysId,
     });
 
-    // const meetingData = {
-    //   ...meeting,
-    //   selectedDays,
-    // };
-    // const response = await sendDataToApi(meetingData);
-    // console.log("Anket Sonuçları: ", response);
-    // setVotingClosed(true);
-
-    // console.log("SEÇİLEN GÜNLER: ", selectedDays);
+    // response.ok ? (
+    //     // oyunuz başarıyla kullanıldı ve sayfa yenileme işlemleri
+    // ) :(
+    //     //zaten daha önce oy kullandın
+    // )
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await GetSelectedMeeting({
-          _token: currentUser.usertoken,
-          _meetingId: meetingId
-        });
-        setSelectedMeeting(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [currentUser.usertoken]);
 
-  // console.log("TOPLANTI DETAYLARI", meeting);
-  console.log("SELECTED MEETING", selectedMeeting);
-  // console.log(currentUser, "Current User");
-
-  let foundItem = selectedMeeting?.GetAllMeetingItemDto?.$values.find(e => e.Id === currentUser.userId);
-  if (foundItem) {
-    console.log(foundItem.Email, "emailll");
-  }
-
-
-  // selectedMeeting.GetAllMeetingItemDto && selectedMeeting.GetAllMeetingItemDto.$values && selectedMeeting.GetAllMeetingItemDto.$values.some((e) => e.Id === currentUser.userId) ?
   return (
     <div className="w-full h-[100vh] flex items-center justify-center  p-2 text-[#fff]">
-      {selectedMeeting && (
+      {showMeet ? (
         <div className=" w-[700px] h-[650px] overflow-hidden rounded-xl  z-[1] relative shadow-xl shadow-[rgba(0,0,0,0.35)] ">
           <div
             className="flex bg-[#1d2629] h-full "
@@ -110,7 +110,9 @@ export default function VotePage() {
                   }}
                 >
                   <div>Toplantı Adı:</div>
-                  <div className="text-[#F7B22C]">{selectedMeeting.MeetingName}</div>
+                  <div className="text-[#F7B22C]">
+                    {meetingDetails.MeetingName}
+                  </div>
                 </div>
                 <div className="flex w-fit items-center justify-start gap-x-1 border px-2 py-0.5 rounded-full  border-gray-500">
                   <svg className="w-4 h-4" viewBox="0 0 16 16">
@@ -120,44 +122,53 @@ export default function VotePage() {
                     ></path>
                   </svg>
                   <div>
-                    {selectedMeeting.Hours == 0 ? "" : selectedMeeting.Hours + " saat "}
-                    {selectedMeeting.Minute == 0 ? "" : selectedMeeting.Minute + " dakika "}
+                    {meetingDetails.Hours == 0
+                      ? ""
+                      : meetingDetails.Hours + " saat "}
+                    {meetingDetails.Minute == 0
+                      ? ""
+                      : meetingDetails.Minute + " dakika "}
                   </div>
                 </div>
                 <div className="mt-2 mb-0.5 w-full text-center font-semibold text-base">
                   - Gün ve Saati Oylayınız -
                 </div>
                 <div className="flex flex-col gap-y-5">
-                  {selectedMeeting && selectedMeeting.GetAllMeetingDetailDtos?.$values.map((days) => {
-                    let saat =
-                      parseInt(days.MeetingStart.split(":")[0]) + selectedMeeting.Hours;
-                    let dakika =
-                      parseInt(days.MeetingStart.split(":")[1]) +
-                      selectedMeeting.Minute;
+                  {meetingDetails &&
+                    meetingDetails.GetAllMeetingDetailDtos?.$values.map(
+                      (days) => {
+                        let saat =
+                          parseInt(days.MeetingStart.split(":")[0]) +
+                          meetingDetails.Hours;
+                        let dakika =
+                          parseInt(days.MeetingStart.split(":")[1]) +
+                          meetingDetails.Minute;
 
-                    if (dakika >= 60) {
-                      saat += 1;
-                      dakika %= 60;
-                    }
+                        if (dakika >= 60) {
+                          saat += 1;
+                          dakika %= 60;
+                        }
 
-                    return (
-                      <div
-                        key={days.$id}
-                        className="w-full flex items-center justify-start gap-x-2 "
-                      >
-                        <input
-                          className="w-4 h-4"
-                          type="checkbox"
-                          onChange={() =>
-                            handleCheckboxChange(days.MeetingDetailId)
-                          }
-                          disabled={votingClosed}
-                        />
-                        {`${days.MeetingsDay} | ${days.MeetingStart} : ${saat < 10 ? "0" + saat : saat
-                          }:${dakika < 10 ? "0" + dakika : dakika}`}
-                      </div>
-                    );
-                  })}
+                        return (
+                          <div
+                            key={days.$id}
+                            className="w-full flex items-center justify-start gap-x-2 "
+                          >
+                            <input
+                              className="w-4 h-4"
+                              type="checkbox"
+                              onChange={() =>
+                                handleCheckboxChange(days.MeetingDetailId)
+                              }
+                              disabled={votingClosed}
+                            />
+                            {`${days.MeetingsDay} | ${days.MeetingStart} : ${
+                              saat < 10 ? "0" + saat : saat
+                            }:${dakika < 10 ? "0" + dakika : dakika}`}
+                          </div>
+                        );
+                      }
+                    )}
                 </div>
               </div>
 
@@ -178,7 +189,7 @@ export default function VotePage() {
               <div className="w-full text-center mb-3 text-base font-semibold text-[#F7B22C]">
                 Davet Edilen Kullanıcılar
               </div>
-              {selectedMeeting.GetAllMeetingItemDto?.$values.map((person, i) => (
+              {meetingDetails.GetAllMeetingItemDto?.$values.map((person, i) => (
                 <div
                   className="mb-1 w-full py-1.5 rounded-full flex items-center justify-center bg-[#32414a] font-semibold"
                   key={i}
@@ -189,9 +200,11 @@ export default function VotePage() {
             </div>
           </div>
         </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center text-xl font-semibold w-[900px] min-h-[300px] bg-[#1A1A1A] rounded-lg gap-y-5">
+          Bu Oylamaya Erişiminiz Yok...
+        </div>
       )}
     </div>
   );
 }
-
-

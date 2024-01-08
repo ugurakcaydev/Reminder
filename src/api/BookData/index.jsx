@@ -50,6 +50,7 @@ export const GetSelectedMeeting = async ({ _token, _meetingId }) => {
     );
 
     const allJsonCommand = await response.json();
+   
     return allJsonCommand;
   } catch (error) {
     console.log(error);
@@ -103,6 +104,7 @@ export const SendVote = async ({
     );
 
     console.log(response, "responseee");
+    return response
   } catch (error) {
     console.error(error);
   }
