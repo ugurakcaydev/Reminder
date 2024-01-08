@@ -33,28 +33,28 @@ export const MeetCreate = async ({
     console.error(error);
   }
 };
-// export const GetSelectedMeeting = async (_token) => {
-//   try {
-//     const response = await fetch(
-//       //URL
-//       "http://localhost:5206/api",
-//       {
-//         method: "GET",
-//         headers: {
-//           Authorization: `Bearer ${_token}`,
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
 
-//     const allJsonCommand = await response.json();
+export const GetSelectedMeeting = async ({ _token, _meetingId }) => {
+  try {
+    const response = await fetch(
+      //URL
+      `http://localhost:5206/api/Meeting/Get-Single-Meeting-For-User?meetingId=${_meetingId}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${_token}`,
+          "Content-Type": "application/json",
+          meetingId: _meetingId,
+        },
+      }
+    );
 
-//     const value = allJsonCommand.$values;
-//     return value;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+    const allJsonCommand = await response.json();
+    return allJsonCommand;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const GetActiveMeetings = async (_token) => {
   try {
@@ -70,7 +70,6 @@ export const GetActiveMeetings = async (_token) => {
     );
 
     const allJsonCommand = await response.json();
-    console.log(allJsonCommand, "aaaa");
     const value = allJsonCommand.$values;
     return value;
   } catch (error) {

@@ -1,22 +1,27 @@
 // VotePage component
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { Button } from "rsuite";
 
 //Vote Results Send
-import { sendDataToApi } from "../../api/BookingVoteData";
+import { GetSelectedMeeting } from "../../api/BookData";
 import { useCurrentUser } from "../../store/currentUser/hooks";
 import { SendVote } from "../../api/BookData";
+import { current } from "@reduxjs/toolkit";
 
 export default function VotePage() {
   const location = useLocation();
   const meeting = location.state?.meetingKey;
 
-  //  console.log("TOPLANTI DETAYLARI", meeting);
+  const { pathname } = useLocation();
+  const meetingId = pathname.split('/').pop();
+
+
   const { currentUser } = useCurrentUser();
   const [votingClosed, setVotingClosed] = useState(false);
   const [selectedDaysId, setSelectedDaysId] = useState([]);
+  const [selectedMeeting, setSelectedMeeting] = useState([]);
 
   const handleCheckboxChange = (_selectedDayId) => {
     if (!votingClosed) {
@@ -58,9 +63,36 @@ export default function VotePage() {
 
     // console.log("SEÇİLEN GÜNLER: ", selectedDays);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await GetSelectedMeeting({
+          _token: currentUser.usertoken,
+          _meetingId: meetingId
+        });
+        setSelectedMeeting(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [currentUser.usertoken]);
+
+  // console.log("TOPLANTI DETAYLARI", meeting);
+  console.log("SELECTED MEETING", selectedMeeting);
+  // console.log(currentUser, "Current User");
+
+  let foundItem = selectedMeeting?.GetAllMeetingItemDto?.$values.find(e => e.Id === currentUser.userId);
+  if (foundItem) {
+    console.log(foundItem.Email, "emailll");
+  }
+
+
+  // selectedMeeting.GetAllMeetingItemDto && selectedMeeting.GetAllMeetingItemDto.$values && selectedMeeting.GetAllMeetingItemDto.$values.some((e) => e.Id === currentUser.userId) ?
   return (
     <div className="w-full h-[100vh] flex items-center justify-center  p-2 text-[#fff]">
-      {meeting && (
+      {selectedMeeting && (
         <div className=" w-[700px] h-[650px] overflow-hidden rounded-xl  z-[1] relative shadow-xl shadow-[rgba(0,0,0,0.35)] ">
           <div
             className="flex bg-[#1d2629] h-full "
@@ -78,7 +110,7 @@ export default function VotePage() {
                   }}
                 >
                   <div>Toplantı Adı:</div>
-                  <div className="text-[#F7B22C]">{meeting.MeetingName}</div>
+                  <div className="text-[#F7B22C]">{selectedMeeting.MeetingName}</div>
                 </div>
                 <div className="flex w-fit items-center justify-start gap-x-1 border px-2 py-0.5 rounded-full  border-gray-500">
                   <svg className="w-4 h-4" viewBox="0 0 16 16">
@@ -88,20 +120,20 @@ export default function VotePage() {
                     ></path>
                   </svg>
                   <div>
-                    {meeting.Hours == 0 ? "" : meeting.Hours + " saat "}
-                    {meeting.Minute == 0 ? "" : meeting.Minute + " dakika "}
+                    {selectedMeeting.Hours == 0 ? "" : selectedMeeting.Hours + " saat "}
+                    {selectedMeeting.Minute == 0 ? "" : selectedMeeting.Minute + " dakika "}
                   </div>
                 </div>
                 <div className="mt-2 mb-0.5 w-full text-center font-semibold text-base">
                   - Gün ve Saati Oylayınız -
                 </div>
                 <div className="flex flex-col gap-y-5">
-                  {meeting.GetAllMeetingDetailDtos?.$values.map((days) => {
+                  {selectedMeeting && selectedMeeting.GetAllMeetingDetailDtos?.$values.map((days) => {
                     let saat =
-                      parseInt(days.MeetingStart.split(":")[0]) + meeting.Hours;
+                      parseInt(days.MeetingStart.split(":")[0]) + selectedMeeting.Hours;
                     let dakika =
                       parseInt(days.MeetingStart.split(":")[1]) +
-                      meeting.Minute;
+                      selectedMeeting.Minute;
 
                     if (dakika >= 60) {
                       saat += 1;
@@ -121,9 +153,8 @@ export default function VotePage() {
                           }
                           disabled={votingClosed}
                         />
-                        {`${days.MeetingsDay} | ${days.MeetingStart} : ${
-                          saat < 10 ? "0" + saat : saat
-                        }:${dakika < 10 ? "0" + dakika : dakika}`}
+                        {`${days.MeetingsDay} | ${days.MeetingStart} : ${saat < 10 ? "0" + saat : saat
+                          }:${dakika < 10 ? "0" + dakika : dakika}`}
                       </div>
                     );
                   })}
@@ -147,7 +178,7 @@ export default function VotePage() {
               <div className="w-full text-center mb-3 text-base font-semibold text-[#F7B22C]">
                 Davet Edilen Kullanıcılar
               </div>
-              {meeting.GetAllMeetingItemDto?.$values.map((person, i) => (
+              {selectedMeeting.GetAllMeetingItemDto?.$values.map((person, i) => (
                 <div
                   className="mb-1 w-full py-1.5 rounded-full flex items-center justify-center bg-[#32414a] font-semibold"
                   key={i}
@@ -162,3 +193,5 @@ export default function VotePage() {
     </div>
   );
 }
+
+
