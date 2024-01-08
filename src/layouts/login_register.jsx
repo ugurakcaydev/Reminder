@@ -15,7 +15,7 @@ function LoginRegisterLayout({ title }) {
 
   return (
     <div className="w-full h-[100vh] flex justify-center items-center bg-[#1d2629] ">
-      <ToastContainer />
+      <ToastContainer /> 
       <div className="max-w-[880px] flex-col justify-center items-center text-white text-center ">
         <div className=" flex justify-between p-2  rounded-3xl  bg-[#232E35]">
           <div className="w-1/2 flex items-center">

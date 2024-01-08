@@ -1,6 +1,7 @@
 // VotePage component
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import classNames from "classnames";
 import { Button } from "rsuite";
 
@@ -26,6 +27,7 @@ export default function VotePage() {
           _meetingId: meetingId,
         });
 
+
         if (!meetingDetails) {
           // Eğer meetingDetails zaten set edilmişse tekrar set etme
           setMeetingDetails(response);
@@ -45,6 +47,7 @@ export default function VotePage() {
             }
           }
         }
+        return totalVoteCount;
       } catch (error) {
         console.error(error);
       }
@@ -82,16 +85,38 @@ export default function VotePage() {
       _selectedDaysId: selectedDaysId,
     });
 
-    // response.ok ? (
-    //     // oyunuz başarıyla kullanıldı ve sayfa yenileme işlemleri
-    // ) :(
-    //     //zaten daha önce oy kullandın
-    // )
+    response.ok ? (
+      toast.success('Oyunuz başarıyla kullanıldı'),
+      setTimeout(() => {
+        window.location.reload()
+      }, 6000)
+
+      // oyunuz başarıyla kullanıldı ve sayfa yenileme işlemleri
+    ) : (
+      toast.error('Daha önce oy kullandınız!')
+
+      //zaten daha önce oy kullandın
+    )
   };
 
+  // console.log("Meeting details", meetingDetails)
+
+
+  const totalVoteCount = meetingDetails?.GetAllMeetingDetailDtos?.$values.reduce((acc, v) => acc + v.VoteCount, 0);
+  const votePercentage = (id) => {
+    if (totalVoteCount === 0) {
+      return 0;
+    }
+    const optionVoteCount = meetingDetails?.GetAllMeetingDetailDtos?.$values.find((e) => e.MeetingDetailId === id) || 0;
+    const percentage = (optionVoteCount.VoteCount / totalVoteCount) * 100;
+
+    return isNaN(percentage) ? 0 : percentage;
+  };
 
   return (
+
     <div className="w-full h-[100vh] flex items-center justify-center  p-2 text-[#fff]">
+      <ToastContainer />
       {showMeet ? (
         <div className=" w-[700px] h-[650px] overflow-hidden rounded-xl  z-[1] relative shadow-xl shadow-[rgba(0,0,0,0.35)] ">
           <div
@@ -130,8 +155,22 @@ export default function VotePage() {
                       : meetingDetails.Minute + " dakika "}
                   </div>
                 </div>
-                <div className="mt-2 mb-0.5 w-full text-center font-semibold text-base">
-                  - Gün ve Saati Oylayınız -
+                {/* <div className={classNames("text-white mt-2 mb-0.5 w-full text-center font-semibold text-base",
+                  {
+                    "Anket Detayları": currentUser?.userId === meetingDetails?.UserId,
+                    "- Gün ve Saati Oylayın -": currentUser?.userId !== meetingDetails?.UserId,
+                  }
+
+
+                )}>
+                </div> */}
+                <div className="text-white mt-2 mb-0.5 w-full text-center font-semibold text-base">
+
+                  {meetingDetails.UserId === currentUser.userId ? (
+                    <>
+                      Toplantı Seçenekleri ve Yüzdeleri
+                    </>) :
+                    (<> - Gün ve Saati Oylayın - </>)}
                 </div>
                 <div className="flex flex-col gap-y-5">
                   {meetingDetails &&
@@ -152,19 +191,27 @@ export default function VotePage() {
                         return (
                           <div
                             key={days.$id}
-                            className="w-full flex items-center justify-start gap-x-2 "
+                            className={classNames("w-full flex items-center justify-start gap-x-2 ", {
+                              "justify-between": meetingDetails.UserId === currentUser.userId
+                            })}
                           >
-                            <input
-                              className="w-4 h-4"
-                              type="checkbox"
-                              onChange={() =>
-                                handleCheckboxChange(days.MeetingDetailId)
-                              }
-                              disabled={votingClosed}
-                            />
-                            {`${days.MeetingsDay} | ${days.MeetingStart} : ${
-                              saat < 10 ? "0" + saat : saat
-                            }:${dakika < 10 ? "0" + dakika : dakika}`}
+                            {meetingDetails.UserId === currentUser.userId ? (<></>) : (<>
+                              <input
+                                className="w-4 h-4"
+                                type="checkbox"
+                                onChange={() =>
+                                  handleCheckboxChange(days.MeetingDetailId)
+                                }
+                                disabled={votingClosed}
+                              />
+                            </>)}
+
+                            {`${days.MeetingsDay} | ${days.MeetingStart} : ${saat < 10 ? "0" + saat : saat
+                              }:${dakika < 10 ? "0" + dakika : dakika}`}
+                            {meetingDetails.UserId === currentUser.userId ? (<div>
+                              {`${votePercentage(days.MeetingDetailId).toFixed(2)}%`}
+                            </div>) : (<></>)
+                            }
                           </div>
                         );
                       }
@@ -172,18 +219,23 @@ export default function VotePage() {
                 </div>
               </div>
 
-              <Button
-                onClick={votingClosed ? undefined : handleVote}
-                className={classNames(
-                  "px-3 py-1.5 rounded-full bg-[#F7B22C] text-base transition-all duration-500 ease-in",
-                  {
-                    "!bg-gray-500 !pointer-events-none !cursor-not-allowed":
-                      selectedDaysId.length === 0,
-                  }
-                )}
-              >
-                Oyla
-              </Button>
+              {meetingDetails.UserId === currentUser.userId ? (<></>) : (
+                <>
+                  <Button
+                    onClick={votingClosed ? undefined : handleVote}
+                    className={classNames(
+                      "px-3 py-1.5 rounded-full bg-[#F7B22C] text-base transition-all duration-500 ease-in",
+                      {
+                        "!bg-gray-500 !pointer-events-none !cursor-not-allowed":
+                          selectedDaysId.length === 0,
+                      }
+                    )}
+                  >
+                    Oyla
+                  </Button>
+                </>
+              )}
+
             </div>
             <div className="flex-1 bg-[#1d2629]  p-4 rounded-tr-3xl border-l border-l-[#F7B22C] flex flex-col gap-y-3 overflow-auto">
               <div className="w-full text-center mb-3 text-base font-semibold text-[#F7B22C]">
@@ -204,7 +256,8 @@ export default function VotePage() {
         <div className="flex flex-col items-center justify-center text-xl font-semibold w-[900px] min-h-[300px] bg-[#1A1A1A] rounded-lg gap-y-5">
           Bu Oylamaya Erişiminiz Yok...
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }

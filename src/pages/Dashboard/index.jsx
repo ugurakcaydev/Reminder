@@ -26,13 +26,13 @@ function Dashboard() {
 
         // Gelen veri varsa hemen durumu güncelle
         setMeetings(response);
+
         setLoading(false);
       } catch (error) {
         console.error(error);
         setLoading(false); // Hata durumunda da durumu güncelle
       }
     };
-
     // currentUser.usertoken bağımlılığı ile sadece usertoken değiştiğinde çağrılacaktır.
     fetchData();
   }, [currentUser.usertoken]);
