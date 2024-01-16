@@ -110,7 +110,7 @@ export default function Navbar() {
                   </Link>
                 ))}
               {currentUser && currentUser.usertoken == undefined ? (
-                <div className="flex gap-x-2">
+                <div className="flex items-center gap-x-2">
                   <Link
                     to={"/login"}
                     className="relative flex items-center justify-center font-serif gap-x-2 p-2 mobile:px-1 laptop1:px-2 desktop1:px-3  text-base group  "
