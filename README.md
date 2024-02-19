@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 > - Yaptığımız web sitesi, arayüz tasarımını bir örnek siteye dayanarak özenle oluşturulmuştur. Ayrıca, sadece arayüzle sınırlı kalmayıp, arka uç kısmında da etkin bir şekilde çalışmaktadır. İlgili depoyu repository bölümünde bulabilirsiniz. Kayıt olma, giriş yapma, çıkış yapma, toplantı oluşturma, toplantılara kullanıcı ekleyebilme gibi işlevlerin yanı sıra, eklenen kullanıcılara otomatik mail gönderme sistemleri titizlikle test edilmiş ve sorunsuz bir şekilde çalışır durumda bulunmaktadır.
 
 > > Our website's interface design is meticulously crafted, taking inspiration from an example site. Additionally, it functions seamlessly on the backend.You can find the repository in the designated section. Systems such as user registration, login, logout, meeting creation, adding users to meetings, and automated email notifications to added users have been thoroughly tested and are in working order.
+
+.
