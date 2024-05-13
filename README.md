@@ -1,14 +1,16 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+npm i;
 
-Currently, two official plugins are available:
+npm run dev;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-> - Yaptığımız web sitesi, arayüz tasarımını bir örnek siteye dayanarak özenle oluşturulmuştur. Ayrıca, sadece arayüzle sınırlı kalmayıp, arka uç kısmında da etkin bir şekilde çalışmaktadır. İlgili depoyu repository bölümünde bulabilirsiniz. Kayıt olma, giriş yapma, çıkış yapma, toplantı oluşturma, toplantılara kullanıcı ekleyebilme gibi işlevlerin yanı sıra, eklenen kullanıcılara otomatik mail gönderme sistemleri titizlikle test edilmiş ve sorunsuz bir şekilde çalışır durumda bulunmaktadır.
 
-> > Our website's interface design is meticulously crafted, taking inspiration from an example site. Additionally, it functions seamlessly on the backend.You can find the repository in the designated section. Systems such as user registration, login, logout, meeting creation, adding users to meetings, and automated email notifications to added users have been thoroughly tested and are in working order.
-
-.
+![Ekran görüntüsü 2024-05-13 161242](https://github.com/ugurakcaydev/Reminder/assets/101410344/94dabf2f-c85b-4c4c-8474-ec35ccb3155e)
+![Ekran görüntüsü 2024-05-13 161326](https://github.com/ugurakcaydev/Reminder/assets/101410344/ea61db77-bbe3-40b1-99e0-7cf0e2a7bca2)
+![Ekran görüntüsü 2024-05-13 161347](https://github.com/ugurakcaydev/Reminder/assets/101410344/73c30537-e727-4b26-92ab-0d12137bf2fc)
+![Ekran görüntüsü 2024-05-13 161404](https://github.com/ugurakcaydev/Reminder/assets/101410344/ddc1b27e-1530-44a1-bcea-0ee6b26f99c3)
+![Ekran görüntüsü 2024-05-13 161511](https://github.com/ugurakcaydev/Reminder/assets/101410344/51fcec46-510b-4398-9747-69a12b5d7355)
+![Ekran görüntüsü 2024-05-13 161525](https://github.com/ugurakcaydev/Reminder/assets/101410344/d3254b1e-1fe4-4feb-bb18-400de0a71c13)
+![Ekran görüntüsü 2024-05-13 161541](https://github.com/ugurakcaydev/Reminder/assets/101410344/4ba21a3b-47f8-47d7-8174-7d794167af10)
+![Ekran görüntüsü 2024-05-13 161724](https://github.com/ugurakcaydev/Reminder/assets/101410344/fa141649-ceb8-425b-88a1-9833ada1e7df)
