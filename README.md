@@ -26,6 +26,11 @@ Start the server
 
 ## Screenshots
 
+
+![Ekran görüntüsü 2024-05-13 164212](https://github.com/ugurakcaydev/Reminder/assets/101410344/1d513336-13be-4bd6-9e2d-c91d16393242)
+
+![Ekran görüntüsü 2024-05-13 164200](https://github.com/ugurakcaydev/Reminder/assets/101410344/b00b167f-2353-4479-8667-11f00189cb60)
+
 ![Ekran görüntüsü 2024-05-13 161242](https://github.com/ugurakcaydev/Reminder/assets/101410344/94dabf2f-c85b-4c4c-8474-ec35ccb3155e)
 
 ![Ekran görüntüsü 2024-05-13 161326](https://github.com/ugurakcaydev/Reminder/assets/101410344/ea61db77-bbe3-40b1-99e0-7cf0e2a7bca2)
